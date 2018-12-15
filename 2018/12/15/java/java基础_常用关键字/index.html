@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="qihui">
 <meta property="og:description" content="总览基本类型     整数         byte short int long     小数         float double     字符         char     布尔类型(boolean)         true false 访问控制     public protected private  程序控制     break    continue    return">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-15T13:18:59.589Z">
+<meta property="og:updated_time" content="2018-12-15T13:22:05.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java基础--常用关键字">
 <meta name="twitter:description" content="总览基本类型     整数         byte short int long     小数         float double     字符         char     布尔类型(boolean)         true false 访问控制     public protected private  程序控制     break    continue    return">
@@ -486,7 +486,8 @@ protected对于子女、朋友来说，就是public的，可以自由使用，�
 要使用类,通常使用  new 操作符将类的对象实例化,然后调用类的方法来访问类的功能
 </code></pre></li>
 <li><p>abstract  抽象类</p>
-<pre><code>在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，并不是所有的类都是用来描绘对象的，
+<pre><code>在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，
+并不是所有的类都是用来描绘对象的，
 如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类。
 抽象类除了不能实例化对象之外，类的其它功能依然存在，成员变量、
 成员方法和构造方法的访问方式和普通类一样。
@@ -520,7 +521,8 @@ static（内部）类可以被其他类实例化和引用（即使它是顶级�
 static 字段（类的成员变量）在类的所有实例中只存在一次。 
 可以从类的外部调用 static 方法，而不用首先实例化该类。
 这样的引用始终包括类名作为方法调用的限定符。
-模式：public final static &lt;type&gt; varName = &lt;value&gt;; 通常用于声明可以在类的外部使用的类常量。
+模式：public final static &lt;type&gt; varName = &lt;value&gt;; 
+通常用于声明可以在类的外部使用的类常量。
 在引用这样的类常量时需要用类名加以限定。在上面的示例中，
 另一个类可以用 MyClass.MAX_OBJECTS 形式来引用 MAX_OBJECTS 常量
 </code></pre></li>
@@ -532,13 +534,15 @@ new关键字后面的参数必须是类名,并且类名的后面必须是一组�
 </code></pre></li>
 <li><p>interface</p>
 <pre><code>interface 关键字是用来声明新的java接口,接口时方法的集合.
-接口是java语言的一项强大的功能.任何类都可声明它实现一个或多个接口,这意味着它实现了这些接口中所定义的所有方法
+接口是java语言的一项强大的功能.任何类都可声明它实现一个或多个接口,
+这意味着它实现了这些接口中所定义的所有方法
 实现了接口的任何类都必须提供在该接口中的所有方法实现.一个类可以实现多个接口
 </code></pre></li>
 <li><p>implements</p>
 <pre><code>implements关键字在class声明中使用,
-声明类提供了implements 关键字后面名称所指定接口所声明的所有方法.类必须实现接口的中所有方法.
-一个类可以实现多个接口
+声明类提供了implements 关键字后面名称所指定接口所声明的所有方法.
+类必须实现接口的中所有方法.
+一个类可以实现多个接口.
 </code></pre><h4 id="包相关"><a href="#包相关" class="headerlink" title="包相关"></a>包相关</h4></li>
 <li><p>import 引入</p>
 <pre><code>import 关键字使一个包中的一个或所有类在当前 Java 源文件中可见。
