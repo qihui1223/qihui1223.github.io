@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（六）数值的扩展/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（二） const命令/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -296,7 +296,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（六）数值的扩展/" itemprop="url">ES6系列（六）数值的扩展</a></h1>
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（二） const命令/" itemprop="url">ES6系列（二） const命令</a></h1>
         
 
         <div class="post-meta">
@@ -369,18 +369,14 @@
 
       
         
-          <h1 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h1><h2 id="1-Number-isFinite-和-Number-isNaN"><a href="#1-Number-isFinite-和-Number-isNaN" class="headerlink" title="(1) Number.isFinite() 和 Number.isNaN()"></a>(1) Number.isFinite() 和 Number.isNaN()</h2><pre><code>用来检查Infinite和NaN这两个特殊值
-这两个方法仅对数值有效，对于飞数值一律返回false。
-</code></pre><pre><code class="javascript"><span class="built_in">Number</span>.isFinite(<span class="string">"25"</span>);<span class="comment">//false</span>
-<span class="built_in">isFinite</span>(<span class="string">"25"</span>);<span class="comment">//true</span>
-</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（六）数值的扩展/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h1><pre><code>const用来声明常量，一旦声明，其值就不能改变。
+const与let的作用域相同，只在声明所在的块级作用域内有效。
+const声明的常量不可重复声明
+</code></pre><p><strong>const命令图解</strong></p>
+<p><img src="/img/es6/const.jpg" alt="const命令"></p>
+
+          
         
       
     </div>
@@ -582,7 +578,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（十二）Promise/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（十）Iterator遍历器/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -601,7 +597,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（十二）Promise/" itemprop="url">ES6系列（十二）Promise</a></h1>
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（十）Iterator遍历器/" itemprop="url">ES6系列（十）Iterator遍历器</a></h1>
         
 
         <div class="post-meta">
@@ -674,10 +670,11 @@
 
       
         
-          <h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>ES6原生提供Promise对象。所谓Promise对象，就是代表了未来某个将要发生的事件（通常是一个异步操作）。它的好处在于，有了promise对象，就可以将异步操作的流程表达出来，避免了层层嵌套的回调函数。<br>
+          <h1 id="Iterator遍历器"><a href="#Iterator遍历器" class="headerlink" title="Iterator遍历器"></a>Iterator遍历器</h1><p>遍历器是一种协议，任何对象只要部署了这个协议，就可以完成遍历操作。它的主要作用有两个<br>&nbsp;&nbsp;1.一个是为遍历对象的属性提供统一的接口，<br>&nbsp;&nbsp;2.二是时对象的属性能够按次序排列。</p>
+<p>ES6的遍历器协议规定，部署了next方法的对象，就具备了遍历器功能。<br>&nbsp;&nbsp;next方法必须返回一个包含value和done两个属性的对象。<br>&nbsp;&nbsp;value属性是当前遍历位置的值，<br>&nbsp;&nbsp;done属性是一个布尔值，表似乎遍历是否结束。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（十二）Promise/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/es6/ES6系列（十）Iterator遍历器/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -728,7 +725,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（三） 数组的解构/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/表单验证/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -747,7 +744,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（三） 数组的解构/" itemprop="url">ES6系列（三） 解构赋值</a></h1>
+                <a class="post-title-link" href="/2018/12/15/表单验证/" itemprop="url">表单验证</a></h1>
         
 
         <div class="post-meta">
@@ -782,8 +779,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/es6/" itemprop="url" rel="index">
-                    <span itemprop="name">es6</span>
+                  <a href="/categories/form/" itemprop="url" rel="index">
+                    <span itemprop="name">form</span>
                   </a>
                 </span>
 
@@ -820,17 +817,17 @@
 
       
         
-          <h1 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h1><p>ES6允许按照一定模式，从数组和对象中提取值，对变量进行复制，这被称为解构<br>例如 var [a,b,c] = [1,2,3]//本质上属于模式匹配，只要两边的模式相同，左边的变量就会被赋予相应的值。<br>注意：解构只能用于数组或者对象。其他原始类型的值都可以转化为相应的对象，但是undefined和null不能转化为对象，所以不能够解构。<br>对象的解构：<br>数组的元素是按照次序排列的，变量的取值由它的位置决定，而对象的属性没有次序，变量必须与属性同名，才能取到正确的值<br>
+          <h2 id="表单验证整理"><a href="#表单验证整理" class="headerlink" title="表单验证整理"></a>表单验证整理</h2><h2 id="匹配Email地址"><a href="#匹配Email地址" class="headerlink" title="匹配Email地址"></a>匹配Email地址</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line"><span class="comment">//对电子邮件的验证</span></span><br><span class="line">	<span class="keyword">var</span> myreg = <span class="regexp">/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]&#123;2,3&#125;$/</span>;</span><br><span class="line">	<span class="keyword">if</span>(!myreg.test(obj))&#123;</span><br><span class="line">		alert(<span class="string">'请输入有效的邮箱！'</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（三） 数组的解构/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/表单验证/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
     
     
     

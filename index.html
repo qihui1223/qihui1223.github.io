@@ -598,7 +598,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/node/node系列（二）总览二/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/node/node系列（三)http/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -617,7 +617,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/node/node系列（二）总览二/" itemprop="url">node系列（二）总览二</a></h1>
+                <a class="post-title-link" href="/2018/12/15/node/node系列（三)http/" itemprop="url">node系列（三）http</a></h1>
         
 
         <div class="post-meta">
@@ -668,17 +668,20 @@
 
       
         
-          <h2 id="node-js原理图"><a href="#node-js原理图" class="headerlink" title="node.js原理图"></a>node.js原理图</h2><p><img src="/img/node/node.png" alt="数值的扩展"><br>
+          <h2 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h2><ul>
+<li>node.js提供了HTTP模块,其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端</li>
+<li>http.Server是一个基于事件的HTTP服务器,核心是由node.js下层C++实现的,接口是由JavaScript封装的</li>
+<li>http.request是http客户端工具,用于客户端发送请求
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/node/node系列（二）总览二/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/node/node系列（三)http/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </li></ul></div>
     
     
     
@@ -850,7 +853,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（十）Iterator遍历器/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（四） for-of 循环/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -869,7 +872,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（十）Iterator遍历器/" itemprop="url">ES6系列（十）Iterator遍历器</a></h1>
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（四） for-of 循环/" itemprop="url">ES6系列（四） for-of 循环</a></h1>
         
 
         <div class="post-meta">
@@ -942,18 +945,19 @@
 
       
         
-          <h1 id="Iterator遍历器"><a href="#Iterator遍历器" class="headerlink" title="Iterator遍历器"></a>Iterator遍历器</h1><p>遍历器是一种协议，任何对象只要部署了这个协议，就可以完成遍历操作。它的主要作用有两个<br>&nbsp;&nbsp;1.一个是为遍历对象的属性提供统一的接口，<br>&nbsp;&nbsp;2.二是时对象的属性能够按次序排列。</p>
-<p>ES6的遍历器协议规定，部署了next方法的对象，就具备了遍历器功能。<br>&nbsp;&nbsp;next方法必须返回一个包含value和done两个属性的对象。<br>&nbsp;&nbsp;value属性是当前遍历位置的值，<br>&nbsp;&nbsp;done属性是一个布尔值，表似乎遍历是否结束。<br>
+          <h1 id="for-of-循环"><a href="#for-of-循环" class="headerlink" title="for-of 循环"></a>for-of 循环</h1><pre><code>任何部署了Iterator接口的对象，都可以使用for-of循环遍历。
+我们如何遍历数组中的元素：
+</code></pre><h2 id="（1）-for循环"><a href="#（1）-for循环" class="headerlink" title="（1） for循环"></a>（1） for循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">0</span>; index &lt; myArray.length; index++) &#123;</span><br><span class="line"> 		<span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（十）Iterator遍历器/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/es6/ES6系列（四） for-of 循环/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
     
     
     
