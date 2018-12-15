@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="qihui">
 <meta property="og:description" content="总览 基本类型 整数     byte short int long 小数     float double 字符     char 布尔类型(boolean)     true false  访问控制 public protected private   程序控制 break    continue    return    do     while    if    else    for">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-15T13:28:24.441Z">
+<meta property="og:updated_time" content="2018-12-15T13:30:22.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java基础--常用关键字">
 <meta name="twitter:description" content="总览 基本类型 整数     byte short int long 小数     float double 字符     char 布尔类型(boolean)     true false  访问控制 public protected private   程序控制 break    continue    return    do     while    if    else    for">
@@ -503,19 +503,17 @@ boolean 变量的两个合法值
 成员方法和构造方法的访问方式和普通类一样。
   由于抽象类不能实例化对象，所以抽象类必须被继承，才能被使用。
 也是因为这个原因，通常在设计阶段决定要不要设计抽象类。
-</code></pre><ul>
-<li><p>final 最终的</p>
-<pre><code>final关键字可以用于声明属性,方法和类
-用于类,表示类不可以扩展(不能呢有子类)
-用于方法,表示在子类中不可以重写此方法.
-</code></pre><p>  注意:</p>
-<pre><code>一个类不可以同时是abstract又是final.abstract意味着必须扩展类,
-final则不能扩展.
-一个方法不能同时是 abstract 又是 final。abstract 意味着必须重写方法，
-final 则不能重写方法
 </code></pre></li>
-</ul>
-</li>
+<li><p>final 最终的</p>
+<pre><code>  final关键字可以用于声明属性,方法和类
+  用于类,表示类不可以扩展(不能呢有子类)
+  用于方法,表示在子类中不可以重写此方法.
+注意:
+    一个类不可以同时是abstract又是final.abstract意味着必须扩展类,
+    final则不能扩展.
+    一个方法不能同时是 abstract 又是 final。abstract 意味着必须重写方法，
+    final 则不能重写方法
+</code></pre></li>
 <li><p>extends 继承、扩展</p>
 <pre><code>extends关键字用在class或interface声明中,
 用于指示所声明的类或接口时其名称后跟有extends关键字的类或接口的子类.
@@ -558,7 +556,8 @@ new关键字后面的参数必须是类名,并且类名的后面必须是一组�
 <pre><code>import 关键字使一个包中的一个或所有类在当前 Java 源文件中可见。
 可以不使用完全限定的类名来引用导入的类。 当多个包包含同名的类时，
 许多 Java 程序员只使用特定的 import 语句（没有“*”）来避免不确定性。
-</code></pre><p>package 包</p>
+</code></pre></li>
+<li><p>package 包</p>
 <pre><code>package 关键字指定在 Java 源文件中声明的类所驻留的 Java 包。 
 package 语句（如果出现）必须是 Java 源文件中的第一个非注释性文本。 
 </code></pre><p>  例:java.lang.Object。<br>  如果 Java 源文件不包含 package 语句，在该文件中定义的类将位于“默认包”中。<br>  请注意，不能从非默认包中的类引用默认包中的类。</p>
@@ -632,8 +631,8 @@ void 可以用作方法的返回类型，以指示该方法不返回值。
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/15/es6/ES6系列（八）函数的扩展/" rel="next" title="ES6系列（八）函数的扩展">
-                <i class="fa fa-chevron-left"></i> ES6系列（八）函数的扩展
+              <a href="/2018/12/15/es6/ES6系列（九）Set 和 Map/" rel="next" title="ES6系列（九）Set 和 Map">
+                <i class="fa fa-chevron-left"></i> ES6系列（九）Set 和 Map
               </a>
             
           </div>
