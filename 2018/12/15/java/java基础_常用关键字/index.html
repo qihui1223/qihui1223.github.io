@@ -97,18 +97,18 @@
 
 
 
-<meta name="description" content="总览基本类型     整数         byte short int long     小数         float double     字符         char     布尔类型(boolean)         true false 访问控制     public protected private  程序控制     break    continue    return">
+<meta name="description" content="总览 基本类型 整数     byte short int long 小数     float double 字符     char 布尔类型(boolean)     true false  访问控制 public protected private   程序控制 break    continue    return    do     while    if    else    for">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java基础--常用关键字">
 <meta property="og:url" content="http://yoursite.com/2018/12/15/java/java基础_常用关键字/index.html">
 <meta property="og:site_name" content="qihui">
-<meta property="og:description" content="总览基本类型     整数         byte short int long     小数         float double     字符         char     布尔类型(boolean)         true false 访问控制     public protected private  程序控制     break    continue    return">
+<meta property="og:description" content="总览 基本类型 整数     byte short int long 小数     float double 字符     char 布尔类型(boolean)     true false  访问控制 public protected private   程序控制 break    continue    return    do     while    if    else    for">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-15T13:22:05.636Z">
+<meta property="og:updated_time" content="2018-12-15T13:28:24.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java基础--常用关键字">
-<meta name="twitter:description" content="总览基本类型     整数         byte short int long     小数         float double     字符         char     布尔类型(boolean)         true false 访问控制     public protected private  程序控制     break    continue    return">
+<meta name="twitter:description" content="总览 基本类型 整数     byte short int long 小数     float double 字符     char 布尔类型(boolean)     true false  访问控制 public protected private   程序控制 break    continue    return    do     while    if    else    for">
 
 
 
@@ -370,33 +370,43 @@
       
 
       
-        <h3 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h3><pre><code>基本类型
-    整数
-        byte short int long
-    小数
-        float double
-    字符
-        char
-    布尔类型(boolean)
-        true false
-访问控制
-    public protected private 
-程序控制
-    break    continue    return    do    
-    while    if    else    for    instanceof    
-    switch   case    default
-类,方法以及变量修饰符
-     class abstract final    extends static    new  implements
-    native    strictfp    synchronized    transient    volatile
-异常处理
-    try catch throw throws
-包相关的
-    import package
-变量引用
-    this super void
-保留字
-    goto const
-</code></pre><a id="more"></a>
+        <h3 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h3><ul>
+<li><p>基本类型</p>
+<pre><code>整数
+    byte short int long
+小数
+    float double
+字符
+    char
+布尔类型(boolean)
+    true false
+</code></pre></li>
+<li><p>访问控制</p>
+<pre><code>public protected private 
+</code></pre></li>
+<li><p>程序控制</p>
+<pre><code>break    continue    return    do    
+while    if    else    for    instanceof    
+switch   case    default
+</code></pre></li>
+<li><p>类,方法以及变量修饰符</p>
+<pre><code>class abstract final    extends static    new  implements
+native    strictfp    synchronized    transient    volatile
+</code></pre></li>
+<li><p>异常处理</p>
+<pre><code>try catch throw throws
+</code></pre></li>
+<li><p>包相关的</p>
+<pre><code>import package
+</code></pre></li>
+<li><p>变量引用</p>
+<pre><code>this super void
+</code></pre></li>
+<li><p>保留字</p>
+<pre><code>goto const
+</code></pre></li>
+</ul>
+<a id="more"></a>
 <h3 id="详细说明"><a href="#详细说明" class="headerlink" title="详细说明"></a>详细说明</h3><h4 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h4><ul>
 <li><p>整数</p>
 <pre><code>byte: 字节型
@@ -422,16 +432,16 @@ java中所有的整数值都是32的int值,除非值后面有 l 或 L（如 235L
 </ul>
 <ul>
 <li><p>小数</p>
-<pre><code> float: 浮点
- double: 双精度
-     都是java原始数据类型
-     float变量可以储存单精度福浮点值
-     double变量可以储存双精度的浮点值
+<pre><code>float: 浮点
+double: 双精度
+    都是java原始数据类型
+    float变量可以储存单精度福浮点值
+    double变量可以储存双精度的浮点值
 
- 注意:
-     由于java默认的浮点为双精度,因此要指定单精度文字(即用float),
-     应在后面加上f,F.如: 0.11f
- 由于浮点数据类型是实际数值的近视值,因此,一般不要对浮点数值进行相等的比较
+注意:
+    由于java默认的浮点为双精度,因此要指定单精度文字(即用float),
+    应在后面加上f,F.如: 0.11f
+由于浮点数据类型是实际数值的近视值,因此,一般不要对浮点数值进行相等的比较
 
 java中的浮点数值可以代表无穷大和NAN(非数值).
 Float和Double包装对象类用来定义常量 MIN_VALUE、MAX_VALUE、
@@ -466,43 +476,43 @@ boolean 变量的两个合法值
 <pre><code>public表明该数据成员、成员函数是对所有用户开放的，所有用户都可以直接进行调用
 </code></pre></li>
 <li><p>protected</p>
-<pre><code>对同一包内的类和所有子类可见。使用对象：变量、方法.
-protected对于子女、朋友来说，就是public的，可以自由使用，没有任何限制，
+<pre><code>  对同一包内的类和所有子类可见。使用对象：变量、方法.
+  protected对于子女、朋友来说，就是public的，可以自由使用，没有任何限制，
 而对于其他的外部class，protected就变成private。
-主要的作用就是用来保护子类的。它的含义在于子类可以用它修饰的成员，
+  主要的作用就是用来保护子类的。它的含义在于子类可以用它修饰的成员，
 其他的不可以，它相当于传递给子类的一种继承的东西
 </code></pre></li>
 <li><p>private 私有的</p>
-<pre><code>private表示私有，私有的意思就是除了class自己之外，任何人都不可以直接使用
-访问权限仅限于类的内部，是一种封装的体现，例如，大多数成员变量都是修饰符为private的，
+<pre><code>  private表示私有，私有的意思就是除了class自己之外，任何人都不可以直接使用
+  访问权限仅限于类的内部，是一种封装的体现，例如，大多数成员变量都是修饰符为private的，
 它们不希望被其他任何外部的类访问
 </code></pre></li>
 </ul>
 <h4 id="类-方法以及变量修饰符"><a href="#类-方法以及变量修饰符" class="headerlink" title="类,方法以及变量修饰符"></a>类,方法以及变量修饰符</h4><ul>
 <li><p>class 类</p>
-<pre><code>class 关键字是用来声明新的 java 类的,该类是相关变量或方法的集合.
-类是面向对象的程序设计方法的基本构造单位.
-类通常代表某种实际实体.如几何形状或人.类是对象的模板.每个对象都是类的一个实例.
+<pre><code>  class 关键字是用来声明新的 java 类的,该类是相关变量或方法的集合.
+  类是面向对象的程序设计方法的基本构造单位.
+  类通常代表某种实际实体.如几何形状或人.类是对象的模板.每个对象都是类的一个实例.
 要使用类,通常使用  new 操作符将类的对象实例化,然后调用类的方法来访问类的功能
 </code></pre></li>
 <li><p>abstract  抽象类</p>
-<pre><code>在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，
+<pre><code>  在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，
 并不是所有的类都是用来描绘对象的，
-如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类。
+  如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类。
 抽象类除了不能实例化对象之外，类的其它功能依然存在，成员变量、
 成员方法和构造方法的访问方式和普通类一样。
-由于抽象类不能实例化对象，所以抽象类必须被继承，才能被使用。
+  由于抽象类不能实例化对象，所以抽象类必须被继承，才能被使用。
 也是因为这个原因，通常在设计阶段决定要不要设计抽象类。
 </code></pre><ul>
 <li><p>final 最终的</p>
 <pre><code>final关键字可以用于声明属性,方法和类
 用于类,表示类不可以扩展(不能呢有子类)
 用于方法,表示在子类中不可以重写此方法.
-注意:
-    一个类不可以同时是abstract又是final.abstract意味着必须扩展类,
-    final则不能扩展.
-    一个方法不能同时是 abstract 又是 final。abstract 意味着必须重写方法，
-    final 则不能重写方法
+</code></pre><p>  注意:</p>
+<pre><code>一个类不可以同时是abstract又是final.abstract意味着必须扩展类,
+final则不能扩展.
+一个方法不能同时是 abstract 又是 final。abstract 意味着必须重写方法，
+final 则不能重写方法
 </code></pre></li>
 </ul>
 </li>
@@ -518,10 +528,10 @@ protected对于子女、朋友来说，就是public的，可以自由使用，�
 static（内部）类可以被其他类实例化和引用（即使它是顶级类）。在上面的示例中，
 另一个类中的代码可以实例化 MyStaticClass 类，方法是用包含它的类名来限定其名称，
 如 MyClass.MyStaticClass。 
-static 字段（类的成员变量）在类的所有实例中只存在一次。 
+  static 字段（类的成员变量）在类的所有实例中只存在一次。 
 可以从类的外部调用 static 方法，而不用首先实例化该类。
 这样的引用始终包括类名作为方法调用的限定符。
-模式：public final static &lt;type&gt; varName = &lt;value&gt;; 
+  模式：public final static &lt;type&gt; varName = &lt;value&gt;; 
 通常用于声明可以在类的外部使用的类常量。
 在引用这样的类常量时需要用类名加以限定。在上面的示例中，
 另一个类可以用 MyClass.MAX_OBJECTS 形式来引用 MAX_OBJECTS 常量
@@ -565,7 +575,7 @@ void 可以用作方法的返回类型，以指示该方法不返回值。
 <pre><code>  super 关键字用于引用使用该关键字的类的超类。 
 作为独立语句出现的 super 表示调用超类的构造方法。 
   super.&lt;methodName&gt;() 表示调用超类的方法。只有在如下情况中才需要采用这种用法：
-  要调用在该类中被重写的方法，以便指定应当调用在超类中的该方法。
+要调用在该类中被重写的方法，以便指定应当调用在超类中的该方法。
 </code></pre></li>
 </ul>
 
@@ -622,8 +632,8 @@ void 可以用作方法的返回类型，以指示该方法不返回值。
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/15/es6/ES6系列（五）字符串的扩展/" rel="next" title="ES6系列（五）字符串的扩展">
-                <i class="fa fa-chevron-left"></i> ES6系列（五）字符串的扩展
+              <a href="/2018/12/15/es6/ES6系列（八）函数的扩展/" rel="next" title="ES6系列（八）函数的扩展">
+                <i class="fa fa-chevron-left"></i> ES6系列（八）函数的扩展
               </a>
             
           </div>
