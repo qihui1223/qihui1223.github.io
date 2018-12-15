@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="web,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="qihui" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="1.   HTML对象获取问题FireFox：document.getElementById(“idName”);ie:document.idname或者document.getElementById(“idName”).解决办法：统一使用document.getElementById(“idName”); 2.    const问题说明:Firefox下,可以使用const关键字或var关键字来">
+<meta name="keywords" content="web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web前端兼容问题">
+<meta property="og:url" content="http://yoursite.com/2017/04/05/web前端兼容问题/index.html">
+<meta property="og:site_name" content="qihui">
+<meta property="og:description" content="1.   HTML对象获取问题FireFox：document.getElementById(“idName”);ie:document.idname或者document.getElementById(“idName”).解决办法：统一使用document.getElementById(“idName”); 2.    const问题说明:Firefox下,可以使用const关键字或var关键字来">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-17T03:53:48.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web前端兼容问题">
+<meta name="twitter:description" content="1.   HTML对象获取问题FireFox：document.getElementById(“idName”);ie:document.idname或者document.getElementById(“idName”).解决办法：统一使用document.getElementById(“idName”); 2.    const问题说明:Firefox下,可以使用const关键字或var关键字来">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/05/web前端兼容问题/">
+
+
+
+
+
+  <title>web前端兼容问题 | qihui</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qihui</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">倘只看书，便变成书橱</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/web前端兼容问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="齐辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qihui">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">web前端兼容问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T15:23:30+08:00">
+                2017-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-HTML对象获取问题"><a href="#1-HTML对象获取问题" class="headerlink" title="1.   HTML对象获取问题"></a>1.   HTML对象获取问题</h3><p>FireFox：document.getElementById(“idName”);<br>ie:document.idname或者document.getElementById(“idName”).<br>解决办法：统一使用document.getElementById(“idName”);</p>
+<h3 id="2-const问题"><a href="#2-const问题" class="headerlink" title="2.    const问题"></a>2.    const问题</h3><p>说明:Firefox下,可以使用const关键字或var关键字来定义常量;<br>IE下,只能使用var关键字来定义常量.<br>解决方法：统一使用var关键字来定义常量.<br><a id="more"></a></p>
+<h3 id="3-event-x与event-y问题"><a href="#3-event-x与event-y问题" class="headerlink" title="3. event.x与event.y问题"></a>3. event.x与event.y问题</h3><p>说明:IE下,event对象有x,y属性,但是没有pageX,pageY属性;<br>Firefox下,event对象有pageX,pageY属性,但是没有x,y属性.<br>解决方法：使用mX(mX  =   event.x   ?   event.x  :   event.pageX;)来代替IE下的event.x或者Firefox下的event.pageX.</p>
+<h3 id="4-window-location-href问题"><a href="#4-window-location-href问题" class="headerlink" title="4. window.location.href问题"></a>4. window.location.href问题</h3><p>说明:IE或者Firefox2.0.x下,可以使用window.location或window.location.href;<br>Firefox1.5.x下,只能使用window.location.<br>解决方法：使用window.location来代替window.location.href.</p>
+<h3 id="5-frame问题"><a href="#5-frame问题" class="headerlink" title="5. frame问题"></a>5. frame问题</h3><p>以下面的frame为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;frame   src=&quot;xxx.html&quot;   id=&quot;frameId&quot;  name=&quot;frameName&quot;   /&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-访问frame对象"><a href="#1-访问frame对象" class="headerlink" title="(1)访问frame对象:"></a>(1)访问frame对象:</h4><p>IE:使用window.frameId或者window.frameName来访问这个frame对象.  frameId和frameName可以同名。<br>Firefox:只能使用window.frameName来访问这个frame对象.<br>另外，在IE和Firefox中都可以使用window.document.getElementById(“frameId”)来访问这个frame对象.</p>
+<h4 id="2-切换frame内容"><a href="#2-切换frame内容" class="headerlink" title="(2)切换frame内容:"></a>(2)切换frame内容:</h4><p>在 IE和Firefox中都可以使用window.document.getElementById(“testFrame”).src  =   “xxx.html”或window.frameName.location   =  “xxx.html”来切换frame的内容.<br>如果需要将frame中的参数传回父窗口(注意不是opener,而是parent  frame)，可以在frame中使用parent来访问父窗口。例如：parent.document.form1.filename.value=”Aqing”;</p>
+<h3 id="6-模态和非模态窗口问题"><a href="#6-模态和非模态窗口问题" class="headerlink" title="6. 模态和非模态窗口问题"></a>6. 模态和非模态窗口问题</h3><p>说明:IE下,可以通过showModalDialog和showModelessDialog打开模态和非模态窗口;Firefox下则不能.<br>解决方法：直接使用window.open(pageURL,name,parameters)方式打开新窗口。<br>如果需要将子窗口中的参数传递回父窗口,可以在子窗口中使用window.opener来访问父窗口.<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var  parWin   =   window.opener;  parWin.document.getElementById(&quot;Aqing&quot;).value  =   &quot;Aqing&quot;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="7-firefox与IE的父元素-parentElement-的区别"><a href="#7-firefox与IE的父元素-parentElement-的区别" class="headerlink" title="7. firefox与IE的父元素(parentElement)的区别"></a>7. firefox与IE的父元素(parentElement)的区别</h3><p>IE：obj.parentElement<br>firefox：obj.parentNode<br>解决方法:   因为firefox与IE都支持DOM,因此使用obj.parentNode是不错选择.</p>
+<h3 id="8-document-formName-item-”itemName”-问题"><a href="#8-document-formName-item-”itemName”-问题" class="headerlink" title="8. document.formName.item(”itemName”) 问题"></a>8. document.formName.item(”itemName”) 问题</h3><p>问题说明：IE下，可以使用document.formName.item(”itemName”)或document.formName.elements[“elementName”]；Firefox 下，只能使用document.formName.elements[“elementName”]。<br>解决方法：统一使用document.formName.elements[“elementName”]。</p>
+<h3 id="9-集合类对象问题"><a href="#9-集合类对象问题" class="headerlink" title="9. 集合类对象问题"></a>9. 集合类对象问题</h3><p>问题说明：IE下，可以使用 () 或 [] 获取集合类对象；Firefox下，只能使用 [ ]获取集合类对象。<br>解决方法：统一使用 [] 获取集合类对象。</p>
+<h3 id="10-自定义属性问题"><a href="#10-自定义属性问题" class="headerlink" title="10.          自定义属性问题"></a>10.          自定义属性问题</h3><p>问题说明：IE下，可以使用获取常规属性的方法来获取自定义属性，也可以使用getAttribute() 获取自定义属性；Firefox下，只能使用getAttribute() 获取自定义属性。<br>解决方法：统一通过getAttribute() 获取自定义属性。</p>
+<h3 id="11-input-type属性问题"><a href="#11-input-type属性问题" class="headerlink" title="11.          input.type属性问题"></a>11.          input.type属性问题</h3><p>问题说明：IE下input.type属性为只读；但是Firefox下input.type属性为读写。<br>解决办法：不修改input.type属性。如果必须要修改，可以先隐藏原来的input，然后在同样的位置再插入一个新的input元素。</p>
+<h3 id="12-event-srcElement问题"><a href="#12-event-srcElement问题" class="headerlink" title="12.          event.srcElement问题"></a>12.          event.srcElement问题</h3><p>问题说明：IE下，even对象有srcElement属性，但是没有target属性；Firefox下，even对象有target属性，但是没有srcElement属性。<br>解决方法：使用srcObj =event.srcElement ?event.srcElement : event.target;<br>如果考虑第8条问题，就改用myEvent代替event即可。</p>
+<h3 id="13-body载入问题"><a href="#13-body载入问题" class="headerlink" title="13.          body载入问题"></a>13.          body载入问题</h3><p>问题说明：Firefox的body对象在body标签没有被浏览器完全读入之前就存在；而IE的body对象则必须在body标签被浏览器完全读入之后才存在。<br>[注] 这个问题尚未实际验证，待验证后再来修改。<br>[注] 经验证，IE6、Opera9以及FireFox2中不存在上述问题，单纯的JS脚本可以访问在脚本之前已经载入的所有对象和元素，即使这个元素还没有载入完成。</p>
+<h3 id="14-事件委托方法"><a href="#14-事件委托方法" class="headerlink" title="14.          事件委托方法"></a>14.          事件委托方法</h3><p>问题说明：IE下，使用document.body.onload= inject; 其中functioninject()在这之前已被实现；在Firefox下，使用document.body.onload= inject();<br>解决方法：统一使用document.body.onload=newFunction(’inject()’); 或者document.body.onload = function(){/<em> 这里是代码 </em>/}<br>[注意] Function和function的区别。</p>
+<h3 id="15-Table操作问题"><a href="#15-Table操作问题" class="headerlink" title="15.          Table操作问题"></a>15.          Table操作问题</h3><p>问题说明：ie、firefox以及其它浏览器对于 table 标签的操作都各不相同，在ie中不允许对table和tr的innerHTML赋值，使用js增加一个tr时，使用appendChild方法也不管用。<br>解决方法：//向table追加一个空行：<br>var row = otable.insertRow(-1);var cell =document.createElement(“td”);cell.innerHTML =””;cell.className = “XXXX”;row.appendChild(cell);[注] 由于俺很少使用JS直接操作表格，这个问题没有遇见过。建议使用JS框架集来操作table，如jQuery。</p>
+<h3 id="16-对象宽高赋值问题"><a href="#16-对象宽高赋值问题" class="headerlink" title="16.          对象宽高赋值问题"></a>16.          对象宽高赋值问题</h3><p>问题说明：FireFox中类似obj.style.height =imgObj.height的语句无效。</p>
+<h3 id="O-CSS"><a href="#O-CSS" class="headerlink" title="Ø  CSS"></a>Ø  CSS</h3><h4 id="1-cursor-hand-VS-cursor-pointer"><a href="#1-cursor-hand-VS-cursor-pointer" class="headerlink" title="1.        cursor:hand  VS   cursor:pointer"></a>1.        cursor:hand  VS   cursor:pointer</h4><p>firefox不支持hand，但ie支持pointer<br>解决方法:   统一使用pointer</p>
+<h4 id="2-innerText在IE中能正常工作，但在FireFox中却不行"><a href="#2-innerText在IE中能正常工作，但在FireFox中却不行" class="headerlink" title="2. innerText在IE中能正常工作，但在FireFox中却不行."></a>2. innerText在IE中能正常工作，但在FireFox中却不行.</h4><p>需用textContent。<br>解决方法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(navigator.appName.indexOf(&quot;Explorer&quot;)  &gt;   -1)&#123;</span><br><span class="line">       document.getElementById(&apos;element&apos;).innerText   =  &quot;my   text&quot;;</span><br><span class="line">&#125;   else&#123;</span><br><span class="line">        document.getElementById(&apos;element&apos;).textContent  =   &quot;my   text&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-CSS透明"><a href="#3-CSS透明" class="headerlink" title="3. CSS透明"></a>3. CSS透明</h4><p>IE：filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=60)。<br>FF：opacity:0.6。</p>
+<h4 id="4-css中的width和padding"><a href="#4-css中的width和padding" class="headerlink" title="4. css中的width和padding"></a>4. css中的width和padding</h4><p>在IE7和FF中width宽度不包括padding，在Ie6中包括padding.</p>
+<h4 id="5-FF和IEBOX模型解释不一致导致相差2px"><a href="#5-FF和IEBOX模型解释不一致导致相差2px" class="headerlink" title="5. FF和IEBOX模型解释不一致导致相差2px"></a>5. FF和IEBOX模型解释不一致导致相差2px</h4><p>box.style{width:100;border1px;}<br>ie理解为box.width =100<br>ff理解为box.width =100 + 1*2 = 102  //加上边框2px<br>解决方法：div{margin:30px!important;margin:28px;}<br>注意这两个margin的顺序一定不能写反， IE不能识别!important这个属性，但别的浏览器可以识别。所以在IE下其实解释成这样：div{maring:30px;margin:28px}<br>重复定义的话按照最后一个来执行，所以不可以只写margin:XXpx!important;</p>
+<h4 id="6-IE5-和IE6的BOX解释不一致"><a href="#6-IE5-和IE6的BOX解释不一致" class="headerlink" title="6. IE5 和IE6的BOX解释不一致"></a>6. IE5 和IE6的BOX解释不一致</h4><p>IE5下div{width:300px;margin:0 10px 0 10px;}<br>div 的宽度会被解释为300px-10px(右填充)-10px(左填充)，最终div的宽度为280px，而在IE6和其他浏览器上宽度则是以 300px+10px(右填充)+10px(左填充)=320px来计算的。这时我们可以做如下修改div{width:300px!important;width /**/:340px;margin:0 10px 0 10px}</p>
+<h4 id="7-ul和ol列表缩进问题"><a href="#7-ul和ol列表缩进问题" class="headerlink" title="7. ul和ol列表缩进问题"></a>7. ul和ol列表缩进问题</h4><p>消除ul、ol等列表的缩进时，样式应写成：list-style:none;margin:0px;padding:0px;<br>经验证，在IE中，设置margin:0px可以去除列表的上下左右缩进、空白以及列表编号或圆点，设置padding对样式没有影响；在 Firefox 中，设置margin:0px仅仅可以去除上下的空白，设置padding:0px后仅仅可以去掉左右缩进，还必须设置list- style:none才能去除列表编号或圆点。也就是说，在IE中仅仅设置margin:0px即可达到最终效果，而在Firefox中必须同时设置margin:0px、 padding:0px以及list-style:none三项才能达到最终效果。</p>
+<h4 id="8-元素水平居中问题"><a href="#8-元素水平居中问题" class="headerlink" title="8. 元素水平居中问题"></a>8. 元素水平居中问题</h4><p>FF: margin:0auto;<br>IE: 父级{ text-align:center; }</p>
+<h4 id="9-Div的垂直居中问题"><a href="#9-Div的垂直居中问题" class="headerlink" title="9. Div的垂直居中问题"></a>9. Div的垂直居中问题</h4><p>vertical-align:middle; 将行距增加到和整个DIV一样高：line-height:200px;然后插入文字，就垂直居中了。缺点是要控制内容不要换行。</p>
+<h4 id="10-margin加倍的问题"><a href="#10-margin加倍的问题" class="headerlink" title="10.          margin加倍的问题"></a>10.          margin加倍的问题</h4><p>设置为float的div在ie下设置的margin会加倍。这是一个ie6都存在的bug。解决方案是在这个div里面加上display:inline;<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=”imfloat”&gt;</span><br><span class="line">相应的css为</span><br><span class="line">#imfloat&#123; </span><br><span class="line">float:left; </span><br><span class="line">margin:5px;/*IE下理解为10px*/ </span><br><span class="line">display:inline;/*IE下再理解为5px*/&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="11-IE与宽度和高度的问题"><a href="#11-IE与宽度和高度的问题" class="headerlink" title="11.          IE与宽度和高度的问题"></a>11.          IE与宽度和高度的问题</h4><p>IE不认得min-这个定义，但实际上它把正常的width和height当作有min的情况来使。这样问题就大了，如果只用宽度和高度，正常的浏览器里这两个值就不会变，如果只用min-width和min-height的话，IE下面根本等于没有设置宽度和高度。<br>比如要设置背景图片，这个宽度是比较重要的。要解决这个问题，可以这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#box&#123; width: 80px; height: 35px;&#125;html&gt;body #box&#123; width: auto;height: auto; min-width: 80px; min-height: 35px;&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="12-页面的最小宽度"><a href="#12-页面的最小宽度" class="headerlink" title="12.          页面的最小宽度"></a>12.          页面的最小宽度</h4><p>如上一个问题，IE不识别min，要实现最小宽度，可用下面的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#Container&#123; min-width: 600px;width:expression(document.body.clientWidth＜ 600? &quot;600px&quot;: &quot;auto&quot; );&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第一个min-width是正常的；但第2行的width使用了JavaScript，这只有IE才认得，这也会让你的HTML文档不太正规。它实际上通过Javascript的判断来实现最小宽度</p>
+<h4 id="13-DIV浮动IE文本产生3象素的bug"><a href="#13-DIV浮动IE文本产生3象素的bug" class="headerlink" title="13.          DIV浮动IE文本产生3象素的bug"></a>13.          DIV浮动IE文本产生3象素的bug</h4><p>左边对象浮动，右边采用外补丁的左边距来定位，右边对象内的文本会离左边有3px的间距.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#box&#123; float:left; width:800px;&#125; </span><br><span class="line">#left&#123; float:left; width:50%;&#125; </span><br><span class="line">#right&#123; width:50%;&#125; </span><br><span class="line">*html #left&#123; margin-right:-3px; //这句是关键&#125; </span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;box&quot;&gt;</span><br><span class="line">&lt;div id=&quot;left&quot;&gt;＜/div&gt;</span><br><span class="line">&lt;div id=&quot;right&quot;&gt;＜/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="14-IE捉迷藏的问题"><a href="#14-IE捉迷藏的问题" class="headerlink" title="14.          IE捉迷藏的问题"></a>14.          IE捉迷藏的问题</h4><p>当div应用复杂的时候每个栏中又有一些链接，DIV等这个时候容易发生捉迷藏的问题。<br>有些内容显示不出来，当鼠标选择这个区域是发现内容确实在页面。<br>解决办法：对#layout使用line-height属性或者给#layout使用固定高和宽。页面结构尽量简单。</p>
+<h4 id="15-float的div闭合-清除浮动-自适应高度"><a href="#15-float的div闭合-清除浮动-自适应高度" class="headerlink" title="15.          float的div闭合;清除浮动;自适应高度"></a>15.          float的div闭合;清除浮动;自适应高度</h4><p>① 例如：＜div id=”floatA”&gt;＜div id=”floatB”&gt;＜div id=”NOTfloatC”&gt;<br>这里的NOTfloatC并不希望继续平移，而是希望往下排。(其中floatA、floatB的属性已经设置为float:left;)<br>这段代码在IE中毫无问题，问题出在FF。原因是NOTfloatC并非float标签，必须将float标签闭合。在＜divclass=”floatB”&gt;＜div class=”NOTfloatC”&gt;之间加上＜div class=”clear”&gt;这个div一定要注意位置，而且必须与两个具有float属性的div同级，之间不能存在嵌套关系，否则会产生异常。并且将clear这种样式定义为为如下即可：.clear{clear:both;}<br>②作为外部 wrapper 的 div 不要定死高度,为了让高度能自适应，要在wrapper里面加上overflow:hidden; 当包含float的box的时候，高度自适应在IE下无效，这时候应该触发IE的layout私有属性(万恶的IE啊！)用zoom:1;可以做到，这样就达到了兼容。<br>例如某一个wrapper如下定义：<br>.colwrapper{overflow:hidden; zoom:1; margin:5px auto;}<br>③对于排版,我们用得最多的css描述可能就是float:left.有的时候我们需要在n栏的float div后面做一个统一的背景,譬如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=”page”&gt;</span><br><span class="line">&lt;div id=”left”&gt;＜/div&gt;</span><br><span class="line">&lt;div id=”center”&gt;＜/div&gt;</span><br><span class="line">&lt;div id=”right”&gt;＜/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>比如我们要将page的背景设置成蓝色,以达到所有三栏的背景颜色是蓝色的目的,但是我们会发现随着left centerright的向下拉长,而page居然保存高度不变,问题来了,原因在于page不是float属性,而我们的page由于要居中,不能设置成float,所以我们应该这样解决：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=”page”&gt;</span><br><span class="line">&lt;div id=”bg” style=”float:left;width:100%”&gt;</span><br><span class="line">&lt;div id=”left”&gt;＜/div&gt;</span><br><span class="line">&lt;div id=”center”&gt;＜/div&gt;</span><br><span class="line">&lt;div id=”right”&gt;＜/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>再嵌入一个float left而宽度是100%的DIV解决之。<br>④万能float 闭合(非常重要!)<br>关于 clear float 的原理可参见 [How To ClearFloats Without Structural Markup],将以下代码加入Global CSS 中,给需要闭合的div加上class=”clearfix”即可,屡试不爽。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/* Clear Fix */ </span><br><span class="line">.clearfix:after &#123; content:&quot;.&quot;; display:block; height:0; clear:both;visibility:hidden; &#125; </span><br><span class="line">.clearfix &#123; display:inline-block; &#125; </span><br><span class="line">/* Hide from IE Mac */ </span><br><span class="line">.clearfix &#123;display:block;&#125; </span><br><span class="line">/* End hide from IE Mac */ </span><br><span class="line">/* end of clearfix */</span><br><span class="line">或者这样设置：.hackbox&#123;display:table; //将对象作为块元素级的表格显示&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="16-高度不适应"><a href="#16-高度不适应" class="headerlink" title="16.          高度不适应"></a>16.          高度不适应</h4><p>高度不适应是当内层对象的高度发生变化时外层高度不能自动进行调节，特别是当内层对象使用margin 或padding时。<br>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#box &#123;background-color:#eee; &#125; </span><br><span class="line">#box p &#123;margin-top: 20px;margin-bottom: 20px; text-align:center; &#125; </span><br><span class="line">&lt;div id=&quot;box&quot;&gt;</span><br><span class="line">&lt;p&gt;p对象中的内容＜/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>解决技巧：在P对象上下各加2个空的div对象CSS代码{height:0px;overflow:hidden;}或者为DIV加上border属性。</p>
+<h4 id="17-IE6下图片下有空隙产生"><a href="#17-IE6下图片下有空隙产生" class="headerlink" title="17.          IE6下图片下有空隙产生"></a>17.          IE6下图片下有空隙产生</h4><p>解决这个BUG的技巧有很多,可以是改变html的排版,或者设置img为display:block或者设置vertical-align属性为vertical-align:top/bottom/middle/text-bottom都可以解决.</p>
+<h3 id="18-对齐文本与文本输入框"><a href="#18-对齐文本与文本输入框" class="headerlink" title="18.          对齐文本与文本输入框"></a>18.          对齐文本与文本输入框</h3><p>加上vertical-align:middle;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">input &#123; </span><br><span class="line">width:200px; </span><br><span class="line">height:30px; </span><br><span class="line">border:1px solid red; </span><br><span class="line">vertical-align:middle; </span><br><span class="line">&#125; </span><br><span class="line">--&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<p>经验证，在IE下任一版本都不适用，而ff、opera、safari、chrome均OK！</p>
+<h4 id="19-LI中内容超过长度后以省略号显示"><a href="#19-LI中内容超过长度后以省略号显示" class="headerlink" title="19.          LI中内容超过长度后以省略号显示"></a>19.          LI中内容超过长度后以省略号显示</h4><p>此技巧适用与IE、Opera、safari、chrom浏览器，FF暂不支持。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">li &#123; </span><br><span class="line">width:200px; </span><br><span class="line">white-space:nowrap; </span><br><span class="line">text-overflow:ellipsis; </span><br><span class="line">-o-text-overflow:ellipsis; </span><br><span class="line">overflow: hidden; </span><br><span class="line">&#125;</span><br><span class="line">--&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="20-为什么web标准中IE无法设置滚动条颜色了"><a href="#20-为什么web标准中IE无法设置滚动条颜色了" class="headerlink" title="20.          为什么web标准中IE无法设置滚动条颜色了"></a>20.          为什么web标准中IE无法设置滚动条颜色了</h4><p>解决办法是将body换成html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPEhtml PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=gb2312&quot; /&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">&lt;!-- </span><br><span class="line">html &#123; </span><br><span class="line">scrollbar-face-color:#f6f6f6; </span><br><span class="line">scrollbar-highlight-color:#fff; </span><br><span class="line">scrollbar-shadow-color:#eeeeee; </span><br><span class="line">scrollbar-3dlight-color:#eeeeee; </span><br><span class="line">scrollbar-arrow-color:#000; </span><br><span class="line">scrollbar-track-color:#fff; </span><br><span class="line">scrollbar-darkshadow-color:#fff; </span><br><span class="line">&#125; </span><br><span class="line">--&gt;</span><br><span class="line">＜/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="21-为什么无法定义1px左右高度的容器"><a href="#21-为什么无法定义1px左右高度的容器" class="headerlink" title="21.          为什么无法定义1px左右高度的容器"></a>21.          为什么无法定义1px左右高度的容器</h4><p>IE6下这个问题是因为默认的行高造成的,解决的技巧也有很多：<br>例如:overflow:hidden　 zoom:0.08 　line-height:1px<br>16.怎么样才能让层显示在FLASH之上呢<br>解决的办法是给FLASH设置透明</p>
+<p>&lt;paramname=”wmode” value=”transparent” /&gt;</p>
+<h4 id="22-链接-a标签-的边框与背景"><a href="#22-链接-a标签-的边框与背景" class="headerlink" title="22.          链接(a标签)的边框与背景"></a>22.          链接(a标签)的边框与背景</h4><p>a链接加边框和背景色，需设置 display: block, 同时设置 float: left 保证不换行。参照menubar, 给 a 和menubar设置高度是为了避免底边显示错位, 若不设 height, 可以在menubar中插入一个空格。</p>
+<h4 id="23-超链接访问过后hover样式就不出现的问题"><a href="#23-超链接访问过后hover样式就不出现的问题" class="headerlink" title="23.          超链接访问过后hover样式就不出现的问题"></a>23.          超链接访问过后hover样式就不出现的问题</h4><p>被点击访问过的超链接样式不在具有hover和active了,很多人应该都遇到过这个问题,解决技巧是改变CSS属性的排列顺序: L-V-H-A<br>Code:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">a:link &#123;&#125; </span><br><span class="line">a:visited &#123;&#125; </span><br><span class="line">a:hover &#123;&#125; </span><br><span class="line">a:active &#123;&#125; </span><br><span class="line">--&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="24-FORM标签"><a href="#24-FORM标签" class="headerlink" title="24.          FORM标签"></a>24.          FORM标签</h4><p>这个标签在IE中,将会自动margin一些边距,而在FF中margin则是0,因此,如果想显示一致,所以最好在css中指定margin和 padding,针对上面两个问题,我的css中一般首先都使用这样的样式ul,form{margin:0;padding:0;}。</p>
+<h4 id="25-属性选择器-这个不能算是兼容-是隐藏css的一个bug"><a href="#25-属性选择器-这个不能算是兼容-是隐藏css的一个bug" class="headerlink" title="25.          属性选择器(这个不能算是兼容,是隐藏css的一个bug)"></a>25.          属性选择器(这个不能算是兼容,是隐藏css的一个bug)</h4><p>p[id]{}div[id]{}<br>这个对于IE6.0和IE6.0以下的版本都隐藏,FF和OPera作用.属性选择器和子选择器还是有区别的,子选择器的范围从形式来说缩小了,属性选择器的范围比较大,如p[id]中,所有p标签中有id的都是同样式的.</p>
+<h4 id="26-为什么FF下文本无法撑开容器的高度"><a href="#26-为什么FF下文本无法撑开容器的高度" class="headerlink" title="26.          为什么FF下文本无法撑开容器的高度"></a>26.          为什么FF下文本无法撑开容器的高度</h4><p>标准浏览器中固定高度值的容器是不会象IE6里那样被撑开的,那我又想固定高度,又想能被撑开需要怎样设置呢？办法就是去掉height设置min-height:200px; 这里为了照顾不认识min-height的IE6 可以这样定义:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">height:auto!important; </span><br><span class="line">height:200px; </span><br><span class="line">min-height:200px; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="齐辉 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/23/响应式布局/" rel="next" title="响应式布局">
+                <i class="fa fa-chevron-left"></i> 响应式布局
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/30/buffer(缓冲)/" rel="prev" title="buffer(缓冲)">
+                buffer(缓冲) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="齐辉">
+          
+            <p class="site-author-name" itemprop="name">齐辉</p>
+            <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qihui1223" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://qihui1223.github.io/web/" target="_blank" title="学习">
+                  
+                    <i class="fa fa-fw fa-globe"></i>学习</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/jsfront" title="前端开发交流" target="_blank">前端开发交流</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-HTML对象获取问题"><span class="nav-number">1.</span> <span class="nav-text">1.   HTML对象获取问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-const问题"><span class="nav-number">2.</span> <span class="nav-text">2.    const问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-event-x与event-y问题"><span class="nav-number">3.</span> <span class="nav-text">3. event.x与event.y问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-window-location-href问题"><span class="nav-number">4.</span> <span class="nav-text">4. window.location.href问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-frame问题"><span class="nav-number">5.</span> <span class="nav-text">5. frame问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-访问frame对象"><span class="nav-number">5.1.</span> <span class="nav-text">(1)访问frame对象:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-切换frame内容"><span class="nav-number">5.2.</span> <span class="nav-text">(2)切换frame内容:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-模态和非模态窗口问题"><span class="nav-number">6.</span> <span class="nav-text">6. 模态和非模态窗口问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-firefox与IE的父元素-parentElement-的区别"><span class="nav-number">7.</span> <span class="nav-text">7. firefox与IE的父元素(parentElement)的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-document-formName-item-”itemName”-问题"><span class="nav-number">8.</span> <span class="nav-text">8. document.formName.item(”itemName”) 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-集合类对象问题"><span class="nav-number">9.</span> <span class="nav-text">9. 集合类对象问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-自定义属性问题"><span class="nav-number">10.</span> <span class="nav-text">10.          自定义属性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-input-type属性问题"><span class="nav-number">11.</span> <span class="nav-text">11.          input.type属性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-event-srcElement问题"><span class="nav-number">12.</span> <span class="nav-text">12.          event.srcElement问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-body载入问题"><span class="nav-number">13.</span> <span class="nav-text">13.          body载入问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-事件委托方法"><span class="nav-number">14.</span> <span class="nav-text">14.          事件委托方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-Table操作问题"><span class="nav-number">15.</span> <span class="nav-text">15.          Table操作问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-对象宽高赋值问题"><span class="nav-number">16.</span> <span class="nav-text">16.          对象宽高赋值问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#O-CSS"><span class="nav-number">17.</span> <span class="nav-text">Ø  CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-cursor-hand-VS-cursor-pointer"><span class="nav-number">17.1.</span> <span class="nav-text">1.        cursor:hand  VS   cursor:pointer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-innerText在IE中能正常工作，但在FireFox中却不行"><span class="nav-number">17.2.</span> <span class="nav-text">2. innerText在IE中能正常工作，但在FireFox中却不行.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-CSS透明"><span class="nav-number">17.3.</span> <span class="nav-text">3. CSS透明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-css中的width和padding"><span class="nav-number">17.4.</span> <span class="nav-text">4. css中的width和padding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-FF和IEBOX模型解释不一致导致相差2px"><span class="nav-number">17.5.</span> <span class="nav-text">5. FF和IEBOX模型解释不一致导致相差2px</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-IE5-和IE6的BOX解释不一致"><span class="nav-number">17.6.</span> <span class="nav-text">6. IE5 和IE6的BOX解释不一致</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-ul和ol列表缩进问题"><span class="nav-number">17.7.</span> <span class="nav-text">7. ul和ol列表缩进问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-元素水平居中问题"><span class="nav-number">17.8.</span> <span class="nav-text">8. 元素水平居中问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Div的垂直居中问题"><span class="nav-number">17.9.</span> <span class="nav-text">9. Div的垂直居中问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-margin加倍的问题"><span class="nav-number">17.10.</span> <span class="nav-text">10.          margin加倍的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-IE与宽度和高度的问题"><span class="nav-number">17.11.</span> <span class="nav-text">11.          IE与宽度和高度的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-页面的最小宽度"><span class="nav-number">17.12.</span> <span class="nav-text">12.          页面的最小宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-DIV浮动IE文本产生3象素的bug"><span class="nav-number">17.13.</span> <span class="nav-text">13.          DIV浮动IE文本产生3象素的bug</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-IE捉迷藏的问题"><span class="nav-number">17.14.</span> <span class="nav-text">14.          IE捉迷藏的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-float的div闭合-清除浮动-自适应高度"><span class="nav-number">17.15.</span> <span class="nav-text">15.          float的div闭合;清除浮动;自适应高度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-高度不适应"><span class="nav-number">17.16.</span> <span class="nav-text">16.          高度不适应</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-IE6下图片下有空隙产生"><span class="nav-number">17.17.</span> <span class="nav-text">17.          IE6下图片下有空隙产生</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-对齐文本与文本输入框"><span class="nav-number">18.</span> <span class="nav-text">18.          对齐文本与文本输入框</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#19-LI中内容超过长度后以省略号显示"><span class="nav-number">18.1.</span> <span class="nav-text">19.          LI中内容超过长度后以省略号显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-为什么web标准中IE无法设置滚动条颜色了"><span class="nav-number">18.2.</span> <span class="nav-text">20.          为什么web标准中IE无法设置滚动条颜色了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-为什么无法定义1px左右高度的容器"><span class="nav-number">18.3.</span> <span class="nav-text">21.          为什么无法定义1px左右高度的容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-链接-a标签-的边框与背景"><span class="nav-number">18.4.</span> <span class="nav-text">22.          链接(a标签)的边框与背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#23-超链接访问过后hover样式就不出现的问题"><span class="nav-number">18.5.</span> <span class="nav-text">23.          超链接访问过后hover样式就不出现的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#24-FORM标签"><span class="nav-number">18.6.</span> <span class="nav-text">24.          FORM标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#25-属性选择器-这个不能算是兼容-是隐藏css的一个bug"><span class="nav-number">18.7.</span> <span class="nav-text">25.          属性选择器(这个不能算是兼容,是隐藏css的一个bug)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#26-为什么FF下文本无法撑开容器的高度"><span class="nav-number">18.8.</span> <span class="nav-text">26.          为什么FF下文本无法撑开容器的高度</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">齐辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

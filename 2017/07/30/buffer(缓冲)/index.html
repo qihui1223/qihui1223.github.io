@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="node,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="qihui" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="Buffer 类的实例类似于整数数组，但 Buffer 的大小是固定的、且在 V8 堆外分配物理内存。 Buffer 的大小在被创建时确定，且无法调整。Buffer 类在 Node.js 中是一个全局变量，因此无需使用 require(‘buffer’).Buffer。 nodejs版本更新及api更改 在 Node.js v6 之前的版本中，Buffer 实例是通过 Buffer 构造函数创建的">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="buffer(缓冲)">
+<meta property="og:url" content="http://yoursite.com/2017/07/30/buffer(缓冲)/index.html">
+<meta property="og:site_name" content="qihui">
+<meta property="og:description" content="Buffer 类的实例类似于整数数组，但 Buffer 的大小是固定的、且在 V8 堆外分配物理内存。 Buffer 的大小在被创建时确定，且无法调整。Buffer 类在 Node.js 中是一个全局变量，因此无需使用 require(‘buffer’).Buffer。 nodejs版本更新及api更改 在 Node.js v6 之前的版本中，Buffer 实例是通过 Buffer 构造函数创建的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-17T03:54:17.437Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="buffer(缓冲)">
+<meta name="twitter:description" content="Buffer 类的实例类似于整数数组，但 Buffer 的大小是固定的、且在 V8 堆外分配物理内存。 Buffer 的大小在被创建时确定，且无法调整。Buffer 类在 Node.js 中是一个全局变量，因此无需使用 require(‘buffer’).Buffer。 nodejs版本更新及api更改 在 Node.js v6 之前的版本中，Buffer 实例是通过 Buffer 构造函数创建的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/30/buffer(缓冲)/">
+
+
+
+
+
+  <title>buffer(缓冲) | qihui</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qihui</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">倘只看书，便变成书橱</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/30/buffer(缓冲)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="齐辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qihui">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">buffer(缓冲)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-30T12:46:11+08:00">
+                2017-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Buffer 类的实例类似于整数数组，但 Buffer 的大小是固定的、且在 V8 堆外分配物理内存。 Buffer 的大小在被创建时确定，且无法调整。<br>Buffer 类在 Node.js 中是一个全局变量，因此无需使用 require(‘buffer’).Buffer。</p>
+<h2 id="nodejs版本更新及api更改"><a href="#nodejs版本更新及api更改" class="headerlink" title="nodejs版本更新及api更改"></a>nodejs版本更新及api更改</h2><p> 在 Node.js v6 之前的版本中，Buffer 实例是通过 Buffer 构造函数创建的，它根据提供的参数返回不同的 Buffer：<br> <a id="more"></a></p>
+<ul>
+<li>传一个数值作为第一个参数给 Buffer()（如 new Buffer(10)），则分配一个指定大小的新建的 Buffer 对象。 在 Node.js 8.0.0 之前，分配给这种 Buffer 实例的内存是没有初始化的，且可能包含敏感数据。 这种 Buffer 实例随后必须被初始化，可以使用 buf.fill(0) 或写满这个 Buffer。<br>虽然这种行为是为了提高性能而有意为之的，但开发经验表明，创建一个快速但未初始化的 Buffer 与创建一个慢点但更安全的 Buffer 之间需要有更明确的区分。从 Node.js 8.0.0 开始， Buffer(num) 和 new Buffer(num) 将返回一个初始化内存之后的 Buffer。</li>
+<li>传一个字符串、数组、或 Buffer 作为第一个参数，则将所传对象的数据拷贝到 Buffer 中。</li>
+<li>传入一个 ArrayBuffer，则返回一个与给定的 ArrayBuffer 共享所分配内存的 Buffer。<br>因为 new Buffer() 的行为会根据所传入的第一个参数的值的数据类型而明显地改变，所以如果应用程序没有正确地校验传给 new Buffer() 的参数、或未能正确地初始化新分配的 Buffer 的内容，就有可能在无意中为他们的代码引入安全性与可靠性问题。</li>
+</ul>
+<p>为了使 Buffer 实例的创建更可靠、更不容易出错，各种 new Buffer() 构造函数已被 废弃，并由 <strong>Buffer.from()、Buffer.alloc()、和 Buffer.allocUnsafe()</strong> 方法替代。</p>
+<p><strong>new Buffer()已经废弃, new Buffer()已经废弃,new Buffer()已经废弃,重要的事说三遍</strong></p>
+<h2 id="Buffer-from"><a href="#Buffer-from" class="headerlink" title="Buffer.from()"></a>Buffer.from()</h2><h3 id="Buffer-from-array"><a href="#Buffer-from-array" class="headerlink" title="Buffer.from(array)"></a>Buffer.from(array)</h3><ul>
+<li>返回一个新建的包含所提供的字节数组的副本的 Buffer。</li>
+</ul>
+<p>通过一个八位字节的 array 创建一个新的 Buffer 。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个新的包含字符串 'buffer' 的 UTF-8 字节的 Buffer</span></span><br><span class="line"><span class="keyword">var</span> buf = Buffer.from([<span class="number">0x62</span>, <span class="number">0x75</span>, <span class="number">0x66</span>, <span class="number">0x66</span>, <span class="number">0x65</span>, <span class="number">0x72</span>]);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Buffer-from-arrayBuffer-byteOffset-length"><a href="#Buffer-from-arrayBuffer-byteOffset-length" class="headerlink" title="Buffer.from(arrayBuffer[, byteOffset [, length]])"></a>Buffer.from(arrayBuffer[, byteOffset [, length]])</h3><ul>
+<li>返回一个新建的与给定的 ArrayBuffer 共享同一内存的 Buffer。<ul>
+<li>arrayBuffer <arraybuffer> 一个 ArrayBuffer，或一个 TypedArray 的 .buffer 属性。</arraybuffer></li>
+<li>byteOffset <integer> 开始拷贝的索引。默认为 0。</integer></li>
+<li>length <integer> 拷贝的字节数。默认为 arrayBuffer.length - byteOffset。</integer></li>
+</ul>
+</li>
+</ul>
+<p>该方法将创建一个 ArrayBuffer 的视图，而不会复制底层内存。例如，当传入一个 TypedArray 实例的 .buffer 属性的引用时，这个新建的 Buffer 会像 TypedArray 那样共享同一分配的内存。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Uint16Array</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">5000</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">4000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 与 `arr` 共享内存</span></span><br><span class="line"><span class="keyword">var</span> buf = Buffer.from(arr.buffer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出: &lt;Buffer 88 13 a0 0f&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(buf);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改变原始的 Uint16Array 也会改变 Buffer</span></span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">6000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出: &lt;Buffer 88 13 70 17&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(buf);</span><br></pre></td></tr></table></figure></p>
+<p>可选的 byteOffset 和 length 参数指定将与 Buffer 共享的 arrayBuffer 的内存范围。</p>
+<h3 id="Buffer-from-buffer"><a href="#Buffer-from-buffer" class="headerlink" title="Buffer.from(buffer)"></a>Buffer.from(buffer)</h3><ul>
+<li>返回一个新建的包含所提供的 Buffer 的内容的副本的 Buffer。<ul>
+<li>buffer <buffer> 一个要拷贝数据的已存在的 Buffer</buffer></li>
+</ul>
+</li>
+</ul>
+<p>将传入的 buffer 数据拷贝到一个新建的 Buffer 实例。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf1 = Buffer.from(<span class="string">'buffer'</span>);</span><br><span class="line"><span class="keyword">var</span> buf2 = Buffer.from(buf1);</span><br><span class="line"></span><br><span class="line">buf1[<span class="number">0</span>] = <span class="number">0x61</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出: auffer</span></span><br><span class="line"><span class="built_in">console</span>.log(buf1.toString());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出: buffer</span></span><br><span class="line"><span class="built_in">console</span>.log(buf2.toString());</span><br></pre></td></tr></table></figure></p>
+<p>如果 buffer 不是一个 Buffer，则抛出 TypeError 错误。</p>
+<h3 id="Buffer-from-string-encoding"><a href="#Buffer-from-string-encoding" class="headerlink" title="Buffer.from(string[, encoding])"></a>Buffer.from(string[, encoding])</h3><ul>
+<li>返回一个新建的包含所提供的字符串的副本的 Buffer。<ul>
+<li>string <string> 要编码的字符串</string></li>
+<li>encoding <string> string 的字符编码。 默认: ‘utf8’</string></li>
+</ul>
+</li>
+</ul>
+<p>新建一个包含所给的 JavaScript 字符串 string 的 Buffer 。 encoding 参数指定 string 的字符编码。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf1 = Buffer.from(<span class="string">'this is a tést'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出: this is a tést</span></span><br><span class="line"><span class="built_in">console</span>.log(buf1.toString());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出: this is a tC)st</span></span><br><span class="line"><span class="built_in">console</span>.log(buf1.toString(<span class="string">'ascii'</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> buf2 = Buffer.from(<span class="string">'7468697320697320612074c3a97374'</span>, <span class="string">'hex'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出: this is a tést</span></span><br><span class="line"><span class="built_in">console</span>.log(buf2.toString());</span><br></pre></td></tr></table></figure></p>
+<h2 id="Buffer-alloc"><a href="#Buffer-alloc" class="headerlink" title="Buffer.alloc()"></a>Buffer.alloc()</h2><h3 id="Buffer-alloc-size-fill-encoding"><a href="#Buffer-alloc-size-fill-encoding" class="headerlink" title="Buffer.alloc(size[, fill[, encoding]])"></a>Buffer.alloc(size[, fill[, encoding]])</h3><ul>
+<li>返回一个指定大小的被填满的 Buffer 实例。 这个方法会明显地比 Buffer.allocUnsafe(size) 慢，但可确保新创建的 Buffer 实例绝不会包含旧的和潜在的敏感数据。<ul>
+<li>size <integer> 新建的 Buffer 期望的长度</integer></li>
+<li>fill <string> | <buffer> | <integer> 用来预填充新建的 Buffer 的值。 默认: 0</integer></buffer></string></li>
+<li>encoding <string> 如果 fill 是字符串，则该值是它的字符编码。 默认: ‘utf8’</string></li>
+</ul>
+</li>
+</ul>
+<p>分配一个大小为 size 字节的新建的 Buffer 。 如果 fill 为 undefined ，则该 Buffer 会用 0 填充。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf = Buffer.alloc(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出: &lt;Buffer 00 00 00 00 00&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(buf);</span><br></pre></td></tr></table></figure></p>
+<p>分配一个大小为 size 字节的新建的 Buffer 。 如果 size 大于 buffer.constants.MAX_LENGTH 或小于 0，则抛出 RangeError 错误。 如果 size 为 0，则创建一个长度为 0 的 Buffer。</p>
+<p>如果指定了 fill ，则会调用 buf.fill(fill) 初始化分配的 Buffer 。</p>
+<h2 id="Buffer-allocUnsafe"><a href="#Buffer-allocUnsafe" class="headerlink" title="Buffer.allocUnsafe()"></a>Buffer.allocUnsafe()</h2><h3 id="Buffer-allocUnsafe-size"><a href="#Buffer-allocUnsafe-size" class="headerlink" title="Buffer.allocUnsafe(size)"></a>Buffer.allocUnsafe(size)</h3><ul>
+<li>Buffer.allocUnsafe(size)与 Buffer.allocUnsafeSlow(size) 返回一个新建的指定 size 的 Buffer，但它的内容必须被初始化，可以使用 buf.fill(0) 或完全写满。</li>
+<li>如果 size 小于或等于 Buffer.poolSize 的一半，则 Buffer.allocUnsafe() 返回的 Buffer 实例可能会被分配进一个共享的内部内存池。<ul>
+<li>size <integer> 新建的 Buffer 期望的长度<br>分配一个大小为 size 字节的新建的 Buffer 。 如果 size 大于 buffer.constants.MAX_LENGTH 或小于 0，则抛出 RangeError 错误。 如果 size 为 0，则创建一个长度为 0 的 Buffer。</integer></li>
+</ul>
+</li>
+</ul>
+<p>以这种方式创建的 Buffer 实例的底层内存是未初始化的。 新创建的 Buffer 的内容是未知的，且可能包含敏感数据。 可以使用 buf.fill(0) 初始化 Buffer 实例为0。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf = Buffer.allocUnsafe(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出: (内容可能不同): &lt;Buffer a0 8b 28 3f 01 00 00 00 50 32&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(buf);</span><br><span class="line"></span><br><span class="line">buf.fill(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出: &lt;Buffer 00 00 00 00 00 00 00 00 00 00&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(buf);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="齐辉 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node/" rel="tag"># node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/05/web前端兼容问题/" rel="next" title="web前端兼容问题">
+                <i class="fa fa-chevron-left"></i> web前端兼容问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/15/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="齐辉">
+          
+            <p class="site-author-name" itemprop="name">齐辉</p>
+            <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qihui1223" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://qihui1223.github.io/web/" target="_blank" title="学习">
+                  
+                    <i class="fa fa-fw fa-globe"></i>学习</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/jsfront" title="前端开发交流" target="_blank">前端开发交流</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs版本更新及api更改"><span class="nav-number">1.</span> <span class="nav-text">nodejs版本更新及api更改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffer-from"><span class="nav-number">2.</span> <span class="nav-text">Buffer.from()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer-from-array"><span class="nav-number">2.1.</span> <span class="nav-text">Buffer.from(array)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer-from-arrayBuffer-byteOffset-length"><span class="nav-number">2.2.</span> <span class="nav-text">Buffer.from(arrayBuffer[, byteOffset [, length]])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer-from-buffer"><span class="nav-number">2.3.</span> <span class="nav-text">Buffer.from(buffer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer-from-string-encoding"><span class="nav-number">2.4.</span> <span class="nav-text">Buffer.from(string[, encoding])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffer-alloc"><span class="nav-number">3.</span> <span class="nav-text">Buffer.alloc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer-alloc-size-fill-encoding"><span class="nav-number">3.1.</span> <span class="nav-text">Buffer.alloc(size[, fill[, encoding]])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffer-allocUnsafe"><span class="nav-number">4.</span> <span class="nav-text">Buffer.allocUnsafe()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer-allocUnsafe-size"><span class="nav-number">4.1.</span> <span class="nav-text">Buffer.allocUnsafe(size)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">齐辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

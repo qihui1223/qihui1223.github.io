@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="node,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="qihui" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="http模块 node.js提供了HTTP模块,其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端 http.Server是一个基于事件的HTTP服务器,核心是由node.js下层C++实现的,接口是由JavaScript封装的 http.request是http客户端工具,用于客户端发送请求">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node系列（三）http">
+<meta property="og:url" content="http://yoursite.com/2018/12/15/node/node系列（三)http/index.html">
+<meta property="og:site_name" content="qihui">
+<meta property="og:description" content="http模块 node.js提供了HTTP模块,其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端 http.Server是一个基于事件的HTTP服务器,核心是由node.js下层C++实现的,接口是由JavaScript封装的 http.request是http客户端工具,用于客户端发送请求">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-28T06:21:47.709Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node系列（三）http">
+<meta name="twitter:description" content="http模块 node.js提供了HTTP模块,其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端 http.Server是一个基于事件的HTTP服务器,核心是由node.js下层C++实现的,接口是由JavaScript封装的 http.request是http客户端工具,用于客户端发送请求">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/15/node/node系列（三)http/">
+
+
+
+
+
+  <title>node系列（三）http | qihui</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qihui</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">倘只看书，便变成书橱</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/node/node系列（三)http/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="齐辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qihui">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">node系列（三）http</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-15T15:31:24+08:00">
+                2018-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h2><ul>
+<li>node.js提供了HTTP模块,其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端</li>
+<li>http.Server是一个基于事件的HTTP服务器,核心是由node.js下层C++实现的,接口是由JavaScript封装的</li>
+<li>http.request是http客户端工具,用于客户端发送请求<a id="more"></a>
+</li>
+</ul>
+<h2 id="http服务端"><a href="#http服务端" class="headerlink" title="http服务端"></a>http服务端</h2><p>http.createServer创建了http.server实例,请求对象req,响应对象res,响应代码200表示请求成功<br>http.server提供了几个事件</p>
+<ul>
+<li>request:当客户端请求到来时, 该事件被触发,提供了两个参数req,res分别是http.ServerRequest,http.ServerResponse表示请求和响应信息</li>
+<li>connection: 当TCP连接建立，该事件被触发，提供了一个参数socket，为net.socket实例.connection事件的粒度要大于request，因为客户端在Keep-Alive模式下可能在同一个连接内发送多次请求</li>
+<li><p>close: 当服务器被关闭时,事件被触发</p>
+</li>
+<li><p>server.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载http模块</span></span><br><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>)</span><br><span class="line"><span class="comment">//创建http服务器</span></span><br><span class="line">http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//向请求的客户端发送响应头,http状态值: 200 : ok,内容类型</span></span><br><span class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/html;charset=UTF8"</span>&#125;)</span><br><span class="line">    <span class="comment">//向请求的客户端发送响应内容(在response.end之前，可以多次调用)</span></span><br><span class="line">    res.write(<span class="string">"你好,世界"</span>)</span><br><span class="line">	<span class="comment">//响应结束，告知客户端所有的发送已经完成，</span></span><br><span class="line">	<span class="comment">//如果不调用改函数，客户端将处于等待状态</span></span><br><span class="line">    res.end()</span><br><span class="line">	<span class="comment">//监听端口</span></span><br><span class="line">&#125;).listen(<span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//终端打印信息</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server Runing at http//127.0.0.1:3000/, 成功"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上述代码通过require(“http”)创建一个http实例,然后使用createServer创建一个服务器,用listen监听3000端口<br>http.ServerRequest是HTTP请求的信息，是后端开发者最关注的内容<br>HTTP请求一般分为：请求头(Request Header)请求体(Request Body)</p>
+<ul>
+<li>http.ServerRequest提供了三个事件用于控制请求体传输<ul>
+<li>data:请求数据到来之后该事件被触发，事件提供了一个参数chunk，表示接收到的数据，如果该事件没有被监听, 那么请求体将会被抛弃 (可能会被多次调用)</li>
+<li>end:当请求体数据传输完成时，事件被触发，此后不再有数据到来</li>
+<li>close:用户当前请求结束，该事件被触发，不同于end，用户强制终止传输，也还是调用close</li>
+</ul>
+</li>
+</ul>
+<h2 id="http客户端"><a href="#http客户端" class="headerlink" title="http客户端"></a>http客户端</h2><p>http模块提供了两个函数http.request和http.get,功能是作为客户端向HTTP服务器发起请求</p>
+<h3 id="http-request"><a href="#http-request" class="headerlink" title="http.request"></a>http.request</h3><ul>
+<li><p>client.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="comment">//请求选项</span></span><br><span class="line"><span class="keyword">let</span> options = &#123;</span><br><span class="line">	host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">	port: <span class="string">'3000'</span>,</span><br><span class="line">	path: <span class="string">'/'</span>,</span><br><span class="line">	method: <span class="string">'GET'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> req = http.request(options, (res)=&gt;&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(res)</span><br><span class="line">	res.on(<span class="string">'data'</span>, (data)=&gt;&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(data)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br><span class="line">res.end()</span><br></pre></td></tr></table></figure>
+<p>  我们创建了一个http请求,为响应的事件添加了data事件,最后使用了res.end()初始化和发送我们的请求<br>http.request(option,callback) 发起HTTP请求，option=》关联数组 参数：</p>
+</li>
+<li>host:请求网站的域名或IP地址</li>
+<li>port:请求网站的端口，默认80</li>
+<li>method:请求方法，默认GET</li>
+<li>path:请求的相对于根的路径</li>
+<li>headers:一个关联数组对象，为请求头的内容</li>
+<li>callback:传递一个参数，为http.ClientResponse实例</li>
+<li>http.request返回一个http.ClientRequest的实例</li>
+</ul>
+<h3 id="http-get"><a href="#http-get" class="headerlink" title="http.get"></a>http.get</h3><p>http.get(options,callback)是http.request的简化版，唯一的区别就是http.get自动将请求的方法设为Get请求<br>同时不需要调用req.end()<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> opts = &#123;</span><br><span class="line">　　host: <span class="string">'www.google.com'</span></span><br><span class="line">　　port: <span class="number">80</span>,</span><br><span class="line">　　path: <span class="string">'/'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> req = http.get(opts, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">　　<span class="built_in">console</span>.log(res);</span><br><span class="line">　　res.setEncoding(<span class="string">'utf8'</span>);</span><br><span class="line">　　res.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">　　　　<span class="built_in">console</span>.log(data);</span><br><span class="line">　　&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这个例子和之前的例子实现同样的功能，区别就在于opts对象少了method属性，使用http.get()代替了之前的var req=http.request()和req.end()。由于返回回来的数据是2进制数据，我们需要使用response.setEncoding()实现编码</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="齐辉 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node/" rel="tag"># node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/15/node/node系列（一）总览一/" rel="next" title="node系列（一）总览一">
+                <i class="fa fa-chevron-left"></i> node系列（一）总览一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/15/es6/ES6系列（十一）Generator/" rel="prev" title="ES6系列（十一）Generator">
+                ES6系列（十一）Generator <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="齐辉">
+          
+            <p class="site-author-name" itemprop="name">齐辉</p>
+            <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qihui1223" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://qihui1223.github.io/web/" target="_blank" title="学习">
+                  
+                    <i class="fa fa-fw fa-globe"></i>学习</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/jsfront" title="前端开发交流" target="_blank">前端开发交流</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#http模块"><span class="nav-number">1.</span> <span class="nav-text">http模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http服务端"><span class="nav-number">2.</span> <span class="nav-text">http服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http客户端"><span class="nav-number">3.</span> <span class="nav-text">http客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http-request"><span class="nav-number">3.1.</span> <span class="nav-text">http.request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-get"><span class="nav-number">3.2.</span> <span class="nav-text">http.get</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">齐辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
