@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="qihui">
 <meta property="og:description" content="总览基本类型     整数         byte short int long     小数         float double     字符         char     布尔类型(boolean)         true false 访问控制     public protected private  程序控制     break    continue    return">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-15T13:07:21.492Z">
+<meta property="og:updated_time" content="2018-12-15T13:11:16.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java基础--常用关键字">
 <meta name="twitter:description" content="总览基本类型     整数         byte short int long     小数         float double     字符         char     布尔类型(boolean)         true false 访问控制     public protected private  程序控制     break    continue    return">
@@ -396,7 +396,8 @@
     this super void
 保留字
     goto const
-</code></pre><h3 id="详细说明"><a href="#详细说明" class="headerlink" title="详细说明"></a>详细说明</h3><h4 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h4><ul>
+</code></pre><a id="more"></a>
+<h3 id="详细说明"><a href="#详细说明" class="headerlink" title="详细说明"></a>详细说明</h3><h4 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h4><ul>
 <li><p>整数</p>
 <pre><code>      byte: 字节型
       short: 短整型
@@ -415,7 +416,8 @@
           long: Long
           表示原始类型的包装对象类.它定义代表此类型值的范为:MIN_VALUE和MAX_VALUE常量
 
-java中所有的整数值都是32的int值,除非值后面有 l 或 L（如 235L），这表示该值应解释为 long。
+java中所有的整数值都是32的int值,除非值后面有 l 或 L（如 235L），
+这表示该值应解释为 long。
 </code></pre></li>
 </ul>
 <ul>
@@ -431,7 +433,8 @@ java中所有的整数值都是32的int值,除非值后面有 l 或 L（如 235L
       应在后面加上f,F.如: 0.11f
 由于浮点数据类型是实际数值的近视值,因此,一般不要对浮点数值进行相等的比较
 
- java中的浮点数值可以代表无穷大和NAN(非数值).Float和Double包装对象类用来定义常量 MIN_VALUE、MAX_VALUE、NEGATIVE_INFINITY、POSITIVE_INFINITY 和 NaN。
+ java中的浮点数值可以代表无穷大和NAN(非数值).
+ Float和Double包装对象类用来定义常量 MIN_VALUE、MAX_VALUE、NEGATIVE_INFINITY、POSITIVE_INFINITY 和 NaN。
 </code></pre></li>
 <li><p>字符</p>
 <pre><code>char 是 Java 原始类型。char 变量可以存储一个 Unicode 字符。 
@@ -448,7 +451,8 @@ java中所有的整数值都是32的int值,除非值后面有 l 或 L（如 235L
     \x 和 \xx 均为合法形式，但可能引起混淆
     \uxxxx - 采用十六进制编码 xxxx 的 Unicode 字符
 
-Character 类包含一些可用来处理 char 变量的 static 方法，这些方法包括 isDigit()、isLetter()、isWhitespace() 和 toUpperCase()。
+Character 类包含一些可用来处理 char 变量的 static 方法，
+这些方法包括 isDigit()、isLetter()、isWhitespace() 和 toUpperCase()。
 </code></pre></li>
 <li><p>布尔值(boolean)</p>
 <pre><code>ture false
@@ -462,20 +466,26 @@ boolean 变量的两个合法值
 </code></pre></li>
 <li><p>protected</p>
 <pre><code>对同一包内的类和所有子类可见。使用对象：变量、方法.
-protected对于子女、朋友来说，就是public的，可以自由使用，没有任何限制，而对于其他的外部class，protected就变成private。
-主要的作用就是用来保护子类的。它的含义在于子类可以用它修饰的成员，其他的不可以，它相当于传递给子类的一种继承的东西
+protected对于子女、朋友来说，就是public的，可以自由使用，没有任何限制，
+而对于其他的外部class，protected就变成private。
+主要的作用就是用来保护子类的。它的含义在于子类可以用它修饰的成员，
+其他的不可以，它相当于传递给子类的一种继承的东西
 </code></pre></li>
 <li><p>private 私有的</p>
 <pre><code> private表示私有，私有的意思就是除了class自己之外，任何人都不可以直接使用
-访问权限仅限于类的内部，是一种封装的体现，例如，大多数成员变量都是修饰符为private的，它们不希望被其他任何外部的类访问
+访问权限仅限于类的内部，是一种封装的体现，例如，大多数成员变量都是修饰符为private的，
+它们不希望被其他任何外部的类访问
 </code></pre></li>
 </ul>
 <h4 id="类-方法以及变量修饰符"><a href="#类-方法以及变量修饰符" class="headerlink" title="类,方法以及变量修饰符"></a>类,方法以及变量修饰符</h4><ul>
 <li><p>class 类</p>
-<pre><code>class 关键字是用来声明新的 java 类的,该类是相关变量或方法的集合.类是面向对象的程序设计方法的基本构造单位.类通常代表某种实际实体.如几何形状或人.类是对象的模板.每个对象都是类的一个实例.要使用类,通常使用  new 操作符将类的对象实例化,然后调用类的方法来访问类的功能
+<pre><code>class 关键字是用来声明新的 java 类的,该类是相关变量或方法的集合.类是面向对象的程序设计方法的基本构造单位.
+类通常代表某种实际实体.如几何形状或人.类是对象的模板.每个对象都是类的一个实例.
+要使用类,通常使用  new 操作符将类的对象实例化,然后调用类的方法来访问类的功能
 </code></pre></li>
 <li><p>abstract  抽象类</p>
-<pre><code>在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，并不是所有的类都是用来描绘对象的，如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类。
+<pre><code>在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，并不是所有的类都是用来描绘对象的，
+如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类。
 抽象类除了不能实例化对象之外，类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样。
 由于抽象类不能实例化对象，所以抽象类必须被继承，才能被使用。也是因为这个原因，通常在设计阶段决定要不要设计抽象类。
 </code></pre><ul>
@@ -490,7 +500,8 @@ protected对于子女、朋友来说，就是public的，可以自由使用，�
 </ul>
 </li>
 <li><p>extends 继承、扩展</p>
-<pre><code>extends关键字用在class或interface声明中,用于指示所声明的类或接口时其名称后跟有extends关键字的类或接口的子类.子类继承父类的所有的public和protected变量和方法. 子类可以重写父类的任何final方法.一个类自能扩展一个其他的类.        
+<pre><code>extends关键字用在class或interface声明中,用于指示所声明的类或接口时其名称后跟有extends关键字的类或接口的子类.
+子类继承父类的所有的public和protected变量和方法. 子类可以重写父类的任何final方法.一个类自能扩展一个其他的类.        
 </code></pre></li>
 <li><p>static 静态</p>
 <pre><code>  static 关键字可以应用于内部类（在另一个类中定义的类）、方法或字段（类的成员变量）。 
@@ -498,7 +509,8 @@ protected对于子女、朋友来说，就是public的，可以自由使用，�
 static（内部）类可以被其他类实例化和引用（即使它是顶级类）。在上面的示例中，另一个类中的代码可以实例化 MyStaticClass 类，方法是用包含它的类名来限定其名称，如 MyClass.MyStaticClass。 
 static 字段（类的成员变量）在类的所有实例中只存在一次。 
 可以从类的外部调用 static 方法，而不用首先实例化该类。这样的引用始终包括类名作为方法调用的限定符。
-模式：public final static &lt;type&gt; varName = &lt;value&gt;; 通常用于声明可以在类的外部使用的类常量。在引用这样的类常量时需要用类名加以限定。在上面的示例中，另一个类可以用 MyClass.MAX_OBJECTS 形式来引用 MAX_OBJECTS 常量
+模式：public final static &lt;type&gt; varName = &lt;value&gt;; 通常用于声明可以在类的外部使用的类常量。在引用这样的类常量时需要用类名加以限定。在上面的示例中，
+另一个类可以用 MyClass.MAX_OBJECTS 形式来引用 MAX_OBJECTS 常量
 </code></pre></li>
 <li><p>new</p>
 <pre><code>new关键字用于创建类的新实例
@@ -533,7 +545,8 @@ void 可以用作方法的返回类型，以指示该方法不返回值。
 <li><p>super</p>
 <pre><code>  super 关键字用于引用使用该关键字的类的超类。 
 作为独立语句出现的 super 表示调用超类的构造方法。 
-  super.&lt;methodName&gt;() 表示调用超类的方法。只有在如下情况中才需要采用这种用法：要调用在该类中被重写的方法，以便指定应当调用在超类中的该方法。
+  super.&lt;methodName&gt;() 表示调用超类的方法。只有在如下情况中才需要采用这种用法：要调用在该类中被重写的方法，
+  以便指定应当调用在超类中的该方法。
 </code></pre></li>
 </ul>
 
