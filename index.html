@@ -604,7 +604,7 @@ native    strictfp    synchronized    transient    volatile
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/node/node系列（一）总览一/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/node/node系列（三)http/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -623,7 +623,7 @@ native    strictfp    synchronized    transient    volatile
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/node/node系列（一）总览一/" itemprop="url">node系列（一）总览一</a></h1>
+                <a class="post-title-link" href="/2018/12/15/node/node系列（三)http/" itemprop="url">node系列（三）http</a></h1>
         
 
         <div class="post-meta">
@@ -674,14 +674,13 @@ native    strictfp    synchronized    transient    volatile
 
       
         
-          <h2 id="什么是node"><a href="#什么是node" class="headerlink" title="什么是node?"></a>什么是node?</h2><ul>
-<li>Node.js是一个让JS可以运行在浏览器之外的服务器端的平台</li>
-<li>它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心 JS没有或不完善的功能</li>
-<li>它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件驱动式的程序设计模型</li>
-<li>Node.js使用了来自Google ChromeV8引擎。V8是目前世界上最快的javascript引擎
+          <h2 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h2><ul>
+<li>node.js提供了HTTP模块,其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端</li>
+<li>http.Server是一个基于事件的HTTP服务器,核心是由node.js下层C++实现的,接口是由JavaScript封装的</li>
+<li>http.request是http客户端工具,用于客户端发送请求
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/node/node系列（一）总览一/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/node/node系列（三)http/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -856,7 +855,7 @@ native    strictfp    synchronized    transient    volatile
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（十）Iterator遍历器/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/node/node系列（一）总览一/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -875,7 +874,7 @@ native    strictfp    synchronized    transient    volatile
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（十）Iterator遍历器/" itemprop="url">ES6系列（十）Iterator遍历器</a></h1>
+                <a class="post-title-link" href="/2018/12/15/node/node系列（一）总览一/" itemprop="url">node系列（一）总览一</a></h1>
         
 
         <div class="post-meta">
@@ -897,28 +896,6 @@ native    strictfp    synchronized    transient    volatile
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/es6/" itemprop="url" rel="index">
-                    <span itemprop="name">es6</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -948,18 +925,21 @@ native    strictfp    synchronized    transient    volatile
 
       
         
-          <h1 id="Iterator遍历器"><a href="#Iterator遍历器" class="headerlink" title="Iterator遍历器"></a>Iterator遍历器</h1><p>遍历器是一种协议，任何对象只要部署了这个协议，就可以完成遍历操作。它的主要作用有两个<br>&nbsp;&nbsp;1.一个是为遍历对象的属性提供统一的接口，<br>&nbsp;&nbsp;2.二是时对象的属性能够按次序排列。</p>
-<p>ES6的遍历器协议规定，部署了next方法的对象，就具备了遍历器功能。<br>&nbsp;&nbsp;next方法必须返回一个包含value和done两个属性的对象。<br>&nbsp;&nbsp;value属性是当前遍历位置的值，<br>&nbsp;&nbsp;done属性是一个布尔值，表似乎遍历是否结束。<br>
+          <h2 id="什么是node"><a href="#什么是node" class="headerlink" title="什么是node?"></a>什么是node?</h2><ul>
+<li>Node.js是一个让JS可以运行在浏览器之外的服务器端的平台</li>
+<li>它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心 JS没有或不完善的功能</li>
+<li>它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件驱动式的程序设计模型</li>
+<li>Node.js使用了来自Google ChromeV8引擎。V8是目前世界上最快的javascript引擎
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（十）Iterator遍历器/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/node/node系列（一）总览一/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </li></ul></div>
     
     
     
