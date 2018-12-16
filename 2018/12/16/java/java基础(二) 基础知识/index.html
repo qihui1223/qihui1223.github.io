@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="qihui">
 <meta property="og:description" content="1.常量和变量 什么是常量?  值不会变的是常量  常量在程序运行时是不能被修改的。 什么是变量?  在作用域之间,在该数据类型范围内可以变化的的一个量.   声明变量(定义变量)格式: 数据类型 变量名;  变量赋值:变量名 = 常量名; 数据类型 变量名 = 常量名;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-16T08:19:02.677Z">
+<meta property="og:updated_time" content="2018-12-16T12:45:12.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java基础(二) 基础知识">
 <meta name="twitter:description" content="1.常量和变量 什么是常量?  值不会变的是常量  常量在程序运行时是不能被修改的。 什么是变量?  在作用域之间,在该数据类型范围内可以变化的的一个量.   声明变量(定义变量)格式: 数据类型 变量名;  变量赋值:变量名 = 常量名; 数据类型 变量名 = 常量名;">
@@ -397,7 +397,7 @@
 <h4 id="3-反码和补码"><a href="#3-反码和补码" class="headerlink" title="3.反码和补码"></a>3.反码和补码</h4><pre><code>正数的补码和原码是一样的
 </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">原码：0000 0101</span><br><span class="line">补码：0000 0101</span><br><span class="line">	* 负数的补码是它的反码加1</span><br><span class="line"></span><br><span class="line">-5：</span><br><span class="line">原码：1000 0101</span><br><span class="line">反码：1111 1010</span><br><span class="line">	+         1</span><br><span class="line">------------------</span><br><span class="line">补码  1111 1011</span><br></pre></td></tr></table></figure>
 <h4 id="4-Java数据类型"><a href="#4-Java数据类型" class="headerlink" title="4.Java数据类型"></a>4.Java数据类型</h4><ul>
-<li><strong>数据类型有哪些</strong></li>
+<li><strong>基本数据类型</strong></li>
 <li>byte类型<ul>
 <li>1个字节，8位【-128到127之间】</li>
 </ul>
@@ -426,13 +426,21 @@
 <li>2个字节，16位【1个汉字刚好2个字节】</li>
 </ul>
 </li>
-<li><p>boolean类型</p>
-<ul>
+<li>boolean类型<ul>
 <li>1个字节，true和false</li>
 </ul>
 </li>
-<li><p><strong>数据类型的转换</strong></p>
-</li>
+<li><strong>引用类型</strong></li>
+</ul>
+<ul>
+<li>在Java中，引用类型的变量非常类似于C/C++的指针。引用类型指向一个对象，指向对象的变量是引用变量。这些变量在声明时被指定为一个特定的类型，比如 Employee、Puppy 等。变量一旦声明后，类型就不能被改变了。</li>
+<li>对象、数组都是引用数据类型。</li>
+<li>所有引用类型的默认值都是null。</li>
+<li>一个引用变量可以用来引用任何与之兼容的类型。</li>
+<li>例子：Site site = new Site(“Runoob”)。</li>
+</ul>
+<ul>
+<li><strong>数据类型的转换</strong></li>
 <li>默认转换<ul>
 <li>1：byte,short,char—int—long—float—double</li>
 <li>2：byte,short,char相互之间补转换，他们参与运算首先转换为int类型</li>
@@ -713,7 +721,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

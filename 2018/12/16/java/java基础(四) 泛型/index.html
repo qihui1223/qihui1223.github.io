@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="java,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="qihui" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="首先我们来看一段代码123456789List arrayList = new ArrayList();arrayList.add(&amp;quot;aaaa&amp;quot;);arrayList.add(&amp;quot;bbb&amp;quot;);arrayList.add(100);for(int i = 0; i&amp;lt; arrayList.size();i++)&amp;#123;	String item = (St">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础(四) 泛型">
+<meta property="og:url" content="http://yoursite.com/2018/12/16/java/java基础(四) 泛型/index.html">
+<meta property="og:site_name" content="qihui">
+<meta property="og:description" content="首先我们来看一段代码123456789List arrayList = new ArrayList();arrayList.add(&amp;quot;aaaa&amp;quot;);arrayList.add(&amp;quot;bbb&amp;quot;);arrayList.add(100);for(int i = 0; i&amp;lt; arrayList.size();i++)&amp;#123;	String item = (St">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-16T04:43:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java基础(四) 泛型">
+<meta name="twitter:description" content="首先我们来看一段代码123456789List arrayList = new ArrayList();arrayList.add(&amp;quot;aaaa&amp;quot;);arrayList.add(&amp;quot;bbb&amp;quot;);arrayList.add(100);for(int i = 0; i&amp;lt; arrayList.size();i++)&amp;#123;	String item = (St">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/16/java/java基础(四) 泛型/">
+
+
+
+
+
+  <title>java基础(四) 泛型 | qihui</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qihui</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">倘只看书，便变成书橱</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/16/java/java基础(四) 泛型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="齐辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qihui">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java基础(四) 泛型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-16T20:44:01+08:00">
+                2018-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先我们来看一段代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List arrayList = new ArrayList();</span><br><span class="line">arrayList.add(&quot;aaaa&quot;);</span><br><span class="line">arrayList.add(&quot;bbb&quot;);</span><br><span class="line">arrayList.add(100);</span><br><span class="line"></span><br><span class="line">for(int i = 0; i&lt; arrayList.size();i++)&#123;</span><br><span class="line">	String item = (String)arrayList.get(i);</span><br><span class="line">	Log.d(&quot;泛型测试&quot;,&quot;item = &quot; + item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>定义了一个ArrayList类型的集合,先向其中加入两个字符串类型的值,随后加入一个Integer类型的值.这是完全没有问题的,因为此时List默认的类型为Object类型.<br>ArrayList可以存放任意类型，例子中添加了一个String类型，添加了一个Integer类型，再使用时都以String的方式使用，因此程序崩溃了。为了解决类似这样的问题（在编译阶段就可以解决），泛型应运而生。</li>
+</ul>
+<h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><p>泛型在java中有很重要的地位，在面向对象编程及各种设计模式中有非常广泛的应用。<br>什么是泛型？为什么要使用泛型？</p>
+<ul>
+<li>泛型,即”参数化类型”. 一提到参数,最熟悉的就是定义方法时有形参,然后调用方法传递实参.那么参数化类型怎么理解呢?<br>顾名思义,就是讲类型由原来具体的类型参数化,类似于方法中的变量参数,此时类型也定义成参数形式(可以称之为类型形参),然后在使用(或调用)是传入具体的类型(类型实参)<br>泛型的本质是为了参数化类型(在不创建新的类型情况下,通过泛型指定的不同类型来控制形参具体限制的类型).<br>也就是说在泛型的使用过程中,操作的数据类型被指定为一个参数,这种参数类型可以用在类,接口和方法中,<br>它们分别称为<strong>泛型类,泛型接口,泛型方法</strong>.</li>
+</ul>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><ul>
+<li>泛型格式<ul>
+<li>&lt;数据类型&gt; 这里的数据类型只能是引用数据类型</li>
+<li>&lt;数据类型1 , 数据类型2 , ….&gt;</li>
+</ul>
+</li>
+</ul>
+<h4 id="泛型的好处"><a href="#泛型的好处" class="headerlink" title="泛型的好处"></a>泛型的好处</h4><ul>
+<li>把运行时期的问题提前到了编译期间</li>
+<li>避免了强制类型转换</li>
+<li>优化的程序设计</li>
+</ul>
+<h4 id="泛型的使用"><a href="#泛型的使用" class="headerlink" title="泛型的使用"></a>泛型的使用</h4><ul>
+<li><strong>泛型类: 把泛型定义在类上</strong><ul>
+<li>定义格式: public class 类名&lt;泛型类型1,…&gt;</li>
+<li>注意事项: 泛型类型必须是引用类型</li>
+<li>泛型类的类型参数声明部分也包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。因为他们接受一个或多个参数，这些类被称为参数化的类或参数化的类型。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Box&lt;T&gt; &#123;</span><br><span class="line">  </span><br><span class="line">	  private T t;</span><br><span class="line"></span><br><span class="line">	  public void add(T t) &#123;</span><br><span class="line">		this.t = t;</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  public T get() &#123;</span><br><span class="line">		return t;</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line">	  public static void main(String[] args) &#123;</span><br><span class="line">		Box&lt;Integer&gt; integerBox = new Box&lt;Integer&gt;();</span><br><span class="line">		Box&lt;String&gt; stringBox = new Box&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">		integerBox.add(new Integer(10));</span><br><span class="line">		stringBox.add(new String(&quot;123132&quot;));</span><br><span class="line"></span><br><span class="line">		System.out.printf(&quot;整型值为 :%d\n\n&quot;, integerBox.get());</span><br><span class="line">		System.out.printf(&quot;字符串为 :%s\n&quot;, stringBox.get());</span><br><span class="line">	  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>泛型方法: 把泛型定义在方法上</strong><ul>
+<li>定义格式: public &lt;泛型类型&gt; 返回类型 方法名(泛型类型 变量名)</li>
+<li>所有泛型方法声明都有一个类型参数声明部分（由尖括号分隔），该类型参数声明部分在方法返回类型之前（在下面例子中的<e>）。<br>每一个类型参数声明部分包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。<br>类型参数能被用来声明返回值类型，并且能作为泛型方法得到的实际参数类型的占位符。<br>泛型方法体的声明和其他方法一样。注意类型参数只能代表引用型类型，不能是原始类型（像int,double,char的等）。</e></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class GenericMethodTest&#123;</span><br><span class="line">   // 泛型方法 printArray                         </span><br><span class="line">   public static &lt; E &gt; void printArray( E[] inputArray )&#123;</span><br><span class="line">	  // 输出数组元素            </span><br><span class="line">		 for ( E element : inputArray )&#123;        </span><br><span class="line">			System.out.printf( &quot;%s &quot;, element );</span><br><span class="line">		 &#125;</span><br><span class="line">		 System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main( String args[] )&#123;</span><br><span class="line">		// 创建不同类型数组： Integer, Double 和 Character</span><br><span class="line">		Integer[] intArray = &#123; 1, 2, 3, 4, 5 &#125;;</span><br><span class="line">		Double[] doubleArray = &#123; 1.1, 2.2, 3.3, 4.4 &#125;;</span><br><span class="line">		Character[] charArray = &#123; &apos;H&apos;, &apos;E&apos;, &apos;L&apos;, &apos;L&apos;, &apos;O&apos; &#125;;</span><br><span class="line"></span><br><span class="line">		System.out.println( &quot;整型数组元素为:&quot; );</span><br><span class="line">		printArray( intArray  ); // 传递一个整型数组</span><br><span class="line"></span><br><span class="line">		System.out.println( &quot;\n双精度型数组元素为:&quot; );</span><br><span class="line">		printArray( doubleArray ); // 传递一个双精度型数组</span><br><span class="line"></span><br><span class="line">		System.out.println( &quot;\n字符型数组元素为:&quot; );</span><br><span class="line">		printArray( charArray ); // 传递一个字符型数组</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>泛型接口:把泛型定义在接口上</strong><ul>
+<li>定义格式: public interface 接口名&lt;泛型类型&gt;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 泛型接口的定义格式:        </span><br><span class="line"> * 修饰符  interface 接口名&lt;数据类型&gt; &#123;&#125;</span><br><span class="line"> */</span><br><span class="line">public interface Inter&lt;T&gt; &#123;</span><br><span class="line">	public abstract void show(T t) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 子类是泛型类</span><br><span class="line"> */</span><br><span class="line">public class InterImpl&lt;E&gt; implements Inter&lt;E&gt; &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void show(E t) &#123;</span><br><span class="line">		System.out.println(t);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Inter&lt;String&gt; inter = new InterImpl&lt;String&gt;() ;</span><br><span class="line">inter.show(&quot;hello&quot;) ;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="泛型高级之通配符"><a href="#泛型高级之通配符" class="headerlink" title="泛型高级之通配符"></a>泛型高级之通配符</h4><ul>
+<li><p>为什么要使用通配符</p>
+<ul>
+<li>通配符的设计存在一定的场景，例如在使用泛型后，首先声明了一个Animal的类，而后声明了一个继承Animal类的Cat类，显然Cat类是Animal类的子类，但是List却不是List的子类型，而在程序中往往需要表达这样的逻辑关系。为了解决这种类似的场景，在泛型的参数类型的基础上新增了通配符的用法。</li>
+</ul>
+</li>
+<li><p>&lt;? extends T&gt; 上界通配符</p>
+<ul>
+<li>上界通配符顾名思义，&lt;? extends T&gt;表示的是类型的上界【 包含自身】，因此通配的参数化类型可能是T或T的子类。正因为无法确定具体的类型是什么，add方法受限（可以添加null，因为null表示任何类型），但可以从列表中获取元素后赋值给父类型。如上图中的第一个例子，第三个add()操作会受限，原因在于List和List是List&lt;? extends Animal&gt;的子类型。</li>
+</ul>
+</li>
+<li><p>&lt;? super T&gt; 下界通配符</p>
+<ul>
+<li>下界通配符&lt;? super T&gt;表示的是参数化类型是T的超类型（包含自身），层层至上，直至Object，编译器无从判断get()返回的对象的类型是什么，因此get()方法受限。但是可以进行add()方法，add()方法可以添加T类型和T类型的子类型，如第二个例子中首先添加了一个Cat类型对象，然后添加了两个Cat子类类型的对象，这种方法是可行的，但是如果添加一个Animal类型的对象，显然将继承的关系弄反了，是不可行的。</li>
+</ul>
+</li>
+<li><p>&lt;?&gt; 无界通配符</p>
+<ul>
+<li>任意类型，如果没有明确，那么就是Object以及任意的Java类了<br>无界通配符用&lt;?&gt;表示，?代表了任何的一种类型，能代表任何一种类型的只有null（Object本身也算是一种类型，但却不能代表任何一种类型，所以List和List的含义是不同的，前者类型是Object，也就是继承树的最上层，而后者的类型完全是未知的）。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="齐辉 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/16/java/java基础(三) 常见的api/" rel="next" title="java基础(三) 常见的api">
+                <i class="fa fa-chevron-left"></i> java基础(三) 常见的api
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="齐辉">
+          
+            <p class="site-author-name" itemprop="name">齐辉</p>
+            <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qihui1223" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://qihui1223.github.io/web/" target="_blank" title="学习">
+                  
+                    <i class="fa fa-fw fa-globe"></i>学习</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/jsfront" title="前端开发交流" target="_blank">前端开发交流</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型"><span class="nav-number">1.</span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式"><span class="nav-number">2.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型的好处"><span class="nav-number">3.</span> <span class="nav-text">泛型的好处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型的使用"><span class="nav-number">4.</span> <span class="nav-text">泛型的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型高级之通配符"><span class="nav-number">5.</span> <span class="nav-text">泛型高级之通配符</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">齐辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
