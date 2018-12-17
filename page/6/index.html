@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/req取参数的3种方法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/理解Promise/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -296,7 +296,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/req取参数的3种方法/" itemprop="url">req取参数的3种方法</a></h1>
+                <a class="post-title-link" href="/2018/12/15/理解Promise/" itemprop="url">理解Promise</a></h1>
         
 
         <div class="post-meta">
@@ -369,25 +369,18 @@
 
       
         
-          <h1 id="req取参数的3种方法"><a href="#req取参数的3种方法" class="headerlink" title="req取参数的3种方法"></a>req取参数的3种方法</h1><p>express里的请求参数,4.x版本只有三种</p>
-<ul>
-<li>req.params</li>
-<li>req.body</li>
-<li>req.query</li>
-</ul>
-<p>已经废弃的api</p>
-<ul>
-<li>req.param(Deprecated. Use either req.params, req.body or req.query, as applicable.)
+          <h2 id="理解Promise"><a href="#理解Promise" class="headerlink" title="理解Promise"></a>理解Promise</h2><p>Promise可能是不同于日常直觉，为了理解它，一些重要原理必须记牢：　.then()总是返回一个新的promise.，如下面代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promise = readFile()</span><br><span class="line"><span class="keyword">var</span> promise2 = promise.then(readAnotherFile, <span class="built_in">console</span>.error)</span><br></pre></td></tr></table></figure></p>
+<p>这里then的参数readAnotherFile, console.error是代表异步操作成功后的动作onFulfilled或失败后的动作OnRejected，也就是说，读取文件成功后执行readAnotherFile函数，否则失败打印记录错误。这种实现是两个中只有一种可能。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/req取参数的3种方法/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/理解Promise/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </li></ul></div>
+    </p></div>
     
     
     
