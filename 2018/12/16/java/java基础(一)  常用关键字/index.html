@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="qihui">
 <meta property="og:description" content="总览1234567891011121314151617181920212223242526基本类型	整数		byte short int long	小数		float double	字符		char	布尔类型(boolean)		true false访问控制	public protected private 程序控制	break    continue    return    do    	wh">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-17T01:29:26.047Z">
+<meta property="og:updated_time" content="2018-12-17T01:36:18.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java基础(一)  常用关键字">
 <meta name="twitter:description" content="总览1234567891011121314151617181920212223242526基本类型	整数		byte short int long	小数		float double	字符		char	布尔类型(boolean)		true false访问控制	public protected private 程序控制	break    continue    return    do    	wh">
@@ -373,11 +373,11 @@
         <h3 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">基本类型</span><br><span class="line">	整数</span><br><span class="line">		byte short int long</span><br><span class="line">	小数</span><br><span class="line">		float double</span><br><span class="line">	字符</span><br><span class="line">		char</span><br><span class="line">	布尔类型(boolean)</span><br><span class="line">		true false</span><br><span class="line">访问控制</span><br><span class="line">	public protected private </span><br><span class="line">程序控制</span><br><span class="line">	break    continue    return    do    </span><br><span class="line">	while    if    else    for    instanceof    </span><br><span class="line">	switch   case    default</span><br><span class="line">类,方法以及变量修饰符</span><br><span class="line">	 class abstract final	extends static	new  implements</span><br><span class="line">	native	strictfp	synchronized    transient    volatile</span><br><span class="line">异常处理</span><br><span class="line">	try catch throw throws</span><br><span class="line">包相关的</span><br><span class="line">	import package</span><br><span class="line">变量引用</span><br><span class="line">	this super void</span><br><span class="line">保留字</span><br><span class="line">	goto const</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="详细说明"><a href="#详细说明" class="headerlink" title="详细说明"></a>详细说明</h3><h4 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h4><ul>
-<li>整数</li>
+<li><strong>整数</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	byte: 字节型</span><br><span class="line">	short: 短整型</span><br><span class="line">	int: 整型</span><br><span class="line">	long; 长整型</span><br><span class="line">		都是java的原始数据类型</span><br><span class="line">		byte 1个字节，8位【-128到127之间】</span><br><span class="line">		short 2个字节，16位【-2^15 到 2^15 -1】.</span><br><span class="line">		int 4个字节，32位【-2^31 到 2^31 -1】</span><br><span class="line">		long 8个字节，64位【-2^63 到 2^63 -1】</span><br><span class="line"></span><br><span class="line">	包装对象类</span><br><span class="line">		byte: Byte</span><br><span class="line">		short: Short</span><br><span class="line">		int: Integer</span><br><span class="line">		long: Long</span><br><span class="line">    表示原始类型的包装对象类.它定义代表此类型值的范为:MIN_VALUE和MAX_VALUE常量</span><br><span class="line">				</span><br><span class="line">	java中所有的整数值都是32的int值,除非值后面有 l 或 L（如 235L），</span><br><span class="line">这表示该值应解释为 long</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>小数<br>  float: 浮点<br>  double: 双精度<br>  都是java原始数据类型<br>  float变量可以储存单精度福浮点值<br>  double变量可以储存双精度的浮点值</p>
+<li><p><strong>小数</strong><br>  float: 浮点<br>  double: 双精度<br>  都是java原始数据类型<br>  float变量可以储存单精度福浮点值<br>  double变量可以储存双精度的浮点值</p>
 <p>  注意:</p>
 <pre><code>由于java默认的浮点为双精度,因此要指定单精度文字(即用float),
 应在后面加上f,F.如: 0.11f
@@ -385,57 +385,58 @@
 </li>
 </ul>
 <ul>
-<li>字符</li>
+<li><strong>字符</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">char 是 Java 原始类型。char 变量可以存储一个 Unicode 字符。 </span><br><span class="line">可以使用下列 char 常量：</span><br><span class="line">\b - 空格 </span><br><span class="line">\f - 换页</span><br><span class="line">\n - 换行</span><br><span class="line">\r - 回车</span><br><span class="line">\t - 水平制表符 </span><br><span class="line">\&apos; - 单引号</span><br><span class="line">\&quot; - 双引号</span><br><span class="line">\\ - 反斜杠</span><br><span class="line">\xxx - 采用 xxx 编码的 Latin-1 字符</span><br><span class="line">\x 和 \xx 均为合法形式，但可能引起混淆</span><br><span class="line">\uxxxx - 采用十六进制编码 xxxx 的 Unicode 字符</span><br><span class="line"></span><br><span class="line"> Character 类包含一些可用来处理 char 变量的 static 方法，</span><br><span class="line"> 这些方法包括 isDigit()、isLetter()、isWhitespace() 和 toUpperCase()。</span><br></pre></td></tr></table></figure>
 <ul>
-<li>布尔值(boolean)</li>
+<li><strong>布尔值(boolean)</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ture false</span><br><span class="line">对,错</span><br><span class="line">boolean 变量的两个合法值</span><br></pre></td></tr></table></figure>
 <h4 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h4><ul>
-<li><p>public    公共的<br>  public表明该数据成员、成员函数是对所有用户开放的，所有用户都可以直接进行调用</p>
-</li>
-<li><p>protected<br>  对同一包内的类和所有子类可见。使用对象：变量、方法.protected对于子女、朋友来说，就是public的，可以自由使用，没有任何限制，而对于其他的外部class，protected就变成private。主要的作用就是用来保护子类的。它的含义在于子类可以用它修饰的成员，其他的不可以，它相当于传递给子类的一种继承的东西<br><code>`</code></p>
-</li>
-<li><p>private 私有的<br>   private表示私有，私有的意思就是除了class自己之外，任何人都不可以直接使用<br>访问权限仅限于类的内部，是一种封装的体现，例如，大多数成员变量都是修饰符为private的，它们不希望被其他任何外部的类访问</p>
-</li>
+<li><strong>public</strong>    公共的<br>  public表明该数据成员、成员函数是对所有用户开放的，所有用户都可以直接进行调用</li>
+</ul>
+<ul>
+<li>protected<br>  对同一包内的类和所有子类可见。使用对象：变量、方法.protected对于子女、朋友来说，就是public的，可以自由使用，没有任何限制，而对于其他的外部class，protected就变成private。主要的作用就是用来保护子类的。它的含义在于子类可以用它修饰的成员，其他的不可以，它相当于传递给子类的一种继承的东西</li>
+</ul>
+<ul>
+<li><strong>private</strong> 私有的<br>   private表示私有，私有的意思就是除了class自己之外，任何人都不可以直接使用<br>访问权限仅限于类的内部，是一种封装的体现，例如，大多数成员变量都是修饰符为private的，它们不希望被其他任何外部的类访问</li>
 </ul>
 <h4 id="类-方法以及变量修饰符"><a href="#类-方法以及变量修饰符" class="headerlink" title="类,方法以及变量修饰符"></a>类,方法以及变量修饰符</h4><ul>
-<li>class 类<br>  class 关键字是用来声明新的 java 类的,该类是相关变量或方法的集合.类是面向对象的程序设计方法的基本构造单位.类通常代表某种实际实体.如几何形状或人.类是对象的模板.每个对象都是类的一个实例.要使用类,通常使用  new 操作符将类的对象实例化,然后调用类的方法来访问类的功能</li>
+<li><strong>class</strong> 类<br>  class 关键字是用来声明新的 java 类的,该类是相关变量或方法的集合.类是面向对象的程序设计方法的基本构造单位.类通常代表某种实际实体.如几何形状或人.类是对象的模板.每个对象都是类的一个实例.要使用类,通常使用  new 操作符将类的对象实例化,然后调用类的方法来访问类的功能</li>
 </ul>
 <ul>
-<li>abstract  抽象类<br>  在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，并不是所有的类都是用来描绘对象的，如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类。抽象类除了不能实例化对象之外，类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样。由于抽象类不能实例化对象，所以抽象类必须被继承，才能被使用。也是因为这个原因，通常在设计阶段决定要不要设计抽象类。</li>
+<li><strong>abstract</strong>  抽象类<br>  在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，并不是所有的类都是用来描绘对象的，如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类。抽象类除了不能实例化对象之外，类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样。由于抽象类不能实例化对象，所以抽象类必须被继承，才能被使用。也是因为这个原因，通常在设计阶段决定要不要设计抽象类。</li>
 </ul>
 <ul>
-<li>final 最终的<br>  final关键字可以用于声明属性,方法和类用于类,表示类不可以扩展(不能呢有子类)用于方法,表示在子类中不可以重写此方法.<br>  注意:<br>  一个类不可以同时是abstract又是final.abstract意味着必须扩展类,final则不能扩展.<br>一个方法不能同时是 abstract 又是 final。abstract 意味着必须重写方法，final 则不能重写方法</li>
+<li><strong>final</strong> 最终的<br>  final关键字可以用于声明属性,方法和类用于类,表示类不可以扩展(不能呢有子类)用于方法,表示在子类中不可以重写此方法.<br>  注意:<br>  一个类不可以同时是abstract又是final.abstract意味着必须扩展类,final则不能扩展.<br>一个方法不能同时是 abstract 又是 final。abstract 意味着必须重写方法，final 则不能重写方法</li>
 </ul>
 <ul>
-<li>extends 继承、扩展<br>  extends关键字用在class或interface声明中,用于指示所声明的类或接口时其名称后跟有extends关键字的类或接口的子类.子类继承父类的所有的public和protected变量和方法. 子类可以重写父类的任何final方法.一个类自能扩展一个其他的类.    </li>
+<li><strong>extends</strong> 继承、扩展<br>  extends关键字用在class或interface声明中,用于指示所声明的类或接口时其名称后跟有extends关键字的类或接口的子类.子类继承父类的所有的public和protected变量和方法. 子类可以重写父类的任何final方法.一个类自能扩展一个其他的类.    </li>
 </ul>
 <ul>
-<li>static 静态<br>  static 关键字可以应用于内部类（在另一个类中定义的类）、方法或字段（类的成员变量）<br>  通常，static 关键字意味着应用它的实体在声明该实体的类的任何特定实例外部可用 static（内部）类可以被其他类实例化和引用（即使它是顶级类）。<br>在上面的示例中，<br>另一个类中的代码可以实例化 MyStaticClass 类， 方法是用包含它的类名来限定其名称，如 MyClass.MyStaticClass。 static 字段（类的成员变量）在类的所有实例中只存在一次。 可以从类的外部调用 static 方法，而不用首先实例化该类。这样的引用始终包括类名作为方法调用的限定符。<br>模式：public final static <type> varName = <value>;<br>通常用于声明可以在类的外部使用的类常量。 在引用这样的类常量时需要用类名加以限定。<br>在上面的示例中，另一个类可以用 MyClass.MAX_OBJECTS 形式来引用 MAX_OBJECTS 常量</value></type></li>
+<li><strong>static</strong> 静态<br>  static 关键字可以应用于内部类（在另一个类中定义的类）、方法或字段（类的成员变量）<br>  通常，static 关键字意味着应用它的实体在声明该实体的类的任何特定实例外部可用 static（内部）类可以被其他类实例化和引用（即使它是顶级类）。<br>在上面的示例中，<br>另一个类中的代码可以实例化 MyStaticClass 类， 方法是用包含它的类名来限定其名称，如 MyClass.MyStaticClass。 static 字段（类的成员变量）在类的所有实例中只存在一次。 可以从类的外部调用 static 方法，而不用首先实例化该类。这样的引用始终包括类名作为方法调用的限定符。<br>模式：public final static <type> varName = <value>;<br>通常用于声明可以在类的外部使用的类常量。 在引用这样的类常量时需要用类名加以限定。<br>在上面的示例中，另一个类可以用 MyClass.MAX_OBJECTS 形式来引用 MAX_OBJECTS 常量</value></type></li>
 </ul>
 <ul>
-<li><p>new<br>  new关键字用于创建类的新实例<br>  new关键字后面的参数必须是类名,<br>  并且类名的后面必须是一组构造方法参数(必须带括号)<br>  参数集合必须与类的构造方法签名匹配<br>  左侧的变量的类型必须与要实例化的类或接口具有赋值兼容关系</p>
+<li><p><strong>new</strong><br>  new关键字用于创建类的新实例<br>  new关键字后面的参数必须是类名,<br>  并且类名的后面必须是一组构造方法参数(必须带括号)<br>  参数集合必须与类的构造方法签名匹配<br>  左侧的变量的类型必须与要实例化的类或接口具有赋值兼容关系</p>
 </li>
-<li><p>interface<br>  interface 关键字是用来声明新的java接口,接口时方法的集合.接口是java语言的一项强大的功能.任何类都可声明它实现一个或多个接口,这意味着它实现了这些接口中所定义的所有方法实现了接口的任何类都必须提供在该接口中的所有方法实现.<br>一个类可以实现多个接口</p>
+<li><p><strong>interface</strong> 接口<br>  interface 关键字是用来声明新的java接口,接口时方法的集合.接口是java语言的一项强大的功能.任何类都可声明它实现一个或多个接口,这意味着它实现了这些接口中所定义的所有方法实现了接口的任何类都必须提供在该接口中的所有方法实现.<br>一个类可以实现多个接口</p>
 </li>
 </ul>
 <ul>
-<li>implements<br>  implements关键字在class声明中使用,声明类提供了implements 关键字后面名称所指定接口所声明的所有方法.类必须实现接口的中所有方法.一个类可以实现多个接口</li>
+<li><strong>implements</strong><br>  implements关键字在class声明中使用,声明类提供了implements 关键字后面名称所指定接口所声明的所有方法.类必须实现接口的中所有方法.一个类可以实现多个接口</li>
 </ul>
 <h4 id="包相关"><a href="#包相关" class="headerlink" title="包相关"></a>包相关</h4><ul>
-<li>import 引入<br>  import 关键字使一个包中的一个或所有类在当前 Java 源文件中可见。可以不使用完全限定的类名来引用导入的类。 当多个包包含同名的类时，许多 Java 程序员只使用特定的 import 语句（没有“*”）来避免不确定性。</li>
+<li><strong>import</strong> 引入<br>  import 关键字使一个包中的一个或所有类在当前 Java 源文件中可见。可以不使用完全限定的类名来引用导入的类。 当多个包包含同名的类时，许多 Java 程序员只使用特定的 import 语句（没有“*”）来避免不确定性</li>
 </ul>
 <ul>
-<li>package 包<br>  package 关键字指定在 Java 源文件中声明的类所驻留的 Java 包。 package 语句（如果出现）必须是 Java 源文件中的第一个非注释性文本。 例:java.lang.Object。 如果 Java 源文件不包含 package 语句，在该文件中定义的类将位于“默认包”中。请注意，不能从非默认包中的类引用默认包中的类。</li>
+<li><strong>package</strong> 包<br>  package 关键字指定在 Java 源文件中声明的类所驻留的 Java 包。 package 语句（如果出现）必须是 Java 源文件中的第一个非注释性文本。 例:java.lang.Object。 如果 Java 源文件不包含 package 语句，在该文件中定义的类将位于“默认包”中。请注意，不能从非默认包中的类引用默认包中的类。</li>
 </ul>
 <h4 id="变量引用"><a href="#变量引用" class="headerlink" title="变量引用"></a>变量引用</h4><ul>
-<li><p>this<br>  this 关键字用于引用当前实例。 当引用可能不明确时，可以使用 this 关键字来引用当前的实例。</p>
+<li><p><strong>this</strong><br>  this 关键字用于引用当前实例。 当引用可能不明确时，可以使用 this 关键字来引用当前的实例。</p>
 </li>
-<li><p>void 无返回值<br>  void 关键字表示 null 类型。 void 可以用作方法的返回类型，以指示该方法不返回值。</p>
+<li><p><strong>void</strong> 无返回值<br>  void 关键字表示 null 类型。 void 可以用作方法的返回类型，以指示该方法不返回值。</p>
 </li>
-<li><p>super<br>  super 关键字用于引用使用该关键字的类的超类。 作为独立语句出现的 super 表示调用超类的构造方法。 super.<methodname>() 表示调用超类的方法。只有在如下情况中才需要采用这种用法：要调用在该类中被重写的方法，以便指定应当调用在超类中的该方法。</methodname></p>
+<li><p><strong>super</strong><br>  super 关键字用于引用使用该关键字的类的超类。 作为独立语句出现的 super 表示调用超类的构造方法。 super.<methodname>() 表示调用超类的方法。只有在如下情况中才需要采用这种用法：要调用在该类中被重写的方法，以便指定应当调用在超类中的该方法。</methodname></p>
 </li>
 </ul>
 

@@ -424,7 +424,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（六）数值的扩展/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（二） const命令/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -443,7 +443,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（六）数值的扩展/" itemprop="url">ES6系列（六）数值的扩展</a></h1>
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（二） const命令/" itemprop="url">ES6系列（二） const命令</a></h1>
         
 
         <div class="post-meta">
@@ -516,18 +516,14 @@
 
       
         
-          <h1 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h1><h2 id="1-Number-isFinite-和-Number-isNaN"><a href="#1-Number-isFinite-和-Number-isNaN" class="headerlink" title="(1) Number.isFinite() 和 Number.isNaN()"></a>(1) Number.isFinite() 和 Number.isNaN()</h2><pre><code>用来检查Infinite和NaN这两个特殊值
-这两个方法仅对数值有效，对于飞数值一律返回false。
-</code></pre><pre><code class="javascript"><span class="built_in">Number</span>.isFinite(<span class="string">"25"</span>);<span class="comment">//false</span>
-<span class="built_in">isFinite</span>(<span class="string">"25"</span>);<span class="comment">//true</span>
-</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（六）数值的扩展/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h1><pre><code>const用来声明常量，一旦声明，其值就不能改变。
+const与let的作用域相同，只在声明所在的块级作用域内有效。
+const声明的常量不可重复声明
+</code></pre><p><strong>const命令图解</strong></p>
+<p><img src="/img/es6/const.jpg" alt="const命令"></p>
+
+          
         
       
     </div>
@@ -574,7 +570,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（一） let命令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/node事件驱动和异步IO/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -593,7 +589,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（一） let命令/" itemprop="url">ES6系列（一） let命令</a></h1>
+                <a class="post-title-link" href="/2018/12/15/node事件驱动和异步IO/" itemprop="url">nodejs的事件驱动和异步I/O</a></h1>
         
 
         <div class="post-meta">
@@ -628,8 +624,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/es6/" itemprop="url" rel="index">
-                    <span itemprop="name">es6</span>
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
                   </a>
                 </span>
 
@@ -666,23 +662,19 @@
 
       
         
-          
-            <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><pre><code>ES6新增了let命令，用于声明变量，用let声明的变量，只在let命令所在的代码块内有效。
-let其实是为JavaScript新增了块级作用域。
-</code></pre><pre><code class="JavaScript">{
-  <span class="keyword">let</span> a,b,rest;
-  [a,b]=[<span class="number">1</span>,<span class="number">2</span>];
-  <span class="built_in">console</span>.log(a,b); <span class="comment">//1, 2</span>
-}
-
-</code></pre>
-<p><strong>let命令图解</strong></p>
-<p><img src="/img/es6/let.jpg" alt="let命令图解"></p>
-
-          
+          <h2 id="nodejs中的异步非阻塞I-O"><a href="#nodejs中的异步非阻塞I-O" class="headerlink" title="nodejs中的异步非阻塞I/O"></a>nodejs中的异步非阻塞I/O</h2><p>首先你要知道<strong>非阻塞I/O不是异步I/O!</strong></p>
+<h2 id="阻塞I-O"><a href="#阻塞I-O" class="headerlink" title="阻塞I/O"></a>阻塞I/O</h2><p>程序执行过程中必然要进行很多I/O操作，读写文件、输入输出、请求响应等等。I/O操作时最费时的.</p>
+<p>阻塞I/O就是当用户发出一个读取文件的描述操作时,进程就会阻塞,指导读取的数据全部准备好,返回给用户,这时候进程才会解除block(锁)状态<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/15/node事件驱动和异步IO/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -872,7 +864,7 @@ let其实是为JavaScript新增了块级作用域。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/node事件驱动和异步IO/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（七）数组的扩展/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -891,7 +883,7 @@ let其实是为JavaScript新增了块级作用域。
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/node事件驱动和异步IO/" itemprop="url">nodejs的事件驱动和异步I/O</a></h1>
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（七）数组的扩展/" itemprop="url">ES6系列（七）数组的扩展</a></h1>
         
 
         <div class="post-meta">
@@ -926,8 +918,8 @@ let其实是为JavaScript新增了块级作用域。
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
                   </a>
                 </span>
 
@@ -964,19 +956,17 @@ let其实是为JavaScript新增了块级作用域。
 
       
         
-          <h2 id="nodejs中的异步非阻塞I-O"><a href="#nodejs中的异步非阻塞I-O" class="headerlink" title="nodejs中的异步非阻塞I/O"></a>nodejs中的异步非阻塞I/O</h2><p>首先你要知道<strong>非阻塞I/O不是异步I/O!</strong></p>
-<h2 id="阻塞I-O"><a href="#阻塞I-O" class="headerlink" title="阻塞I/O"></a>阻塞I/O</h2><p>程序执行过程中必然要进行很多I/O操作，读写文件、输入输出、请求响应等等。I/O操作时最费时的.</p>
-<p>阻塞I/O就是当用户发出一个读取文件的描述操作时,进程就会阻塞,指导读取的数据全部准备好,返回给用户,这时候进程才会解除block(锁)状态<br>
+          <h1 id="数组的扩展"><a href="#数组的扩展" class="headerlink" title="数组的扩展"></a>数组的扩展</h1><h2 id="1-Array-of"><a href="#1-Array-of" class="headerlink" title="(1) Array.of()"></a>(1) Array.of()</h2><p>用于将一组值转换为数组<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>) <span class="comment">//[1,2,3,4]</span></span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/node事件驱动和异步IO/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/es6/ES6系列（七）数组的扩展/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
     
     
     
