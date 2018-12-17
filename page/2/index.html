@@ -423,7 +423,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/node/node系列（一）总览一/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（二） const命令/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -442,7 +442,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/node/node系列（一）总览一/" itemprop="url">node系列（一）总览一</a></h1>
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（二） const命令/" itemprop="url">ES6系列（二） const命令</a></h1>
         
 
         <div class="post-meta">
@@ -464,6 +464,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -493,21 +515,17 @@
 
       
         
-          <h2 id="什么是node"><a href="#什么是node" class="headerlink" title="什么是node?"></a>什么是node?</h2><ul>
-<li>Node.js是一个让JS可以运行在浏览器之外的服务器端的平台</li>
-<li>它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心 JS没有或不完善的功能</li>
-<li>它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件驱动式的程序设计模型</li>
-<li>Node.js使用了来自Google ChromeV8引擎。V8是目前世界上最快的javascript引擎
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/node/node系列（一）总览一/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h1><pre><code>const用来声明常量，一旦声明，其值就不能改变。
+const与let的作用域相同，只在声明所在的块级作用域内有效。
+const声明的常量不可重复声明
+</code></pre><p><strong>const命令图解</strong></p>
+<p><img src="/img/es6/const.jpg" alt="const命令"></p>
+
+          
         
       
-    </li></ul></div>
+    </div>
     
     
     
@@ -802,7 +820,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（九）Set 和 Map/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（四） for-of 循环/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -821,7 +839,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（九）Set 和 Map/" itemprop="url">ES6系列（九）Set 和 Map</a></h1>
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（四） for-of 循环/" itemprop="url">ES6系列（四） for-of 循环</a></h1>
         
 
         <div class="post-meta">
@@ -894,19 +912,12 @@
 
       
         
-          <h1 id="Set-和-Map"><a href="#Set-和-Map" class="headerlink" title="Set 和 Map"></a>Set 和 Map</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>Set类似于数组，不过其成员值都是唯一的，没有重复的值。<br>    Set本身是一个构造函数，用来生成Set数据结构。<br>          例如： </p>
-<pre><code class="javascript"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();
-[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">2</span>].map(<span class="function"><span class="params">x</span> =&gt;</span> s.add(x));
-<span class="keyword">for</span>(i <span class="keyword">of</span> s ){
-    <span class="built_in">console</span>.log(i);<span class="comment">//2,3,4,5</span>
-}
-<span class="comment">//可以用数组对set进行初始化</span>
-<span class="keyword">var</span> items = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>]);
-<span class="built_in">console</span>.log(items.size);<span class="comment">//3</span>
-</code></pre>
+          <h1 id="for-of-循环"><a href="#for-of-循环" class="headerlink" title="for-of 循环"></a>for-of 循环</h1><pre><code>任何部署了Iterator接口的对象，都可以使用for-of循环遍历。
+我们如何遍历数组中的元素：
+</code></pre><h2 id="（1）-for循环"><a href="#（1）-for循环" class="headerlink" title="（1） for循环"></a>（1） for循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">0</span>; index &lt; myArray.length; index++) &#123;</span><br><span class="line"> 		<span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（九）Set 和 Map/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/es6/ES6系列（四） for-of 循环/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
