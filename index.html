@@ -369,8 +369,7 @@
 
       
         
-          
-            <h4 id="面向对象的特征"><a href="#面向对象的特征" class="headerlink" title="面向对象的特征"></a>面向对象的特征</h4><ul>
+          <h4 id="面向对象的特征"><a href="#面向对象的特征" class="headerlink" title="面向对象的特征"></a>面向对象的特征</h4><ul>
 <li>有三个特征<ul>
 <li>封装</li>
 <li>继承</li>
@@ -386,101 +385,17 @@
 4. 隐藏信息，实现细节。
 </code></pre><ul>
 <li>以下 Person 类封装 name、gender、age 等属性，外界只能通过 get() 方法获取一个 Person 对象的 name 属性和 gender 属性，而无法获取 age 属性，但是 age 属性可以供 work() 方法使用。</li>
-<li>注意到gender属性使用int数据类型进行存储，封装使得用户注意不到这种实现细节。并且在需要修改 gender属性使用的数据类型时，也可以在不影响客户端代码的情况下进行。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private int gender;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    public void setName(String name)&#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">    public String getGender() &#123;</span><br><span class="line">        return gender == 0 ? &quot;man&quot; : &quot;woman&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void work() &#123;</span><br><span class="line">        if (18 &lt;= age &amp;&amp; age &lt;= 50) &#123;</span><br><span class="line">            System.out.println(name + &quot; is working very hard!&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(name + &quot; can&apos;t work any more!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>构造方法<br>每个类都有构造方法。如果没有显式地为类定义构造方法，Java编译器将会为该类提供一个默认构造方法。<br>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
-<ul>
-<li>构造方法概述和作用<br>  给对象中的成员进行初始化</li>
-<li>构造方法格式特点<br>  方法名与类名相同；没有返回值类型，连void都没有</li>
-<li>构造方法注意事项<br>如果我们没有给出构造方法，系统将自动提供一个无参构造方法。<br>如果我们给出了构造方法，系统将不再提供默认的无参构造方法。</li>
-<li>注意：这个时候，如果我们还想使用无参构造方法，就必须自己给出。建议永远自己给出无参构造方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Puppy&#123;</span><br><span class="line">    public Puppy()&#123;</span><br><span class="line">		//无参构造方法</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public Puppy(String name)&#123;</span><br><span class="line">        // 这个构造器仅有一个参数：name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>paivate关键字</p>
-<ul>
-<li>private关键字特点<br>  是一个权限修饰符<br>  可以修饰成员变量和成员方法<br>  被其修饰的成员只能在本类中被访问<br>  private最常见的应用<br>  把成员变量用private修饰，提供对应的getXxx()和setXxx()方法</li>
-</ul>
-</li>
-<li>this关键字<ul>
-<li>为什么要有this<br>  当我们的局部变量和成员变量相同的时候,如果我们不使用this关键字,那么会导致一个问题:就是局部变量隐藏了成员变量的问题</li>
-<li>this关键字特点<br>  是当前类的对象引用<br>  简单的记，它就代表当前类的一个对象。谁调用这个方法,那么该方法的内部的this就代表谁</li>
-<li>this的应用场景<br>  解决局部变量隐藏成员变量</li>
+<li>注意到gender属性使用int数据类型进行存储，封装使得用户注意不到这种实现细节。并且在需要修改 gender属性使用的数据类型时，也可以在不影响客户端代码的情况下进行。</li>
 </ul>
 </li>
 </ul>
-<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>继承是子类继承父类的特征和行为,使得子类对象(实例)具有父类的实例域和方法,或子类从父类继承方法,使子类具有父类的行为.</p>
-<ul>
-<li>继承的特性<ul>
-<li>子类拥有父类非private的属性，方法。</li>
-<li>子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。</li>
-<li>子类可以用自己的方式实现父类的方法。</li>
-<li>Java的继承是单继承，但是可以多重继承，单继承就是一个子类只能继承一个父类，多重继承就是，例如A类继承B类，B类继承C类，所以按照关系就是C类是B类的父类，B类是A类的父类，这是java继承区别于C++继承的一个特性。</li>
-<li>提高了类之间的耦合性（继承的缺点，耦合度高就会造成代码之间的联系越紧密，代码独立性越差）。</li>
-</ul>
-</li>
-<li>继承的格式<ul>
-<li>在 Java 中通过 extends 关键字可以申明一个类是从另外一个类继承而来的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class 父类 &#123;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class 子类 extends 父类 &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">/父类 动物</span><br><span class="line">class Animal&#123;</span><br><span class="line">	private String name;</span><br><span class="line">	private int id;</span><br><span class="line">	</span><br><span class="line">	public Animal(String myName, int myId)&#123;</span><br><span class="line">		name = myName;</span><br><span class="line">		id = myId;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void eat()&#123;</span><br><span class="line">		System.out.println(name+&quot;正在吃&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void sleep()&#123;</span><br><span class="line">		System.out.println(name+&quot;正在谁&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//介绍 introduction</span><br><span class="line">	public void introduction()&#123;</span><br><span class="line">		System.out.println(&quot;我是&quot;+  id  +&quot;的&quot;+name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//子类 企鹅</span><br><span class="line">class Penguin extends Animal&#123;</span><br><span class="line">	public Penguin(String myName, int myId)&#123;</span><br><span class="line">		super(myName,myId);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//子类 老鼠</span><br><span class="line">class Mouse extends Animal&#123;</span><br><span class="line">	public Mouse(String myName,int myId)&#123;</span><br><span class="line">		super(myName,myId);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class AnimalDemo&#123;</span><br><span class="line">	public AnimalDemo()&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void main(String [] args)&#123;</span><br><span class="line">		Penguin p = new Penguin(&quot;企鹅&quot;,1);</span><br><span class="line">		p.eat();</span><br><span class="line">		p.sleep();</span><br><span class="line">		p.introduction();</span><br><span class="line">		</span><br><span class="line">		Mouse m = new Mouse(&quot;老鼠&quot;,2);</span><br><span class="line">		m.eat();</span><br><span class="line">		m.sleep();</span><br><span class="line">		m.introduction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>继承类型<br>需要注意的是 Java 不支持多继承，但支持多重继承。<br><img src="/img/es6/types_of_inheritance_1.png" alt="enter description here"></li>
-<li><p>继承关键字<br>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承object（这个类在 java.lang 包中，所以不需要 import）祖先类。</p>
-</li>
-<li><p>extends关键字<br>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Animal &#123; </span><br><span class="line">    private String name;   </span><br><span class="line">    private int id; </span><br><span class="line">    public Animal(String myName, String myid) &#123; </span><br><span class="line">        //初始化属性值</span><br><span class="line">    &#125; </span><br><span class="line">    public void eat() &#123;  //吃东西方法的具体实现  &#125; </span><br><span class="line">    public void sleep() &#123; //睡觉方法的具体实现  &#125; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">public class Penguin  extends  Animal&#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><ul>
-<li>多态: 多态是同一个行为具有不同表现的形式或形态的能力<pre><code>多态就是一个接口,使用不同实例而执行不同操作
-多态是对象多种表现形式的体现    
-</code></pre></li>
-<li>多态的优点<pre><code>1.消除类型之间的耦合关系
-2.可替换性
-3.可扩充性
-4.接口器
-5.灵活性
-6.简化性
-</code></pre></li>
-<li>缺点<pre><code>不能使用子类的特有的功能
-解决: 把父类中的引用强制转换成子类的引用(向下转型)
-        Fu f = new Zi();
-        Zi z = (zi)f;  //向下转型    
-</code></pre></li>
-<li>对象之间的转型<pre><code>向上转型
-    Fu f = new Zi();
-向下转型
-    Zi z = (zi)f;  //要求改f必须是能够转换成Zi的        
-</code></pre></li>
-<li>多态存在的三个必要条件<pre><code>继承
-重写
-父类引用子类对象
-</code></pre></li>
-<li><p>多态的实现方式<br>  方式一：重写<br>  方式二：接口<br>  方式三：抽象类和抽象方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">多态</span><br><span class="line">*</span><br><span class="line">/</span><br><span class="line">public class Test&#123;</span><br><span class="line">	public static void main(String args [])&#123;</span><br><span class="line">		show(new Cat()); //以Cat对象调用show方法</span><br><span class="line">		show(new Dog()); //以Dog对象调用show方法</span><br><span class="line">		</span><br><span class="line">		Animal a = new Cat(); //向上转型</span><br><span class="line">		a.eat();	//调用的事Cat的eat方法</span><br><span class="line">		Cat c = (Cat)a;  //向下转型</span><br><span class="line">		c.work();   //调用的是Cat的work方法</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void show(Animal a)&#123;</span><br><span class="line">		a.eat();</span><br><span class="line">		//类型判断</span><br><span class="line">		if( a instanceof Cat)&#123;//猫做的事</span><br><span class="line">			Cat c = (Cat)a;</span><br><span class="line">			c.work();</span><br><span class="line">		&#125;else if(a instanceof Dog)&#123;//狗做的事</span><br><span class="line">			Dog c = (Dog)a;</span><br><span class="line">			c.work();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class Animal&#123;</span><br><span class="line">	abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Cat extends Animal&#123;</span><br><span class="line">	public void eat()&#123;</span><br><span class="line">		System.out.println(&quot;吃鱼&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void work()&#123;</span><br><span class="line">		System.out.println(&quot;抓老鼠&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Dog extends Animal&#123;</span><br><span class="line">	public void eat()&#123;</span><br><span class="line">		System.out.println(&quot;吃骨头&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void work()&#123;</span><br><span class="line">		System.out.println(&quot;看家&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多态的成员访问特点</p>
-<pre><code>访问成员变量
-    编译看左边,运行也看左边
-构造方法
-    创建子类对象的时候,访问父类的构造方法,对父类的数据进行初始化
-成员方法
-    编译看左边,运行看右边
-静态方法
-    编译看左边,运行看左边
-    (静态方法和类有关,算不上重写,所以,访问还是看左边)
-由于成员方法存在方法重写,所以运行时看右边
-</code></pre></li>
-<li><p>多态报错<br>ClassCastException 类型转换异常, 一般在多态的向下转型中出现</p>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/17/java/java基础(六) java封装继承多态/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -619,8 +534,7 @@
 
       
         
-          
-            <h4 id="面向对象的思想"><a href="#面向对象的思想" class="headerlink" title="面向对象的思想"></a>面向对象的思想</h4><ul>
+          <h4 id="面向对象的思想"><a href="#面向对象的思想" class="headerlink" title="面向对象的思想"></a>面向对象的思想</h4><ul>
 <li><p>在理解面向对象思想,我们可以先来看看什么是面向过程?</p>
 <ul>
 <li>面向过程思想概述<br>我们来回想一下，这几天我们完成一个需求的步骤：首先是搞清楚我们要做什么，然后在分析怎么做，最后我们再代码体现。<br>一步一步去实现，而具体的每一步都需要我们去实现和操作。这些步骤相互调用和协作，完成我们的需求。<br>在上面的每一个具体步骤中我们都是参与者，并且需要面对具体的每一个步骤和过程，这就是面向过程最直接的体现。<br>那么什么是面向过程开发呢? 面向过程开发，其实就是面向着具体的每一个步骤和过程，把每一个步骤和过程完成，然后由这些功能方法相互调用，完成需求。<br>面向过程的代表语言：C语言</li>
@@ -629,62 +543,17 @@
 <li><p>然后我们再来了解面向对象</p>
 <ul>
 <li>面向对象思想概述<br>当需求单一，或者简单时，我们一步一步去操作没问题，并且效率也挺高。<br>可随着需求的更改，功能的增多，发现需要面对每一个步骤很麻烦了。这时就开始思索，<br>能不能把这些步骤和功能在进行封装，封装时根据不同的功能，进行不同的封装，功能类似的封装在一起。<br>这样结构就清晰了很多。用的时候，找到对应的类就可以了。这就是面向对象的思想。</li>
-<li>面向对象思想特点<br>  是一种更符合我们思想习惯的思想<br>可以将复杂的事情简单化<br>将我们从执行者变成了指挥者<br>  角色发生了转换</li>
-</ul>
-</li>
-</ul>
-<h4 id="类与对象及其应用"><a href="#类与对象及其应用" class="headerlink" title="类与对象及其应用"></a>类与对象及其应用</h4><ul>
-<li>属性： 该事物的描述信息    </li>
-<li>行为： 该事物能够做什么    </li>
-</ul>
-<p>现实事物  | 类|<br>|————- | ————-|<br>属性  | 成员变量|<br>行为|成员方法|</p>
-<ul>
-<li>类： 是一组相同属性和行为的集合。这是一个抽象的概念</li>
-<li>对象：是该类事物的具体表现形式，具体存在的个体。<br>  例子<pre><code>学生： 类
-班长： 对象
-</code></pre></li>
-</ul>
-<h4 id="成员变量和局部变量的区别"><a href="#成员变量和局部变量的区别" class="headerlink" title="成员变量和局部变量的区别"></a>成员变量和局部变量的区别</h4><p>成员变量就是方法外部,类的内部定义的变量;<br>局部变量就是方法或语句块内部定义的变量.局部变量必须初始化.</p>
-<ul>
-<li>在类中的位置不同<br>成员变量：在类中方法外<br>局部变量：在方法定义中或者方法声明上</li>
-<li>在内存中的位置不同<br>成员变量：在堆内存<br>局部变量：在栈内存</li>
-<li>生命周期不同<br>成员变量：随着对象的创建而存在，随着对象的消失而消失<br>局部变量：随着方法的调用而存在，随着方法的调用完毕而消失</li>
-<li>初始化值不同<br>成员变量：有默认初始化值<br>局部变量：没有默认初始化值，必须定义，赋值，然后才能使用。<br>注意事项：: 局部变量名称可以和成员变量名称一样，在方法中使用的时候，采用的是就近原则</li>
-</ul>
-<h4 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h4><ul>
-<li>什么是匿名对象<br>就是没有名字的对象</li>
-<li>匿名对象应用场景<ul>
-<li>调用方法，仅仅只调用一次的时候。</li>
-<li>匿名对象可以作为实际参数传递</li>
-</ul>
-</li>
-</ul>
-<h4 id="方法的重写-方法重载"><a href="#方法的重写-方法重载" class="headerlink" title="方法的重写,方法重载"></a>方法的重写,方法重载</h4><h5 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h5><ul>
-<li>方法重写是子类对父类的允许访问方法的实现过程进行重新编写,返回值和形参都不变.<br>即外壳不变,核心改变<ul>
-<li>方法重写好处在于子类可以根据需求定义特定自己的行为,也就是说子类可以根据需求实现父类的方法</li>
-<li>注意: 重写的方法不能抛出新的异常或者比被重写方法申明更加宽泛的异常</li>
-<li>当子类中应用父类被重写的方法时,要使用super关键字<br>super表示对父类对象的引用。使用了super显示的调用父类的某个构造方法后，<br>那么在执行的时候就寻找super()对应的构造方法，而不再寻找父类的不带参数的构造方法。</li>
-<li>super必须作为构造方法的第一条执行语句。<br>在写类的时候，一定要写默认无参的构造方法，如果一个构造方法的第一句既不是this(),<br>也不是super()时，那么就会在这里隐含的调用他的父类的无参的构造方法，即隐含的调用super()。</li>
-</ul>
-</li>
-<li>方法重写应用<br>当子类需要父类的功能，而功能主体子类有自己特有内容时，可以重写父类中的方法。<br>这样，即沿袭了父类的功能，又定义了子类特有的内容。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">*重写</span><br><span class="line">*/</span><br><span class="line">class Animal&#123;</span><br><span class="line">	public void move()&#123;</span><br><span class="line">		System.out.println(&quot;动物可以移动&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">class Dog extends Animal&#123;</span><br><span class="line">	public void move ()&#123;</span><br><span class="line">		super.move(); //应用super类方法</span><br><span class="line">		System.out.println(&quot;狗也可以跑和走&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class TestDog&#123;</span><br><span class="line">	public static void main(String args[])&#123;</span><br><span class="line">		//Animal a = new Animal();</span><br><span class="line">		Animal b = new Dog();</span><br><span class="line">		</span><br><span class="line">		//a.move();// 执行 Animal 类的方法</span><br><span class="line"> </span><br><span class="line">        b.move();//执行 Dog 类的方法</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h5><ul>
-<li>重载: overload是在一个类里面,方法名字相同,而参数不同,返回类型可以相同也可以不同<ul>
-<li>每一个重载的方法(或者构造函数)都必须有一个独一无二的参数型列表</li>
-<li>最常用的就是构造器重载</li>
-<li>被重载的方法必须改变参数列表(参数的个数或类型不一样)</li>
-</ul>
-</li>
-<li>方法重载原则<br>方法名相同；方法的参数类型不同，或者参数个数不同；与方法的参数名，返回类型和修饰符无关</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/*</span><br><span class="line">* 重载</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">public class OverLoading&#123;</span><br><span class="line">	public int test()&#123;</span><br><span class="line">		System.out.println(&quot;test1&quot;);</span><br><span class="line">		return 1;</span><br><span class="line">	&#125;</span><br><span class="line">	//一个参数</span><br><span class="line">	public void test(int a)&#123;</span><br><span class="line">		System.out.println(&quot;test2&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//以下两个参数顺序不同</span><br><span class="line">	public String test(int a,String s)&#123;</span><br><span class="line">		System.out.println(&quot;test3&quot;);</span><br><span class="line">		return &quot;return test3&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//以下两个参数顺序不同</span><br><span class="line">	public String test(String s,int a)&#123;</span><br><span class="line">		System.out.println(&quot;test4&quot;);</span><br><span class="line">		return &quot;return test4&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	public static void main(String args [])&#123;</span><br><span class="line">		OverLoading o = new OverLoading();</span><br><span class="line">		System.out.println(o.test());</span><br><span class="line">		o.test(1);</span><br><span class="line">		System.out.println(o.test(1,&quot;test3&quot;));</span><br><span class="line">        System.out.println(o.test(&quot;test4&quot;,1));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+<li>面向对象思想特点<br>  是一种更符合我们思想习惯的思想<br>可以将复杂的事情简单化<br>将我们从执行者变成了指挥者<br>  角色发生了转换
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/17/java/java基础(五) 面向对象/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </li></ul></li></ul></div>
     
     
     
