@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="qihui">
 <meta property="og:description" content="1.常量和变量 什么是常量?  值不会变的是常量  常量在程序运行时是不能被修改的。 什么是变量?  在作用域之间,在该数据类型范围内可以变化的的一个量.   声明变量(定义变量)格式: 数据类型 变量名;  变量赋值:变量名 = 常量名; 数据类型 变量名 = 常量名;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-17T03:08:09.944Z">
+<meta property="og:updated_time" content="2018-12-18T10:54:36.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java基础(二) 基础知识">
 <meta name="twitter:description" content="1.常量和变量 什么是常量?  值不会变的是常量  常量在程序运行时是不能被修改的。 什么是变量?  在作用域之间,在该数据类型范围内可以变化的的一个量.   声明变量(定义变量)格式: 数据类型 变量名;  变量赋值:变量名 = 常量名; 数据类型 变量名 = 常量名;">
@@ -577,6 +577,45 @@
 </ul>
 </li>
 </ul>
+<h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><p><strong>枚举: Enumeration</strong><br><strong>位集合: BitSet</strong><br><strong>向量: Vector</strong><br><strong>栈: Stack</strong><br><strong>字典: Dictionary</strong><br><strong>哈希表: Hashtable</strong><br><strong>属性: Properties</strong></p>
+<ul>
+<li>枚举:<ul>
+<li>枚举（Enumeration）接口虽然它本身不属于数据结构,但它在其他数据结构的范畴里应用很广。 </li>
+<li>枚举（The Enumeration）接口定义了一种从数据结构中取回连续元素的方式。</li>
+</ul>
+</li>
+<li>位集合（BitSet）<ul>
+<li>位集合类实现了一组可以单独设置和清除的位或标志。</li>
+<li>该类在处理一组布尔值的时候非常有用，你只需要给每个值赋值一”位”，<br>然后对位进行适当的设置或清除，就可以对布尔值进行操作了。</li>
+</ul>
+</li>
+<li>向量（Vector）<ul>
+<li>向量（Vector）类和传统数组非常相似，但是Vector的大小能根据需要动态的变化。<br>和数组一样，Vector对象的元素也能通过索引访问。</li>
+<li>使用Vector类最主要的好处就是在创建对象的时候不必给对象指定大小，它的大小会根据需要动态的变化。</li>
+</ul>
+</li>
+<li>栈（Stack）<ul>
+<li>栈（Stack）实现了一个后进先出（LIFO）的数据结构。</li>
+<li>你可以把栈理解为对象的垂直分布的栈，当你添加一个新元素时，就将新元素放在其他元素的顶部。</li>
+<li>当你从栈中取元素的时候，就从栈顶取一个元素。换句话说，最后进栈的元素最先被取出。</li>
+<li>字典（Dictionary）</li>
+</ul>
+</li>
+<li>字典（Dictionary） <ul>
+<li>类是一个抽象类，它定义了键映射到值的数据结构。<br>当你想要通过特定的键而不是整数索引来访问数据的时候，这时候应该使用Dictionary。<br>由于Dictionary类是抽象类，所以它只提供了键映射到值的数据结构，而没有提供特定的实现。</li>
+</ul>
+</li>
+<li>哈希表（Hashtable）<ul>
+<li>Hashtable类提供了一种在用户定义键结构的基础上来组织数据的手段。</li>
+<li>例如，在地址列表的哈希表中，你可以根据邮政编码作为键来存储和排序数据，而不是通过人名。<br>哈希表键的具体含义完全取决于哈希表的使用情景和它包含的数据。</li>
+</ul>
+</li>
+<li>属性（Properties）<ul>
+<li>Properties 继承于 Hashtable.Properties 类表示了一个持久的属性集.属性列表中每个键及其对应值都是一个字符串。</li>
+<li>Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -813,7 +852,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-常量和变量"><span class="nav-number">1.</span> <span class="nav-text">1.常量和变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-进制"><span class="nav-number">2.</span> <span class="nav-text">2.进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-反码和补码"><span class="nav-number">3.</span> <span class="nav-text">3.反码和补码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Java数据类型"><span class="nav-number">4.</span> <span class="nav-text">4.Java数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字节码"><span class="nav-number">5.</span> <span class="nav-text">字节码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">6.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java基本语句结构"><span class="nav-number">7.</span> <span class="nav-text">Java基本语句结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java方法"><span class="nav-number">8.</span> <span class="nav-text">Java方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">9.</span> <span class="nav-text">数组</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-常量和变量"><span class="nav-number">1.</span> <span class="nav-text">1.常量和变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-进制"><span class="nav-number">2.</span> <span class="nav-text">2.进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-反码和补码"><span class="nav-number">3.</span> <span class="nav-text">3.反码和补码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Java数据类型"><span class="nav-number">4.</span> <span class="nav-text">4.Java数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字节码"><span class="nav-number">5.</span> <span class="nav-text">字节码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">6.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java基本语句结构"><span class="nav-number">7.</span> <span class="nav-text">Java基本语句结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java方法"><span class="nav-number">8.</span> <span class="nav-text">Java方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">9.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构"><span class="nav-number">10.</span> <span class="nav-text">数据结构</span></a></li></ol></div>
             
 
           </div>
