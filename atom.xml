@@ -248,28 +248,6 @@
   </entry>
   
   <entry>
-    <title>ES6系列（十一）Generator</title>
-    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89Generator/"/>
-    <id>http://yoursite.com/2018/12/15/es6/ES6系列（十一）Generator/</id>
-    <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-09-10T08:20:56.669Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h1><p>Generator 就是普通函数，有两个特征：一是function关键字后面有一个星号；二是函数体内部使用yield语句定义遍历器的每个成员，即不同的内部状态<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">function</span>* <span class="title">helloWorldGenerator</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">yield</span> <span class="string">'hello'</span>;</span><br><span class="line"><span class="keyword">yield</span> <span class="string">'world'</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="string">'ending'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> hw = helloWorldGenerator();</span><br><span class="line">hw.next();</span><br><span class="line">hw.next();</span><br><span class="line">hw.next();</span><br></pre></td></tr></table></figure></p><pre><code>Generator的本质，是提供一种可以暂停执行的函数。</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Generator&quot;&gt;&lt;a href=&quot;#Generator&quot; class=&quot;headerlink&quot; title=&quot;Generator&quot;&gt;&lt;/a&gt;Generator&lt;/h1&gt;&lt;p&gt;Generator 就是普通函数，有两个特征：一是function关键字后面有一个星号；二是函数体内部使用yield语句定义遍历器的每个成员，即不同的内部状态&lt;br&gt;
-    
-    </summary>
-    
-      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
-    
-    
-      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
-    
-  </entry>
-  
-  <entry>
     <title>node系列（三）http</title>
     <link href="http://yoursite.com/2018/12/15/node/node%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89)http/"/>
     <id>http://yoursite.com/2018/12/15/node/node系列（三)http/</id>
@@ -289,6 +267,80 @@
     
     
       <category term="node" scheme="http://yoursite.com/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node系列（一）总览一</title>
+    <link href="http://yoursite.com/2018/12/15/node/node%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%E6%80%BB%E8%A7%88%E4%B8%80/"/>
+    <id>http://yoursite.com/2018/12/15/node/node系列（一）总览一/</id>
+    <published>2018-12-15T07:31:24.743Z</published>
+    <updated>2017-12-24T10:46:17.392Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是node"><a href="#什么是node" class="headerlink" title="什么是node?"></a>什么是node?</h2><ul><li>Node.js是一个让JS可以运行在浏览器之外的服务器端的平台</li><li>它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心 JS没有或不完善的功能</li><li>它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件驱动式的程序设计模型</li><li>Node.js使用了来自Google ChromeV8引擎。V8是目前世界上最快的javascript引擎<a id="more"></a></li></ul><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul><li>所谓特点,就是node.js如何解决服务器高性能瓶颈问题的</li></ul><h3 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h3><ul><li>在java,php或者.net等服务器语言中,会为客户端创建一个新的线程,而每一个线程需要消耗2mb内存.理论上,一个8GB的服务器可以同时连接最大用户为4000个左右.要让web应用程序支持更多的用户,就需要增加服务器的数量,而web应用程序的硬件成本当然也就上升了</li><li>node.js不为每一个用户创建一个新的线程,而仅仅使用一个线程.当有用户连接了,就会触发一个内部事件,通过非阻塞I/O,事件驱动机制,让node.js程序宏观上也是并行的,使用node.js,一个8GB内存的服务器,可以同时处理超过4万用户的连接</li><li>另外,单线程带来的好处就是减少内存的开销,还有操作系统完全不再有线程创建、销毁的时间开销。</li><li>坏处,就是一个用户造成的线程的崩溃,整个服务器都崩溃了,其他的人也就都崩溃了</li></ul><h3 id="非阻塞I-O-non-blocking-I-O"><a href="#非阻塞I-O-non-blocking-I-O" class="headerlink" title="非阻塞I/O  non-blocking I/O"></a>非阻塞I/O  non-blocking I/O</h3><ul><li>例如,当在访问数据库取得数据的时候,需要一段时间.当传统的单线程处理机制中,在执行了访问数据库代码之后,整个线程都将暂停下来,等待数据库返回结果,才能执行后面的代码.也就是说,I/O阻塞了代码的执行,极大的降低了程序的执行效率</li><li>由于node.js中采用了非阻塞I/O机制,因此在执行访问数据库的代码,将立即执行其他后面的代码,把数据库返回结果的处理代码放在回调函数中,从而提高了程序的执行效率.</li><li>当某个I/O执行完毕时,将以事件的形式通知执行I/O操作的线程,线程执行的这个事件的回调函数.为了处理异步I/O,线程必须有事件循环,不断的检查有没有未处理的事件,一次予以处理.</li><li>阻塞模式下,一个线程只能处理一项任务,想要提高吞吐量,必须通过多线程.而非阻塞I/O模式下,一个线程永远在执行计算操作,这个线程的CPU核心利用率永远是100%</li></ul><h3 id="事件驱动"><a href="#事件驱动" class="headerlink" title="事件驱动"></a>事件驱动</h3><ul><li>在node.js中,客户端请求建立连接,提交数据等行为会出触发相应的事件.在node中,一个时刻只能执行一个事件的回调函数,但是在执行一个事件回调函数的中途,可以转而处理其他的事情(比如,又有新用户连接了),然后返回执行原事件的回调函数,这种处理的机制,称为”事件环”机制</li><li>mode.js底层是c++写的(V8也是用C++写的).底层代码中,近半数都是用于事件队列,回调函数队列的构建.用事件驱动来完成服务的任务调用</li></ul><h2 id="node-js的优点"><a href="#node-js的优点" class="headerlink" title="node.js的优点"></a>node.js的优点</h2><pre><code>·Nodejs基于Javascript语言·统一公共类库，代码标准化·Nodejs选择了目前最快的浏览器内核V8作为执行引擎·Nodejs的社区非常活跃 www.npmjs.com</code></pre><h2 id="适用开发"><a href="#适用开发" class="headerlink" title="适用开发"></a>适用开发</h2><ul><li>node.js适用于开发什么样的应用程序?<ul><li>善用于I/O,不善于计算.因为node.js最擅长的就是任务调用.如果的你的业务有很多的CPU计算,实际上也相当于这个计算阻塞了这个单线程,就不适合node开发.<br>当应用程序需要处理大量并发的I/O,而在向客户端发出响应之前,应用程序内部并不需要进行复杂的处理时候,node.js非常合适,node.js也非常适合与web socket配合,开发长连接的实时交互应用程序.<ul><li>比如<ul><li>用户表单的收集</li><li>聊天室</li><li>图文直播</li><li>提供JSON的API</li></ul></li></ul></li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;什么是node&quot;&gt;&lt;a href=&quot;#什么是node&quot; class=&quot;headerlink&quot; title=&quot;什么是node?&quot;&gt;&lt;/a&gt;什么是node?&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Node.js是一个让JS可以运行在浏览器之外的服务器端的平台&lt;/li&gt;
+&lt;li&gt;它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心 JS没有或不完善的功能&lt;/li&gt;
+&lt;li&gt;它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件驱动式的程序设计模型&lt;/li&gt;
+&lt;li&gt;Node.js使用了来自Google ChromeV8引擎。V8是目前世界上最快的javascript引擎
+    
+    </summary>
+    
+    
+      <category term="node" scheme="http://yoursite.com/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6系列（二） const命令</title>
+    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%20const%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2018/12/15/es6/ES6系列（二） const命令/</id>
+    <published>2018-12-15T07:31:24.743Z</published>
+    <updated>2017-09-17T03:54:31.993Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h1><pre><code>const用来声明常量，一旦声明，其值就不能改变。const与let的作用域相同，只在声明所在的块级作用域内有效。const声明的常量不可重复声明</code></pre><p><strong>const命令图解</strong></p><p><img src="/img/es6/const.jpg" alt="const命令"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;const命令&quot;&gt;&lt;a href=&quot;#const命令&quot; class=&quot;headerlink&quot; title=&quot;const命令&quot;&gt;&lt;/a&gt;const命令&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;const用来声明常量，一旦声明，其值就不能改变。
+const与let的作用域相同，
+      
+    
+    </summary>
+    
+      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
+    
+    
+      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6系列（四） for-of 循环</title>
+    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%20for-of%20%E5%BE%AA%E7%8E%AF/"/>
+    <id>http://yoursite.com/2018/12/15/es6/ES6系列（四） for-of 循环/</id>
+    <published>2018-12-15T07:31:24.743Z</published>
+    <updated>2017-09-17T03:56:36.157Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="for-of-循环"><a href="#for-of-循环" class="headerlink" title="for-of 循环"></a>for-of 循环</h1><pre><code>任何部署了Iterator接口的对象，都可以使用for-of循环遍历。我们如何遍历数组中的元素：</code></pre><h2 id="（1）-for循环"><a href="#（1）-for循环" class="headerlink" title="（1） for循环"></a>（1） for循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">0</span>; index &lt; myArray.length; index++) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="（2）-forEach方法遍历数组"><a href="#（2）-forEach方法遍历数组" class="headerlink" title="（2） forEach方法遍历数组"></a>（2） forEach方法遍历数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myArray.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="（3）-for-in循环"><a href="#（3）-for-in循环" class="headerlink" title="（3） for-in循环"></a>（3） for-in循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index <span class="keyword">in</span> myArray) &#123; <span class="comment">// 千万别这样做！！</span></span><br><span class="line">    <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这绝对是一个糟糕的选择，为什么呢？<br>    1）在这段代码中，赋给index的值不是实际的数字，而是字符串“0”、“1”、“2”，此时很可能在无意之间进行字符串算数计算，例如：“2” + 1 == “21”，这给编码过程带来极大的不便。<br>    2）作用于数组的for-in循环体除了遍历数组元素外，还会遍历自定义属性。<br>    举个例子，如果你的数组中有一个可枚举属性myArray.name，循环将额外执行一次，遍历到名为“name”的索引。就连数组原型链上的属性都能被访问到。<br>    3）最让人震惊的是，在某些情况下，这段代码可能按照随机顺序遍历数组元素。<br>    4）简而言之，for-in是为普通对象设计的，你可以遍历得到字符串类型的键，因此不适用于数组遍历。 </p><h2 id="（4）强大的for-of循环"><a href="#（4）强大的for-of循环" class="headerlink" title="（4）强大的for-of循环"></a>（4）强大的for-of循环</h2><pre><code class="javascript"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> myArray) {    <span class="built_in">console</span>.log(value);}</code></pre><p>1）这是最简洁、最直接的遍历数组元素的语法；<br>2）这个方法避开了for-in循环的所有缺陷 ；<br>3）与forEach()不同的是，它可以正确响应break、continue和return语句 ；<br>4）for-of循环也可以遍历其它的集合，for-of循环不仅支持数组，还支持大多数类数组对象，例如DOM NodeList对象；<br>5）for-of循环也支持字符串遍历，它将字符串视为一系列的Unicode字符来进行遍历。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;for-of-循环&quot;&gt;&lt;a href=&quot;#for-of-循环&quot; class=&quot;headerlink&quot; title=&quot;for-of 循环&quot;&gt;&lt;/a&gt;for-of 循环&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;任何部署了Iterator接口的对象，都可以使用for-of循环遍历。
+我们如何遍历数组中的元素：
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;（1）-for循环&quot;&gt;&lt;a href=&quot;#（1）-for循环&quot; class=&quot;headerlink&quot; title=&quot;（1） for循环&quot;&gt;&lt;/a&gt;（1） for循环&lt;/h2&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; index = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; index &amp;lt; myArray.length; index++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 		&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(myArray[index]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
+    
+    
+      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
     
   </entry>
   
@@ -313,19 +365,66 @@
   </entry>
   
   <entry>
-    <title>ES6系列（四） for-of 循环</title>
-    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%20for-of%20%E5%BE%AA%E7%8E%AF/"/>
-    <id>http://yoursite.com/2018/12/15/es6/ES6系列（四） for-of 循环/</id>
+    <title>ES6系列（十二）Promise</title>
+    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89Promise/"/>
+    <id>http://yoursite.com/2018/12/15/es6/ES6系列（十二）Promise/</id>
     <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-09-17T03:56:36.157Z</updated>
+    <updated>2017-09-10T08:33:11.098Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="for-of-循环"><a href="#for-of-循环" class="headerlink" title="for-of 循环"></a>for-of 循环</h1><pre><code>任何部署了Iterator接口的对象，都可以使用for-of循环遍历。我们如何遍历数组中的元素：</code></pre><h2 id="（1）-for循环"><a href="#（1）-for循环" class="headerlink" title="（1） for循环"></a>（1） for循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">0</span>; index &lt; myArray.length; index++) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="（2）-forEach方法遍历数组"><a href="#（2）-forEach方法遍历数组" class="headerlink" title="（2） forEach方法遍历数组"></a>（2） forEach方法遍历数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myArray.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="（3）-for-in循环"><a href="#（3）-for-in循环" class="headerlink" title="（3） for-in循环"></a>（3） for-in循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index <span class="keyword">in</span> myArray) &#123; <span class="comment">// 千万别这样做！！</span></span><br><span class="line">    <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这绝对是一个糟糕的选择，为什么呢？<br>    1）在这段代码中，赋给index的值不是实际的数字，而是字符串“0”、“1”、“2”，此时很可能在无意之间进行字符串算数计算，例如：“2” + 1 == “21”，这给编码过程带来极大的不便。<br>    2）作用于数组的for-in循环体除了遍历数组元素外，还会遍历自定义属性。<br>    举个例子，如果你的数组中有一个可枚举属性myArray.name，循环将额外执行一次，遍历到名为“name”的索引。就连数组原型链上的属性都能被访问到。<br>    3）最让人震惊的是，在某些情况下，这段代码可能按照随机顺序遍历数组元素。<br>    4）简而言之，for-in是为普通对象设计的，你可以遍历得到字符串类型的键，因此不适用于数组遍历。 </p><h2 id="（4）强大的for-of循环"><a href="#（4）强大的for-of循环" class="headerlink" title="（4）强大的for-of循环"></a>（4）强大的for-of循环</h2><pre><code class="javascript"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> myArray) {    <span class="built_in">console</span>.log(value);}</code></pre><p>1）这是最简洁、最直接的遍历数组元素的语法；<br>2）这个方法避开了for-in循环的所有缺陷 ；<br>3）与forEach()不同的是，它可以正确响应break、continue和return语句 ；<br>4）for-of循环也可以遍历其它的集合，for-of循环不仅支持数组，还支持大多数类数组对象，例如DOM NodeList对象；<br>5）for-of循环也支持字符串遍历，它将字符串视为一系列的Unicode字符来进行遍历。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>ES6原生提供Promise对象。所谓Promise对象，就是代表了未来某个将要发生的事件（通常是一个异步操作）。它的好处在于，有了promise对象，就可以将异步操作的流程表达出来，避免了层层嵌套的回调函数。<br><a id="more"></a></p><h2 id="Promise对象的基本用法："><a href="#Promise对象的基本用法：" class="headerlink" title="Promise对象的基本用法："></a>Promise对象的基本用法：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(<span class="comment">/*异步操作成功*/</span>) &#123;</span><br><span class="line">resolve(value);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">reject(error);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line"><span class="comment">//success</span></span><br><span class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line"><span class="comment">//failure</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>以上代码表示，Promise 构造函数接受一个函数作为参数，该函数的两个参数分别为resolve方法和reject方法。如果异步操作成功，则用resolve方法将Promise对象的状态变为成功，否则，用reject方法将状态变为失败。</p><p>promise实例生成以后，可以使用then方法分别制定resolve方法和reject方法的回调函数。<br>    用Promise对象实现Ajax操作：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getJSON = <span class="function"><span class="keyword">function</span> (<span class="params">url</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span> (<span class="function"><span class="keyword">function</span> (<span class="params">resolve,reject</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">client.open(<span class="string">"GET"</span>,url);</span><br><span class="line">client.onreadystatechange = handler;</span><br><span class="line">client.responseType = <span class="string">"json"</span>;</span><br><span class="line">client.setRequestHeader(<span class="string">"Accept"</span>,<span class="string">"application/json"</span>);</span><br><span class="line">client.send();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">this</span>.readyState === <span class="keyword">this</span>.DONE) &#123;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="number">200</span>) &#123;</span><br><span class="line">resolve(<span class="keyword">this</span>.response);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">reject(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">return</span> promise;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">getJSON(<span class="string">"/post.json"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</span><br><span class="line"><span class="comment">//continue</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</span><br><span class="line"><span class="comment">//handle errors</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><h2 id="Promise-对象有三种状态："><a href="#Promise-对象有三种状态：" class="headerlink" title="Promise 对象有三种状态："></a>Promise 对象有三种状态：</h2><p>(1)Fulfilled 可以理解为成功的状态<br>(2)Rejected 可以理解为失败的状态<br>(3)Pending 既不是 Fulfilld 也不是 Rejected 的状态，可以理解为 Promise 对象实例创建时候的初始状态</p><p>Promise.all 可以接收一个元素为 Promise 对象的数组作为参数，当这个数组里面所有的 Promise 对象都变为 resolve 时，该方法才会返回。</p><p><strong>Promise图解</strong></p><p><img src="/img/es6/promise.jpg" alt="Promise"></p>]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;for-of-循环&quot;&gt;&lt;a href=&quot;#for-of-循环&quot; class=&quot;headerlink&quot; title=&quot;for-of 循环&quot;&gt;&lt;/a&gt;for-of 循环&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;任何部署了Iterator接口的对象，都可以使用for-of循环遍历。
-我们如何遍历数组中的元素：
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;（1）-for循环&quot;&gt;&lt;a href=&quot;#（1）-for循环&quot; class=&quot;headerlink&quot; title=&quot;（1） for循环&quot;&gt;&lt;/a&gt;（1） for循环&lt;/h2&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; index = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; index &amp;lt; myArray.length; index++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 		&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(myArray[index]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+      &lt;h1 id=&quot;Promise&quot;&gt;&lt;a href=&quot;#Promise&quot; class=&quot;headerlink&quot; title=&quot;Promise&quot;&gt;&lt;/a&gt;Promise&lt;/h1&gt;&lt;p&gt;ES6原生提供Promise对象。所谓Promise对象，就是代表了未来某个将要发生的事件（通常是一个异步操作）。它的好处在于，有了promise对象，就可以将异步操作的流程表达出来，避免了层层嵌套的回调函数。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
+    
+    
+      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6系列（六）数值的扩展</title>
+    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AD%EF%BC%89%E6%95%B0%E5%80%BC%E7%9A%84%E6%89%A9%E5%B1%95/"/>
+    <id>http://yoursite.com/2018/12/15/es6/ES6系列（六）数值的扩展/</id>
+    <published>2018-12-15T07:31:24.743Z</published>
+    <updated>2017-09-17T03:53:39.574Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h1><h2 id="1-Number-isFinite-和-Number-isNaN"><a href="#1-Number-isFinite-和-Number-isNaN" class="headerlink" title="(1) Number.isFinite() 和 Number.isNaN()"></a>(1) Number.isFinite() 和 Number.isNaN()</h2><pre><code>用来检查Infinite和NaN这两个特殊值这两个方法仅对数值有效，对于飞数值一律返回false。</code></pre><pre><code class="javascript"><span class="built_in">Number</span>.isFinite(<span class="string">"25"</span>);<span class="comment">//false</span><span class="built_in">isFinite</span>(<span class="string">"25"</span>);<span class="comment">//true</span></code></pre><a id="more"></a>    <h2 id="2-Number-parseInt-Number-parseFloat"><a href="#2-Number-parseInt-Number-parseFloat" class="headerlink" title="(2) Number.parseInt() ,Number.parseFloat()"></a>(2) Number.parseInt() ,Number.parseFloat()</h2><p>ES6将全局方法parseInt()和parseFloat()移植到了Number对象上，这样做的目的是逐步减少全局方法，使语言逐步模块化。</p><h2 id="3-Math的扩展"><a href="#3-Math的扩展" class="headerlink" title="(3) Math的扩展"></a>(3) Math的扩展</h2><pre><code class="javascript"><span class="built_in">Math</span>.trunc() <span class="comment">//用于去除一个数的小数部分，返回其整数部分</span></code></pre><p><strong>数值的扩展图解</strong></p><p><img src="/img/es6/number.jpg" alt="数值的扩展">            </p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;数值的扩展&quot;&gt;&lt;a href=&quot;#数值的扩展&quot; class=&quot;headerlink&quot; title=&quot;数值的扩展&quot;&gt;&lt;/a&gt;数值的扩展&lt;/h1&gt;&lt;h2 id=&quot;1-Number-isFinite-和-Number-isNaN&quot;&gt;&lt;a href=&quot;#1-Number-isFinite-和-Number-isNaN&quot; class=&quot;headerlink&quot; title=&quot;(1) Number.isFinite() 和 Number.isNaN()&quot;&gt;&lt;/a&gt;(1) Number.isFinite() 和 Number.isNaN()&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;用来检查Infinite和NaN这两个特殊值
+这两个方法仅对数值有效，对于飞数值一律返回false。
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Number&lt;/span&gt;.isFinite(&lt;span class=&quot;string&quot;&gt;&quot;25&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//false&lt;/span&gt;
+&lt;span class=&quot;built_in&quot;&gt;isFinite&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;25&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
+    
+    
+      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6系列（十）Iterator遍历器</title>
+    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%EF%BC%89Iterator%E9%81%8D%E5%8E%86%E5%99%A8/"/>
+    <id>http://yoursite.com/2018/12/15/es6/ES6系列（十）Iterator遍历器/</id>
+    <published>2018-12-15T07:31:24.743Z</published>
+    <updated>2017-09-10T08:20:33.973Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Iterator遍历器"><a href="#Iterator遍历器" class="headerlink" title="Iterator遍历器"></a>Iterator遍历器</h1><p>遍历器是一种协议，任何对象只要部署了这个协议，就可以完成遍历操作。它的主要作用有两个<br>&nbsp;&nbsp;1.一个是为遍历对象的属性提供统一的接口，<br>&nbsp;&nbsp;2.二是时对象的属性能够按次序排列。</p><p>ES6的遍历器协议规定，部署了next方法的对象，就具备了遍历器功能。<br>&nbsp;&nbsp;next方法必须返回一个包含value和done两个属性的对象。<br>&nbsp;&nbsp;value属性是当前遍历位置的值，<br>&nbsp;&nbsp;done属性是一个布尔值，表似乎遍历是否结束。<br><a id="more"></a>        </p><pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">makeIterator</span> (<span class="params">array</span>) </span>{    <span class="keyword">var</span> nextIndex = <span class="number">0</span>;    <span class="keyword">return</span> {        next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{            <span class="keyword">return</span> nextIndex &lt; array.length ? {<span class="attr">value</span>:array[nextIndex++],<span class="attr">done</span>:<span class="literal">false</span>}:{<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>};        }    }}    <span class="comment">//定义了一个makeIterator函数，作用是返回一个遍历器对象，用来遍历参数数组。</span></code></pre><pre><code>ES6中，一个对象只要部署了next方法，就被视为具有Iterator接口，就可以用for...of循环遍历它的值。</code></pre><pre><code class="javascript"><span class="keyword">var</span> it = makeIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]);<span class="keyword">for</span>(<span class="keyword">var</span> n <span class="keyword">of</span> it) {    <span class="keyword">if</span>(n&gt;it.length){        <span class="keyword">break</span>;    }    <span class="built_in">console</span>.log(n);}</code></pre><pre><code>for...in 循环读取键名；for...of循环读取键值</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Iterator遍历器&quot;&gt;&lt;a href=&quot;#Iterator遍历器&quot; class=&quot;headerlink&quot; title=&quot;Iterator遍历器&quot;&gt;&lt;/a&gt;Iterator遍历器&lt;/h1&gt;&lt;p&gt;遍历器是一种协议，任何对象只要部署了这个协议，就可以完成遍历操作。它的主要作用有两个&lt;br&gt;&amp;nbsp;&amp;nbsp;1.一个是为遍历对象的属性提供统一的接口，&lt;br&gt;&amp;nbsp;&amp;nbsp;2.二是时对象的属性能够按次序排列。&lt;/p&gt;
+&lt;p&gt;ES6的遍历器协议规定，部署了next方法的对象，就具备了遍历器功能。&lt;br&gt;&amp;nbsp;&amp;nbsp;next方法必须返回一个包含value和done两个属性的对象。&lt;br&gt;&amp;nbsp;&amp;nbsp;value属性是当前遍历位置的值，&lt;br&gt;&amp;nbsp;&amp;nbsp;done属性是一个布尔值，表似乎遍历是否结束。&lt;br&gt;
     
     </summary>
     
@@ -368,45 +467,17 @@
   </entry>
   
   <entry>
-    <title>node系列（一）总览一</title>
-    <link href="http://yoursite.com/2018/12/15/node/node%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%E6%80%BB%E8%A7%88%E4%B8%80/"/>
-    <id>http://yoursite.com/2018/12/15/node/node系列（一）总览一/</id>
+    <title>ES6系列（十一）Generator</title>
+    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89Generator/"/>
+    <id>http://yoursite.com/2018/12/15/es6/ES6系列（十一）Generator/</id>
     <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-12-24T10:46:17.392Z</updated>
+    <updated>2017-09-10T08:20:56.669Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="什么是node"><a href="#什么是node" class="headerlink" title="什么是node?"></a>什么是node?</h2><ul><li>Node.js是一个让JS可以运行在浏览器之外的服务器端的平台</li><li>它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心 JS没有或不完善的功能</li><li>它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件驱动式的程序设计模型</li><li>Node.js使用了来自Google ChromeV8引擎。V8是目前世界上最快的javascript引擎<a id="more"></a></li></ul><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul><li>所谓特点,就是node.js如何解决服务器高性能瓶颈问题的</li></ul><h3 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h3><ul><li>在java,php或者.net等服务器语言中,会为客户端创建一个新的线程,而每一个线程需要消耗2mb内存.理论上,一个8GB的服务器可以同时连接最大用户为4000个左右.要让web应用程序支持更多的用户,就需要增加服务器的数量,而web应用程序的硬件成本当然也就上升了</li><li>node.js不为每一个用户创建一个新的线程,而仅仅使用一个线程.当有用户连接了,就会触发一个内部事件,通过非阻塞I/O,事件驱动机制,让node.js程序宏观上也是并行的,使用node.js,一个8GB内存的服务器,可以同时处理超过4万用户的连接</li><li>另外,单线程带来的好处就是减少内存的开销,还有操作系统完全不再有线程创建、销毁的时间开销。</li><li>坏处,就是一个用户造成的线程的崩溃,整个服务器都崩溃了,其他的人也就都崩溃了</li></ul><h3 id="非阻塞I-O-non-blocking-I-O"><a href="#非阻塞I-O-non-blocking-I-O" class="headerlink" title="非阻塞I/O  non-blocking I/O"></a>非阻塞I/O  non-blocking I/O</h3><ul><li>例如,当在访问数据库取得数据的时候,需要一段时间.当传统的单线程处理机制中,在执行了访问数据库代码之后,整个线程都将暂停下来,等待数据库返回结果,才能执行后面的代码.也就是说,I/O阻塞了代码的执行,极大的降低了程序的执行效率</li><li>由于node.js中采用了非阻塞I/O机制,因此在执行访问数据库的代码,将立即执行其他后面的代码,把数据库返回结果的处理代码放在回调函数中,从而提高了程序的执行效率.</li><li>当某个I/O执行完毕时,将以事件的形式通知执行I/O操作的线程,线程执行的这个事件的回调函数.为了处理异步I/O,线程必须有事件循环,不断的检查有没有未处理的事件,一次予以处理.</li><li>阻塞模式下,一个线程只能处理一项任务,想要提高吞吐量,必须通过多线程.而非阻塞I/O模式下,一个线程永远在执行计算操作,这个线程的CPU核心利用率永远是100%</li></ul><h3 id="事件驱动"><a href="#事件驱动" class="headerlink" title="事件驱动"></a>事件驱动</h3><ul><li>在node.js中,客户端请求建立连接,提交数据等行为会出触发相应的事件.在node中,一个时刻只能执行一个事件的回调函数,但是在执行一个事件回调函数的中途,可以转而处理其他的事情(比如,又有新用户连接了),然后返回执行原事件的回调函数,这种处理的机制,称为”事件环”机制</li><li>mode.js底层是c++写的(V8也是用C++写的).底层代码中,近半数都是用于事件队列,回调函数队列的构建.用事件驱动来完成服务的任务调用</li></ul><h2 id="node-js的优点"><a href="#node-js的优点" class="headerlink" title="node.js的优点"></a>node.js的优点</h2><pre><code>·Nodejs基于Javascript语言·统一公共类库，代码标准化·Nodejs选择了目前最快的浏览器内核V8作为执行引擎·Nodejs的社区非常活跃 www.npmjs.com</code></pre><h2 id="适用开发"><a href="#适用开发" class="headerlink" title="适用开发"></a>适用开发</h2><ul><li>node.js适用于开发什么样的应用程序?<ul><li>善用于I/O,不善于计算.因为node.js最擅长的就是任务调用.如果的你的业务有很多的CPU计算,实际上也相当于这个计算阻塞了这个单线程,就不适合node开发.<br>当应用程序需要处理大量并发的I/O,而在向客户端发出响应之前,应用程序内部并不需要进行复杂的处理时候,node.js非常合适,node.js也非常适合与web socket配合,开发长连接的实时交互应用程序.<ul><li>比如<ul><li>用户表单的收集</li><li>聊天室</li><li>图文直播</li><li>提供JSON的API</li></ul></li></ul></li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h1><p>Generator 就是普通函数，有两个特征：一是function关键字后面有一个星号；二是函数体内部使用yield语句定义遍历器的每个成员，即不同的内部状态<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">function</span>* <span class="title">helloWorldGenerator</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">yield</span> <span class="string">'hello'</span>;</span><br><span class="line"><span class="keyword">yield</span> <span class="string">'world'</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="string">'ending'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> hw = helloWorldGenerator();</span><br><span class="line">hw.next();</span><br><span class="line">hw.next();</span><br><span class="line">hw.next();</span><br></pre></td></tr></table></figure></p><pre><code>Generator的本质，是提供一种可以暂停执行的函数。</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;什么是node&quot;&gt;&lt;a href=&quot;#什么是node&quot; class=&quot;headerlink&quot; title=&quot;什么是node?&quot;&gt;&lt;/a&gt;什么是node?&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Node.js是一个让JS可以运行在浏览器之外的服务器端的平台&lt;/li&gt;
-&lt;li&gt;它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心 JS没有或不完善的功能&lt;/li&gt;
-&lt;li&gt;它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件驱动式的程序设计模型&lt;/li&gt;
-&lt;li&gt;Node.js使用了来自Google ChromeV8引擎。V8是目前世界上最快的javascript引擎
-    
-    </summary>
-    
-    
-      <category term="node" scheme="http://yoursite.com/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6系列（六）数值的扩展</title>
-    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AD%EF%BC%89%E6%95%B0%E5%80%BC%E7%9A%84%E6%89%A9%E5%B1%95/"/>
-    <id>http://yoursite.com/2018/12/15/es6/ES6系列（六）数值的扩展/</id>
-    <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-09-17T03:53:39.574Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h1><h2 id="1-Number-isFinite-和-Number-isNaN"><a href="#1-Number-isFinite-和-Number-isNaN" class="headerlink" title="(1) Number.isFinite() 和 Number.isNaN()"></a>(1) Number.isFinite() 和 Number.isNaN()</h2><pre><code>用来检查Infinite和NaN这两个特殊值这两个方法仅对数值有效，对于飞数值一律返回false。</code></pre><pre><code class="javascript"><span class="built_in">Number</span>.isFinite(<span class="string">"25"</span>);<span class="comment">//false</span><span class="built_in">isFinite</span>(<span class="string">"25"</span>);<span class="comment">//true</span></code></pre><a id="more"></a>    <h2 id="2-Number-parseInt-Number-parseFloat"><a href="#2-Number-parseInt-Number-parseFloat" class="headerlink" title="(2) Number.parseInt() ,Number.parseFloat()"></a>(2) Number.parseInt() ,Number.parseFloat()</h2><p>ES6将全局方法parseInt()和parseFloat()移植到了Number对象上，这样做的目的是逐步减少全局方法，使语言逐步模块化。</p><h2 id="3-Math的扩展"><a href="#3-Math的扩展" class="headerlink" title="(3) Math的扩展"></a>(3) Math的扩展</h2><pre><code class="javascript"><span class="built_in">Math</span>.trunc() <span class="comment">//用于去除一个数的小数部分，返回其整数部分</span></code></pre><p><strong>数值的扩展图解</strong></p><p><img src="/img/es6/number.jpg" alt="数值的扩展">            </p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;数值的扩展&quot;&gt;&lt;a href=&quot;#数值的扩展&quot; class=&quot;headerlink&quot; title=&quot;数值的扩展&quot;&gt;&lt;/a&gt;数值的扩展&lt;/h1&gt;&lt;h2 id=&quot;1-Number-isFinite-和-Number-isNaN&quot;&gt;&lt;a href=&quot;#1-Number-isFinite-和-Number-isNaN&quot; class=&quot;headerlink&quot; title=&quot;(1) Number.isFinite() 和 Number.isNaN()&quot;&gt;&lt;/a&gt;(1) Number.isFinite() 和 Number.isNaN()&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;用来检查Infinite和NaN这两个特殊值
-这两个方法仅对数值有效，对于飞数值一律返回false。
-&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Number&lt;/span&gt;.isFinite(&lt;span class=&quot;string&quot;&gt;&quot;25&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//false&lt;/span&gt;
-&lt;span class=&quot;built_in&quot;&gt;isFinite&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;25&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;h1 id=&quot;Generator&quot;&gt;&lt;a href=&quot;#Generator&quot; class=&quot;headerlink&quot; title=&quot;Generator&quot;&gt;&lt;/a&gt;Generator&lt;/h1&gt;&lt;p&gt;Generator 就是普通函数，有两个特征：一是function关键字后面有一个星号；二是函数体内部使用yield语句定义遍历器的每个成员，即不同的内部状态&lt;br&gt;
     
     </summary>
     
@@ -455,77 +526,6 @@
 （2）startsWith():返回布尔值，表示参数字符串是否在源字符串的头部
 （3）endsWith():返回布尔值，表示参数字符串是否在源字符串的尾部
 &lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
-    
-    
-      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6系列（十二）Promise</title>
-    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89Promise/"/>
-    <id>http://yoursite.com/2018/12/15/es6/ES6系列（十二）Promise/</id>
-    <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-09-10T08:33:11.098Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>ES6原生提供Promise对象。所谓Promise对象，就是代表了未来某个将要发生的事件（通常是一个异步操作）。它的好处在于，有了promise对象，就可以将异步操作的流程表达出来，避免了层层嵌套的回调函数。<br><a id="more"></a></p><h2 id="Promise对象的基本用法："><a href="#Promise对象的基本用法：" class="headerlink" title="Promise对象的基本用法："></a>Promise对象的基本用法：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(<span class="comment">/*异步操作成功*/</span>) &#123;</span><br><span class="line">resolve(value);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">reject(error);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line"><span class="comment">//success</span></span><br><span class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line"><span class="comment">//failure</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>以上代码表示，Promise 构造函数接受一个函数作为参数，该函数的两个参数分别为resolve方法和reject方法。如果异步操作成功，则用resolve方法将Promise对象的状态变为成功，否则，用reject方法将状态变为失败。</p><p>promise实例生成以后，可以使用then方法分别制定resolve方法和reject方法的回调函数。<br>    用Promise对象实现Ajax操作：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getJSON = <span class="function"><span class="keyword">function</span> (<span class="params">url</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span> (<span class="function"><span class="keyword">function</span> (<span class="params">resolve,reject</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">client.open(<span class="string">"GET"</span>,url);</span><br><span class="line">client.onreadystatechange = handler;</span><br><span class="line">client.responseType = <span class="string">"json"</span>;</span><br><span class="line">client.setRequestHeader(<span class="string">"Accept"</span>,<span class="string">"application/json"</span>);</span><br><span class="line">client.send();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">this</span>.readyState === <span class="keyword">this</span>.DONE) &#123;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="number">200</span>) &#123;</span><br><span class="line">resolve(<span class="keyword">this</span>.response);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">reject(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">return</span> promise;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">getJSON(<span class="string">"/post.json"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</span><br><span class="line"><span class="comment">//continue</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</span><br><span class="line"><span class="comment">//handle errors</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><h2 id="Promise-对象有三种状态："><a href="#Promise-对象有三种状态：" class="headerlink" title="Promise 对象有三种状态："></a>Promise 对象有三种状态：</h2><p>(1)Fulfilled 可以理解为成功的状态<br>(2)Rejected 可以理解为失败的状态<br>(3)Pending 既不是 Fulfilld 也不是 Rejected 的状态，可以理解为 Promise 对象实例创建时候的初始状态</p><p>Promise.all 可以接收一个元素为 Promise 对象的数组作为参数，当这个数组里面所有的 Promise 对象都变为 resolve 时，该方法才会返回。</p><p><strong>Promise图解</strong></p><p><img src="/img/es6/promise.jpg" alt="Promise"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Promise&quot;&gt;&lt;a href=&quot;#Promise&quot; class=&quot;headerlink&quot; title=&quot;Promise&quot;&gt;&lt;/a&gt;Promise&lt;/h1&gt;&lt;p&gt;ES6原生提供Promise对象。所谓Promise对象，就是代表了未来某个将要发生的事件（通常是一个异步操作）。它的好处在于，有了promise对象，就可以将异步操作的流程表达出来，避免了层层嵌套的回调函数。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
-    
-    
-      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6系列（十）Iterator遍历器</title>
-    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%EF%BC%89Iterator%E9%81%8D%E5%8E%86%E5%99%A8/"/>
-    <id>http://yoursite.com/2018/12/15/es6/ES6系列（十）Iterator遍历器/</id>
-    <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-09-10T08:20:33.973Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Iterator遍历器"><a href="#Iterator遍历器" class="headerlink" title="Iterator遍历器"></a>Iterator遍历器</h1><p>遍历器是一种协议，任何对象只要部署了这个协议，就可以完成遍历操作。它的主要作用有两个<br>&nbsp;&nbsp;1.一个是为遍历对象的属性提供统一的接口，<br>&nbsp;&nbsp;2.二是时对象的属性能够按次序排列。</p><p>ES6的遍历器协议规定，部署了next方法的对象，就具备了遍历器功能。<br>&nbsp;&nbsp;next方法必须返回一个包含value和done两个属性的对象。<br>&nbsp;&nbsp;value属性是当前遍历位置的值，<br>&nbsp;&nbsp;done属性是一个布尔值，表似乎遍历是否结束。<br><a id="more"></a>        </p><pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">makeIterator</span> (<span class="params">array</span>) </span>{    <span class="keyword">var</span> nextIndex = <span class="number">0</span>;    <span class="keyword">return</span> {        next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{            <span class="keyword">return</span> nextIndex &lt; array.length ? {<span class="attr">value</span>:array[nextIndex++],<span class="attr">done</span>:<span class="literal">false</span>}:{<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>};        }    }}    <span class="comment">//定义了一个makeIterator函数，作用是返回一个遍历器对象，用来遍历参数数组。</span></code></pre><pre><code>ES6中，一个对象只要部署了next方法，就被视为具有Iterator接口，就可以用for...of循环遍历它的值。</code></pre><pre><code class="javascript"><span class="keyword">var</span> it = makeIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]);<span class="keyword">for</span>(<span class="keyword">var</span> n <span class="keyword">of</span> it) {    <span class="keyword">if</span>(n&gt;it.length){        <span class="keyword">break</span>;    }    <span class="built_in">console</span>.log(n);}</code></pre><pre><code>for...in 循环读取键名；for...of循环读取键值</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Iterator遍历器&quot;&gt;&lt;a href=&quot;#Iterator遍历器&quot; class=&quot;headerlink&quot; title=&quot;Iterator遍历器&quot;&gt;&lt;/a&gt;Iterator遍历器&lt;/h1&gt;&lt;p&gt;遍历器是一种协议，任何对象只要部署了这个协议，就可以完成遍历操作。它的主要作用有两个&lt;br&gt;&amp;nbsp;&amp;nbsp;1.一个是为遍历对象的属性提供统一的接口，&lt;br&gt;&amp;nbsp;&amp;nbsp;2.二是时对象的属性能够按次序排列。&lt;/p&gt;
-&lt;p&gt;ES6的遍历器协议规定，部署了next方法的对象，就具备了遍历器功能。&lt;br&gt;&amp;nbsp;&amp;nbsp;next方法必须返回一个包含value和done两个属性的对象。&lt;br&gt;&amp;nbsp;&amp;nbsp;value属性是当前遍历位置的值，&lt;br&gt;&amp;nbsp;&amp;nbsp;done属性是一个布尔值，表似乎遍历是否结束。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
-    
-    
-      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6系列（二） const命令</title>
-    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%20const%E5%91%BD%E4%BB%A4/"/>
-    <id>http://yoursite.com/2018/12/15/es6/ES6系列（二） const命令/</id>
-    <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-09-17T03:54:31.993Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h1><pre><code>const用来声明常量，一旦声明，其值就不能改变。const与let的作用域相同，只在声明所在的块级作用域内有效。const声明的常量不可重复声明</code></pre><p><strong>const命令图解</strong></p><p><img src="/img/es6/const.jpg" alt="const命令"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;const命令&quot;&gt;&lt;a href=&quot;#const命令&quot; class=&quot;headerlink&quot; title=&quot;const命令&quot;&gt;&lt;/a&gt;const命令&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;const用来声明常量，一旦声明，其值就不能改变。
-const与let的作用域相同，
-      
     
     </summary>
     
