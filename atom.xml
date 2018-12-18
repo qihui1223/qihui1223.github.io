@@ -248,21 +248,64 @@
   </entry>
   
   <entry>
-    <title>ES6系列（二） const命令</title>
-    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%20const%E5%91%BD%E4%BB%A4/"/>
-    <id>http://yoursite.com/2018/12/15/es6/ES6系列（二） const命令/</id>
+    <title>ES6系列（八）函数的扩展</title>
+    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AB%EF%BC%89%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A9%E5%B1%95/"/>
+    <id>http://yoursite.com/2018/12/15/es6/ES6系列（八）函数的扩展/</id>
     <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-09-17T03:54:31.993Z</updated>
+    <updated>2017-09-10T08:07:22.699Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h1><pre><code>const用来声明常量，一旦声明，其值就不能改变。const与let的作用域相同，只在声明所在的块级作用域内有效。const声明的常量不可重复声明</code></pre><p><strong>const命令图解</strong></p><p><img src="/img/es6/const.jpg" alt="const命令"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h1><h2 id="（1）-为函数的参数设置默认值"><a href="#（1）-为函数的参数设置默认值" class="headerlink" title="（1） 为函数的参数设置默认值"></a>（1） 为函数的参数设置默认值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span> (<span class="params">x=<span class="number">0</span>,y=<span class="number">0</span></span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.x = x;</span><br><span class="line"><span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>任何带有默认值的参数，都被是为可选参数，不带默认值的参数，则被视为必需参数<br><a id="more"></a></p><h2 id="（2）rest参数"><a href="#（2）rest参数" class="headerlink" title="（2）rest参数"></a>（2）rest参数</h2><p>ES6引入了rest参数（…变量名），用于获取函数的多于参数，rest参数后面不能再有其他参数，否则会报错。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...values</span>)</span>&#123;</span><br><span class="line"><span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> value <span class="keyword">of</span> values) &#123;</span><br><span class="line">sum +=value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>);<span class="comment">//10</span></span><br></pre></td></tr></table></figure></p><h2 id="（3）扩展运算符…"><a href="#（3）扩展运算符…" class="headerlink" title="（3）扩展运算符…"></a>（3）扩展运算符…</h2><pre><code>扩展运算符好比rest参数的逆运算，将一个数组转换为用逗号分隔的参数序列。</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> b=[<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> c=[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="keyword">var</span> d=[<span class="number">0</span>,...a,...b,...c];</span><br><span class="line"><span class="built_in">console</span>.log(d);<span class="comment">//[0,1,2,3,4,5,6];</span></span><br></pre></td></tr></table></figure><h2 id="（4）箭头函数-gt"><a href="#（4）箭头函数-gt" class="headerlink" title="（4）箭头函数=&gt;"></a>（4）箭头函数=&gt;</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v;</span><br><span class="line">等同于：</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> v;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">()</span> =&gt;</span> <span class="number">5</span>;</span><br><span class="line">等同于：<span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><pre><code>简化函数：</code></pre><pre><code class="javascript">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>{    <span class="keyword">return</span> x*x;    });    <span class="comment">//箭头函数写法</span>[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].map(<span class="function"><span class="params">x</span>=&gt;</span>x*x);</code></pre><h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><pre><code>函数体内的this对象，绑定定义时所在的对象，而不是使用时所在的对象；不可以当作构造函数，即不可以使用new命令，否则报错；不可以使用arguments对象，该对象在函数体内不存在；</code></pre><h2 id="新的知识："><a href="#新的知识：" class="headerlink" title="新的知识："></a>新的知识：</h2><pre><code>1、如果箭头函数不需要参数或者需要多个参数，就是用圆括号代表参数部分    例如： var sum (num1,num2) =&gt; num1+num2;2、如果箭头函数的代码块部分多于一条语句，就要使用大括号将其括起来，并使用return语句返回3、如果箭头函数直接返回一个对象，必须在对象外面加上括号。var getTempItem = id =&gt; ({id:id,name:&quot;Temp&quot;});由于this在箭头函数中被绑定，所以不能用call（），apply（），bind（）修改this指向</code></pre><p><strong>函数的扩展图解</strong></p><p><img src="/img/es6/function.jpg" alt="函数的扩展">                </p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;const命令&quot;&gt;&lt;a href=&quot;#const命令&quot; class=&quot;headerlink&quot; title=&quot;const命令&quot;&gt;&lt;/a&gt;const命令&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;const用来声明常量，一旦声明，其值就不能改变。
-const与let的作用域相同，
-      
+      &lt;h1 id=&quot;函数的扩展&quot;&gt;&lt;a href=&quot;#函数的扩展&quot; class=&quot;headerlink&quot; title=&quot;函数的扩展&quot;&gt;&lt;/a&gt;函数的扩展&lt;/h1&gt;&lt;h2 id=&quot;（1）-为函数的参数设置默认值&quot;&gt;&lt;a href=&quot;#（1）-为函数的参数设置默认值&quot; class=&quot;headerlink&quot; title=&quot;（1） 为函数的参数设置默认值&quot;&gt;&lt;/a&gt;（1） 为函数的参数设置默认值&lt;/h2&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Point&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;x=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,y=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.x = x;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.y = y;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;任何带有默认值的参数，都被是为可选参数，不带默认值的参数，则被视为必需参数&lt;br&gt;
+    
+    </summary>
+    
+      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
+    
+    
+      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node系列（二）总览二</title>
+    <link href="http://yoursite.com/2018/12/15/node/node%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%E6%80%BB%E8%A7%88%E4%BA%8C/"/>
+    <id>http://yoursite.com/2018/12/15/node/node系列（二）总览二/</id>
+    <published>2018-12-15T07:31:24.743Z</published>
+    <updated>2017-12-28T06:20:40.754Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="node-js原理图"><a href="#node-js原理图" class="headerlink" title="node.js原理图"></a>node.js原理图</h2><p><img src="/img/node/node.png" alt="数值的扩展"><br><a id="more"></a></p><ul><li>单线程: 单线程的好处就是减少内存的开销,操作系统线程不在需要创建和销毁,如果某一个事情进入了,但是被I/O阻塞了.那么这个线程就阻塞了</li><li>非阻塞I/O: 不会等到I/O语句结束了,而会执行后面的语句,非阻塞I/O就能解决问题吗?比如执行A的业务,执行过程中,B的I/O回调完成了,此时怎么办??</li><li>事件机制:不管是新用户的请求,还是老用户的I/O完成,都将以事件的方式加入事件环,等待调用</li></ul><p>说是三个特点,实际上是一个特点,离开谁都不行,都玩不转<br>node.js中所有的I/O都是异步的,回调函数套用回调函数</p><h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><ul><li>管理异步动作,定时器和回调函数的机制叫做事件循环</li><li>异步的时候会压入到这个队列然后不停的读取事件,事件发生后会把对应的回调加入队列</li><li>队列按加入的顺序依次执行,由普通函数和回调函数组成</li></ul><h2 id="common-js规范"><a href="#common-js规范" class="headerlink" title="common.js规范"></a>common.js规范</h2><ul><li>一个node.js由大量的模块组成,每个Js都是一个模块</li><li>实现require方法,npm基于common.js实现了自动加载和安装依赖</li></ul><h2 id="node-js中的全局对象"><a href="#node-js中的全局对象" class="headerlink" title="node.js中的全局对象"></a>node.js中的全局对象</h2><ul><li>node.js中有一个特殊的对象,称为全局对象global,它及其其所有的属性都可以在程序的任何地方访问,<br>即全局变量</li><li>在浏览器JavaScript中通常window是全局对象,而node.js中全局对象为global<br><strong>filename  当前模块文件的绝对路径</strong>dirname 当前模块的所在目录的绝对路径</li></ul><h2 id="模块化优点"><a href="#模块化优点" class="headerlink" title="模块化优点"></a>模块化优点</h2><ul><li>增加内聚性</li><li>有助于分工合作,方便重构</li><li>提高代码质量</li></ul><h2 id="模块使用"><a href="#模块使用" class="headerlink" title="模块使用"></a>模块使用</h2><ul><li>定义模块</li><li>导出模块</li><li>使用模块</li></ul><h2 id="require"><a href="#require" class="headerlink" title="require"></a>require</h2><pre><code>加载模块后会缓存,多次加载会得到同一个对象</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载http模块</span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>) </span><br><span class="line"><span class="comment">//查看模块缓存</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">require</span>.cache)</span><br><span class="line"><span class="comment">//查看模块的绝对路径</span></span><br><span class="line"><span class="built_in">require</span>.resolve(<span class="string">'./test.js'</span>)</span><br><span class="line"><span class="comment">//查看单个模块的缓存</span></span><br><span class="line"><span class="built_in">require</span>.cache[<span class="built_in">require</span>.resolve(<span class="string">'./test.js'</span>)]</span><br><span class="line"><span class="comment">//删除模块的缓存</span></span><br><span class="line"><span class="keyword">delete</span> <span class="built_in">require</span>.cache[<span class="built_in">require</span>.resolve(<span class="string">'./test.js'</span>)]</span><br><span class="line">同步方法</span><br></pre></td></tr></table></figure><h2 id="包和npm"><a href="#包和npm" class="headerlink" title="包和npm"></a>包和npm</h2><ul><li>多个模块可以封装成一个包</li><li>npm是mode.js默认的模块管理器,用于安装和管理node模块可以用包的方式通过npm安装,卸载,发布包</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;node-js原理图&quot;&gt;&lt;a href=&quot;#node-js原理图&quot; class=&quot;headerlink&quot; title=&quot;node.js原理图&quot;&gt;&lt;/a&gt;node.js原理图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/img/node/node.png&quot; alt=&quot;数值的扩展&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="node" scheme="http://yoursite.com/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6系列（六）数值的扩展</title>
+    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AD%EF%BC%89%E6%95%B0%E5%80%BC%E7%9A%84%E6%89%A9%E5%B1%95/"/>
+    <id>http://yoursite.com/2018/12/15/es6/ES6系列（六）数值的扩展/</id>
+    <published>2018-12-15T07:31:24.743Z</published>
+    <updated>2017-09-17T03:53:39.574Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h1><h2 id="1-Number-isFinite-和-Number-isNaN"><a href="#1-Number-isFinite-和-Number-isNaN" class="headerlink" title="(1) Number.isFinite() 和 Number.isNaN()"></a>(1) Number.isFinite() 和 Number.isNaN()</h2><pre><code>用来检查Infinite和NaN这两个特殊值这两个方法仅对数值有效，对于飞数值一律返回false。</code></pre><pre><code class="javascript"><span class="built_in">Number</span>.isFinite(<span class="string">"25"</span>);<span class="comment">//false</span><span class="built_in">isFinite</span>(<span class="string">"25"</span>);<span class="comment">//true</span></code></pre><a id="more"></a>    <h2 id="2-Number-parseInt-Number-parseFloat"><a href="#2-Number-parseInt-Number-parseFloat" class="headerlink" title="(2) Number.parseInt() ,Number.parseFloat()"></a>(2) Number.parseInt() ,Number.parseFloat()</h2><p>ES6将全局方法parseInt()和parseFloat()移植到了Number对象上，这样做的目的是逐步减少全局方法，使语言逐步模块化。</p><h2 id="3-Math的扩展"><a href="#3-Math的扩展" class="headerlink" title="(3) Math的扩展"></a>(3) Math的扩展</h2><pre><code class="javascript"><span class="built_in">Math</span>.trunc() <span class="comment">//用于去除一个数的小数部分，返回其整数部分</span></code></pre><p><strong>数值的扩展图解</strong></p><p><img src="/img/es6/number.jpg" alt="数值的扩展">            </p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;数值的扩展&quot;&gt;&lt;a href=&quot;#数值的扩展&quot; class=&quot;headerlink&quot; title=&quot;数值的扩展&quot;&gt;&lt;/a&gt;数值的扩展&lt;/h1&gt;&lt;h2 id=&quot;1-Number-isFinite-和-Number-isNaN&quot;&gt;&lt;a href=&quot;#1-Number-isFinite-和-Number-isNaN&quot; class=&quot;headerlink&quot; title=&quot;(1) Number.isFinite() 和 Number.isNaN()&quot;&gt;&lt;/a&gt;(1) Number.isFinite() 和 Number.isNaN()&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;用来检查Infinite和NaN这两个特殊值
+这两个方法仅对数值有效，对于飞数值一律返回false。
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Number&lt;/span&gt;.isFinite(&lt;span class=&quot;string&quot;&gt;&quot;25&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//false&lt;/span&gt;
+&lt;span class=&quot;built_in&quot;&gt;isFinite&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;25&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -293,50 +336,6 @@ const与let的作用域相同，
     
     
       <category term="node" scheme="http://yoursite.com/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>node系列（二）总览二</title>
-    <link href="http://yoursite.com/2018/12/15/node/node%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%E6%80%BB%E8%A7%88%E4%BA%8C/"/>
-    <id>http://yoursite.com/2018/12/15/node/node系列（二）总览二/</id>
-    <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-12-28T06:20:40.754Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="node-js原理图"><a href="#node-js原理图" class="headerlink" title="node.js原理图"></a>node.js原理图</h2><p><img src="/img/node/node.png" alt="数值的扩展"><br><a id="more"></a></p><ul><li>单线程: 单线程的好处就是减少内存的开销,操作系统线程不在需要创建和销毁,如果某一个事情进入了,但是被I/O阻塞了.那么这个线程就阻塞了</li><li>非阻塞I/O: 不会等到I/O语句结束了,而会执行后面的语句,非阻塞I/O就能解决问题吗?比如执行A的业务,执行过程中,B的I/O回调完成了,此时怎么办??</li><li>事件机制:不管是新用户的请求,还是老用户的I/O完成,都将以事件的方式加入事件环,等待调用</li></ul><p>说是三个特点,实际上是一个特点,离开谁都不行,都玩不转<br>node.js中所有的I/O都是异步的,回调函数套用回调函数</p><h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><ul><li>管理异步动作,定时器和回调函数的机制叫做事件循环</li><li>异步的时候会压入到这个队列然后不停的读取事件,事件发生后会把对应的回调加入队列</li><li>队列按加入的顺序依次执行,由普通函数和回调函数组成</li></ul><h2 id="common-js规范"><a href="#common-js规范" class="headerlink" title="common.js规范"></a>common.js规范</h2><ul><li>一个node.js由大量的模块组成,每个Js都是一个模块</li><li>实现require方法,npm基于common.js实现了自动加载和安装依赖</li></ul><h2 id="node-js中的全局对象"><a href="#node-js中的全局对象" class="headerlink" title="node.js中的全局对象"></a>node.js中的全局对象</h2><ul><li>node.js中有一个特殊的对象,称为全局对象global,它及其其所有的属性都可以在程序的任何地方访问,<br>即全局变量</li><li>在浏览器JavaScript中通常window是全局对象,而node.js中全局对象为global<br><strong>filename  当前模块文件的绝对路径</strong>dirname 当前模块的所在目录的绝对路径</li></ul><h2 id="模块化优点"><a href="#模块化优点" class="headerlink" title="模块化优点"></a>模块化优点</h2><ul><li>增加内聚性</li><li>有助于分工合作,方便重构</li><li>提高代码质量</li></ul><h2 id="模块使用"><a href="#模块使用" class="headerlink" title="模块使用"></a>模块使用</h2><ul><li>定义模块</li><li>导出模块</li><li>使用模块</li></ul><h2 id="require"><a href="#require" class="headerlink" title="require"></a>require</h2><pre><code>加载模块后会缓存,多次加载会得到同一个对象</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载http模块</span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>) </span><br><span class="line"><span class="comment">//查看模块缓存</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">require</span>.cache)</span><br><span class="line"><span class="comment">//查看模块的绝对路径</span></span><br><span class="line"><span class="built_in">require</span>.resolve(<span class="string">'./test.js'</span>)</span><br><span class="line"><span class="comment">//查看单个模块的缓存</span></span><br><span class="line"><span class="built_in">require</span>.cache[<span class="built_in">require</span>.resolve(<span class="string">'./test.js'</span>)]</span><br><span class="line"><span class="comment">//删除模块的缓存</span></span><br><span class="line"><span class="keyword">delete</span> <span class="built_in">require</span>.cache[<span class="built_in">require</span>.resolve(<span class="string">'./test.js'</span>)]</span><br><span class="line">同步方法</span><br></pre></td></tr></table></figure><h2 id="包和npm"><a href="#包和npm" class="headerlink" title="包和npm"></a>包和npm</h2><ul><li>多个模块可以封装成一个包</li><li>npm是mode.js默认的模块管理器,用于安装和管理node模块可以用包的方式通过npm安装,卸载,发布包</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;node-js原理图&quot;&gt;&lt;a href=&quot;#node-js原理图&quot; class=&quot;headerlink&quot; title=&quot;node.js原理图&quot;&gt;&lt;/a&gt;node.js原理图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/img/node/node.png&quot; alt=&quot;数值的扩展&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="node" scheme="http://yoursite.com/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6系列（四） for-of 循环</title>
-    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%20for-of%20%E5%BE%AA%E7%8E%AF/"/>
-    <id>http://yoursite.com/2018/12/15/es6/ES6系列（四） for-of 循环/</id>
-    <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-09-17T03:56:36.157Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="for-of-循环"><a href="#for-of-循环" class="headerlink" title="for-of 循环"></a>for-of 循环</h1><pre><code>任何部署了Iterator接口的对象，都可以使用for-of循环遍历。我们如何遍历数组中的元素：</code></pre><h2 id="（1）-for循环"><a href="#（1）-for循环" class="headerlink" title="（1） for循环"></a>（1） for循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">0</span>; index &lt; myArray.length; index++) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="（2）-forEach方法遍历数组"><a href="#（2）-forEach方法遍历数组" class="headerlink" title="（2） forEach方法遍历数组"></a>（2） forEach方法遍历数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myArray.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="（3）-for-in循环"><a href="#（3）-for-in循环" class="headerlink" title="（3） for-in循环"></a>（3） for-in循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index <span class="keyword">in</span> myArray) &#123; <span class="comment">// 千万别这样做！！</span></span><br><span class="line">    <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这绝对是一个糟糕的选择，为什么呢？<br>    1）在这段代码中，赋给index的值不是实际的数字，而是字符串“0”、“1”、“2”，此时很可能在无意之间进行字符串算数计算，例如：“2” + 1 == “21”，这给编码过程带来极大的不便。<br>    2）作用于数组的for-in循环体除了遍历数组元素外，还会遍历自定义属性。<br>    举个例子，如果你的数组中有一个可枚举属性myArray.name，循环将额外执行一次，遍历到名为“name”的索引。就连数组原型链上的属性都能被访问到。<br>    3）最让人震惊的是，在某些情况下，这段代码可能按照随机顺序遍历数组元素。<br>    4）简而言之，for-in是为普通对象设计的，你可以遍历得到字符串类型的键，因此不适用于数组遍历。 </p><h2 id="（4）强大的for-of循环"><a href="#（4）强大的for-of循环" class="headerlink" title="（4）强大的for-of循环"></a>（4）强大的for-of循环</h2><pre><code class="javascript"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> myArray) {    <span class="built_in">console</span>.log(value);}</code></pre><p>1）这是最简洁、最直接的遍历数组元素的语法；<br>2）这个方法避开了for-in循环的所有缺陷 ；<br>3）与forEach()不同的是，它可以正确响应break、continue和return语句 ；<br>4）for-of循环也可以遍历其它的集合，for-of循环不仅支持数组，还支持大多数类数组对象，例如DOM NodeList对象；<br>5）for-of循环也支持字符串遍历，它将字符串视为一系列的Unicode字符来进行遍历。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;for-of-循环&quot;&gt;&lt;a href=&quot;#for-of-循环&quot; class=&quot;headerlink&quot; title=&quot;for-of 循环&quot;&gt;&lt;/a&gt;for-of 循环&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;任何部署了Iterator接口的对象，都可以使用for-of循环遍历。
-我们如何遍历数组中的元素：
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;（1）-for循环&quot;&gt;&lt;a href=&quot;#（1）-for循环&quot; class=&quot;headerlink&quot; title=&quot;（1） for循环&quot;&gt;&lt;/a&gt;（1） for循环&lt;/h2&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; index = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; index &amp;lt; myArray.length; index++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 		&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(myArray[index]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
-    
-    
-      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
     
   </entry>
   
@@ -410,44 +409,19 @@ const与let的作用域相同，
   </entry>
   
   <entry>
-    <title>ES6系列（八）函数的扩展</title>
-    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AB%EF%BC%89%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A9%E5%B1%95/"/>
-    <id>http://yoursite.com/2018/12/15/es6/ES6系列（八）函数的扩展/</id>
+    <title>ES6系列（四） for-of 循环</title>
+    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%20for-of%20%E5%BE%AA%E7%8E%AF/"/>
+    <id>http://yoursite.com/2018/12/15/es6/ES6系列（四） for-of 循环/</id>
     <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-09-10T08:07:22.699Z</updated>
+    <updated>2017-09-17T03:56:36.157Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h1><h2 id="（1）-为函数的参数设置默认值"><a href="#（1）-为函数的参数设置默认值" class="headerlink" title="（1） 为函数的参数设置默认值"></a>（1） 为函数的参数设置默认值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span> (<span class="params">x=<span class="number">0</span>,y=<span class="number">0</span></span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.x = x;</span><br><span class="line"><span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>任何带有默认值的参数，都被是为可选参数，不带默认值的参数，则被视为必需参数<br><a id="more"></a></p><h2 id="（2）rest参数"><a href="#（2）rest参数" class="headerlink" title="（2）rest参数"></a>（2）rest参数</h2><p>ES6引入了rest参数（…变量名），用于获取函数的多于参数，rest参数后面不能再有其他参数，否则会报错。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...values</span>)</span>&#123;</span><br><span class="line"><span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> value <span class="keyword">of</span> values) &#123;</span><br><span class="line">sum +=value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>);<span class="comment">//10</span></span><br></pre></td></tr></table></figure></p><h2 id="（3）扩展运算符…"><a href="#（3）扩展运算符…" class="headerlink" title="（3）扩展运算符…"></a>（3）扩展运算符…</h2><pre><code>扩展运算符好比rest参数的逆运算，将一个数组转换为用逗号分隔的参数序列。</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> b=[<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> c=[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="keyword">var</span> d=[<span class="number">0</span>,...a,...b,...c];</span><br><span class="line"><span class="built_in">console</span>.log(d);<span class="comment">//[0,1,2,3,4,5,6];</span></span><br></pre></td></tr></table></figure><h2 id="（4）箭头函数-gt"><a href="#（4）箭头函数-gt" class="headerlink" title="（4）箭头函数=&gt;"></a>（4）箭头函数=&gt;</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v;</span><br><span class="line">等同于：</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> v;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">()</span> =&gt;</span> <span class="number">5</span>;</span><br><span class="line">等同于：<span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><pre><code>简化函数：</code></pre><pre><code class="javascript">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>{    <span class="keyword">return</span> x*x;    });    <span class="comment">//箭头函数写法</span>[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].map(<span class="function"><span class="params">x</span>=&gt;</span>x*x);</code></pre><h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><pre><code>函数体内的this对象，绑定定义时所在的对象，而不是使用时所在的对象；不可以当作构造函数，即不可以使用new命令，否则报错；不可以使用arguments对象，该对象在函数体内不存在；</code></pre><h2 id="新的知识："><a href="#新的知识：" class="headerlink" title="新的知识："></a>新的知识：</h2><pre><code>1、如果箭头函数不需要参数或者需要多个参数，就是用圆括号代表参数部分    例如： var sum (num1,num2) =&gt; num1+num2;2、如果箭头函数的代码块部分多于一条语句，就要使用大括号将其括起来，并使用return语句返回3、如果箭头函数直接返回一个对象，必须在对象外面加上括号。var getTempItem = id =&gt; ({id:id,name:&quot;Temp&quot;});由于this在箭头函数中被绑定，所以不能用call（），apply（），bind（）修改this指向</code></pre><p><strong>函数的扩展图解</strong></p><p><img src="/img/es6/function.jpg" alt="函数的扩展">                </p>]]></content>
+    <content type="html"><![CDATA[<h1 id="for-of-循环"><a href="#for-of-循环" class="headerlink" title="for-of 循环"></a>for-of 循环</h1><pre><code>任何部署了Iterator接口的对象，都可以使用for-of循环遍历。我们如何遍历数组中的元素：</code></pre><h2 id="（1）-for循环"><a href="#（1）-for循环" class="headerlink" title="（1） for循环"></a>（1） for循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">0</span>; index &lt; myArray.length; index++) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="（2）-forEach方法遍历数组"><a href="#（2）-forEach方法遍历数组" class="headerlink" title="（2） forEach方法遍历数组"></a>（2） forEach方法遍历数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myArray.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="（3）-for-in循环"><a href="#（3）-for-in循环" class="headerlink" title="（3） for-in循环"></a>（3） for-in循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index <span class="keyword">in</span> myArray) &#123; <span class="comment">// 千万别这样做！！</span></span><br><span class="line">    <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这绝对是一个糟糕的选择，为什么呢？<br>    1）在这段代码中，赋给index的值不是实际的数字，而是字符串“0”、“1”、“2”，此时很可能在无意之间进行字符串算数计算，例如：“2” + 1 == “21”，这给编码过程带来极大的不便。<br>    2）作用于数组的for-in循环体除了遍历数组元素外，还会遍历自定义属性。<br>    举个例子，如果你的数组中有一个可枚举属性myArray.name，循环将额外执行一次，遍历到名为“name”的索引。就连数组原型链上的属性都能被访问到。<br>    3）最让人震惊的是，在某些情况下，这段代码可能按照随机顺序遍历数组元素。<br>    4）简而言之，for-in是为普通对象设计的，你可以遍历得到字符串类型的键，因此不适用于数组遍历。 </p><h2 id="（4）强大的for-of循环"><a href="#（4）强大的for-of循环" class="headerlink" title="（4）强大的for-of循环"></a>（4）强大的for-of循环</h2><pre><code class="javascript"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> myArray) {    <span class="built_in">console</span>.log(value);}</code></pre><p>1）这是最简洁、最直接的遍历数组元素的语法；<br>2）这个方法避开了for-in循环的所有缺陷 ；<br>3）与forEach()不同的是，它可以正确响应break、continue和return语句 ；<br>4）for-of循环也可以遍历其它的集合，for-of循环不仅支持数组，还支持大多数类数组对象，例如DOM NodeList对象；<br>5）for-of循环也支持字符串遍历，它将字符串视为一系列的Unicode字符来进行遍历。</p>]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;函数的扩展&quot;&gt;&lt;a href=&quot;#函数的扩展&quot; class=&quot;headerlink&quot; title=&quot;函数的扩展&quot;&gt;&lt;/a&gt;函数的扩展&lt;/h1&gt;&lt;h2 id=&quot;（1）-为函数的参数设置默认值&quot;&gt;&lt;a href=&quot;#（1）-为函数的参数设置默认值&quot; class=&quot;headerlink&quot; title=&quot;（1） 为函数的参数设置默认值&quot;&gt;&lt;/a&gt;（1） 为函数的参数设置默认值&lt;/h2&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Point&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;x=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,y=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.x = x;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.y = y;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;任何带有默认值的参数，都被是为可选参数，不带默认值的参数，则被视为必需参数&lt;br&gt;
-    
-    </summary>
-    
-      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
-    
-    
-      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6系列（六）数值的扩展</title>
-    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E5%85%AD%EF%BC%89%E6%95%B0%E5%80%BC%E7%9A%84%E6%89%A9%E5%B1%95/"/>
-    <id>http://yoursite.com/2018/12/15/es6/ES6系列（六）数值的扩展/</id>
-    <published>2018-12-15T07:31:24.743Z</published>
-    <updated>2017-09-17T03:53:39.574Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h1><h2 id="1-Number-isFinite-和-Number-isNaN"><a href="#1-Number-isFinite-和-Number-isNaN" class="headerlink" title="(1) Number.isFinite() 和 Number.isNaN()"></a>(1) Number.isFinite() 和 Number.isNaN()</h2><pre><code>用来检查Infinite和NaN这两个特殊值这两个方法仅对数值有效，对于飞数值一律返回false。</code></pre><pre><code class="javascript"><span class="built_in">Number</span>.isFinite(<span class="string">"25"</span>);<span class="comment">//false</span><span class="built_in">isFinite</span>(<span class="string">"25"</span>);<span class="comment">//true</span></code></pre><a id="more"></a>    <h2 id="2-Number-parseInt-Number-parseFloat"><a href="#2-Number-parseInt-Number-parseFloat" class="headerlink" title="(2) Number.parseInt() ,Number.parseFloat()"></a>(2) Number.parseInt() ,Number.parseFloat()</h2><p>ES6将全局方法parseInt()和parseFloat()移植到了Number对象上，这样做的目的是逐步减少全局方法，使语言逐步模块化。</p><h2 id="3-Math的扩展"><a href="#3-Math的扩展" class="headerlink" title="(3) Math的扩展"></a>(3) Math的扩展</h2><pre><code class="javascript"><span class="built_in">Math</span>.trunc() <span class="comment">//用于去除一个数的小数部分，返回其整数部分</span></code></pre><p><strong>数值的扩展图解</strong></p><p><img src="/img/es6/number.jpg" alt="数值的扩展">            </p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;数值的扩展&quot;&gt;&lt;a href=&quot;#数值的扩展&quot; class=&quot;headerlink&quot; title=&quot;数值的扩展&quot;&gt;&lt;/a&gt;数值的扩展&lt;/h1&gt;&lt;h2 id=&quot;1-Number-isFinite-和-Number-isNaN&quot;&gt;&lt;a href=&quot;#1-Number-isFinite-和-Number-isNaN&quot; class=&quot;headerlink&quot; title=&quot;(1) Number.isFinite() 和 Number.isNaN()&quot;&gt;&lt;/a&gt;(1) Number.isFinite() 和 Number.isNaN()&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;用来检查Infinite和NaN这两个特殊值
-这两个方法仅对数值有效，对于飞数值一律返回false。
-&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Number&lt;/span&gt;.isFinite(&lt;span class=&quot;string&quot;&gt;&quot;25&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//false&lt;/span&gt;
-&lt;span class=&quot;built_in&quot;&gt;isFinite&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;25&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;h1 id=&quot;for-of-循环&quot;&gt;&lt;a href=&quot;#for-of-循环&quot; class=&quot;headerlink&quot; title=&quot;for-of 循环&quot;&gt;&lt;/a&gt;for-of 循环&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;任何部署了Iterator接口的对象，都可以使用for-of循环遍历。
+我们如何遍历数组中的元素：
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;（1）-for循环&quot;&gt;&lt;a href=&quot;#（1）-for循环&quot; class=&quot;headerlink&quot; title=&quot;（1） for循环&quot;&gt;&lt;/a&gt;（1） for循环&lt;/h2&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; index = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; index &amp;lt; myArray.length; index++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 		&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(myArray[index]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -495,6 +469,32 @@ const与let的作用域相同，
 （2）startsWith():返回布尔值，表示参数字符串是否在源字符串的头部
 （3）endsWith():返回布尔值，表示参数字符串是否在源字符串的尾部
 &lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="es6" scheme="http://yoursite.com/categories/es6/"/>
+    
+    
+      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6系列（二） const命令</title>
+    <link href="http://yoursite.com/2018/12/15/es6/ES6%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%20const%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2018/12/15/es6/ES6系列（二） const命令/</id>
+    <published>2018-12-15T07:31:24.743Z</published>
+    <updated>2017-09-17T03:54:31.993Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h1><pre><code>const用来声明常量，一旦声明，其值就不能改变。const与let的作用域相同，只在声明所在的块级作用域内有效。const声明的常量不可重复声明</code></pre><p><strong>const命令图解</strong></p><p><img src="/img/es6/const.jpg" alt="const命令"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;const命令&quot;&gt;&lt;a href=&quot;#const命令&quot; class=&quot;headerlink&quot; title=&quot;const命令&quot;&gt;&lt;/a&gt;const命令&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;const用来声明常量，一旦声明，其值就不能改变。
+const与let的作用域相同，
+      
     
     </summary>
     
