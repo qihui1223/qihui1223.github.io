@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（九）Set 和 Map/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（八）函数的扩展/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -296,7 +296,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（九）Set 和 Map/" itemprop="url">ES6系列（九）Set 和 Map</a></h1>
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（八）函数的扩展/" itemprop="url">ES6系列（八）函数的扩展</a></h1>
         
 
         <div class="post-meta">
@@ -369,19 +369,160 @@
 
       
         
-          <h1 id="Set-和-Map"><a href="#Set-和-Map" class="headerlink" title="Set 和 Map"></a>Set 和 Map</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>Set类似于数组，不过其成员值都是唯一的，没有重复的值。<br>    Set本身是一个构造函数，用来生成Set数据结构。<br>          例如： </p>
-<pre><code class="javascript"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();
-[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">2</span>].map(<span class="function"><span class="params">x</span> =&gt;</span> s.add(x));
-<span class="keyword">for</span>(i <span class="keyword">of</span> s ){
-    <span class="built_in">console</span>.log(i);<span class="comment">//2,3,4,5</span>
-}
-<span class="comment">//可以用数组对set进行初始化</span>
-<span class="keyword">var</span> items = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>]);
-<span class="built_in">console</span>.log(items.size);<span class="comment">//3</span>
+          <h1 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h1><h2 id="（1）-为函数的参数设置默认值"><a href="#（1）-为函数的参数设置默认值" class="headerlink" title="（1） 为函数的参数设置默认值"></a>（1） 为函数的参数设置默认值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span> (<span class="params">x=<span class="number">0</span>,y=<span class="number">0</span></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.x = x;</span><br><span class="line">	<span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>任何带有默认值的参数，都被是为可选参数，不带默认值的参数，则被视为必需参数<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/15/es6/ES6系列（八）函数的扩展/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（五）字符串的扩展/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="齐辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qihui">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（五）字符串的扩展/" itemprop="url">ES6系列（五）字符串的扩展</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-15T15:31:24+08:00">
+                2018-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h1><h2 id="1-、ES6提供了3中新方法来确定一个字符串是否包含在另一个字符串中："><a href="#1-、ES6提供了3中新方法来确定一个字符串是否包含在另一个字符串中：" class="headerlink" title="1)、ES6提供了3中新方法来确定一个字符串是否包含在另一个字符串中："></a>1)、ES6提供了3中新方法来确定一个字符串是否包含在另一个字符串中：</h2><pre><code>（1）contains():返回布尔值，表示是否找到了参数字符串
+（2）startsWith():返回布尔值，表示参数字符串是否在源字符串的头部
+（3）endsWith():返回布尔值，表示参数字符串是否在源字符串的尾部
 </code></pre>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（九）Set 和 Map/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/es6/ES6系列（五）字符串的扩展/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -578,7 +719,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（六）数值的扩展/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（十）Iterator遍历器/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -597,7 +738,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（六）数值的扩展/" itemprop="url">ES6系列（六）数值的扩展</a></h1>
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（十）Iterator遍历器/" itemprop="url">ES6系列（十）Iterator遍历器</a></h1>
         
 
         <div class="post-meta">
@@ -670,21 +811,18 @@
 
       
         
-          <h1 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h1><h2 id="1-Number-isFinite-和-Number-isNaN"><a href="#1-Number-isFinite-和-Number-isNaN" class="headerlink" title="(1) Number.isFinite() 和 Number.isNaN()"></a>(1) Number.isFinite() 和 Number.isNaN()</h2><pre><code>用来检查Infinite和NaN这两个特殊值
-这两个方法仅对数值有效，对于飞数值一律返回false。
-</code></pre><pre><code class="javascript"><span class="built_in">Number</span>.isFinite(<span class="string">"25"</span>);<span class="comment">//false</span>
-<span class="built_in">isFinite</span>(<span class="string">"25"</span>);<span class="comment">//true</span>
-</code></pre>
+          <h1 id="Iterator遍历器"><a href="#Iterator遍历器" class="headerlink" title="Iterator遍历器"></a>Iterator遍历器</h1><p>遍历器是一种协议，任何对象只要部署了这个协议，就可以完成遍历操作。它的主要作用有两个<br>&nbsp;&nbsp;1.一个是为遍历对象的属性提供统一的接口，<br>&nbsp;&nbsp;2.二是时对象的属性能够按次序排列。</p>
+<p>ES6的遍历器协议规定，部署了next方法的对象，就具备了遍历器功能。<br>&nbsp;&nbsp;next方法必须返回一个包含value和done两个属性的对象。<br>&nbsp;&nbsp;value属性是当前遍历位置的值，<br>&nbsp;&nbsp;done属性是一个布尔值，表似乎遍历是否结束。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（六）数值的扩展/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/es6/ES6系列（十）Iterator遍历器/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -828,155 +966,6 @@ const声明的常量不可重复声明
 <p><img src="/img/es6/const.jpg" alt="const命令"></p>
 
           
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（五）字符串的扩展/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="齐辉">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qihui">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（五）字符串的扩展/" itemprop="url">ES6系列（五）字符串的扩展</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-15T15:31:24+08:00">
-                2018-12-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/es6/" itemprop="url" rel="index">
-                    <span itemprop="name">es6</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h1><h2 id="1-、ES6提供了3中新方法来确定一个字符串是否包含在另一个字符串中："><a href="#1-、ES6提供了3中新方法来确定一个字符串是否包含在另一个字符串中：" class="headerlink" title="1)、ES6提供了3中新方法来确定一个字符串是否包含在另一个字符串中："></a>1)、ES6提供了3中新方法来确定一个字符串是否包含在另一个字符串中：</h2><pre><code>（1）contains():返回布尔值，表示是否找到了参数字符串
-（2）startsWith():返回布尔值，表示参数字符串是否在源字符串的头部
-（3）endsWith():返回布尔值，表示参数字符串是否在源字符串的尾部
-</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（五）字符串的扩展/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
