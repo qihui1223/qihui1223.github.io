@@ -105,15 +105,15 @@
 <meta property="og:site_name" content="qihui">
 <meta property="og:description" content="I/O流 Java语言定义的许多类专门负责各种方式的输入/输出,这些类都被放在java.io包中.其中,所有的输入流都是抽象类InputStream(字节输入流)或抽象类Render(字符输入流)的子类;而所有输出流都是抽象类OutputStream(字节输出流)或抽象类Writer(字符输出流)的子类.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/12/24/java/java%20IO流(一)/images/InputStream.png">
-<meta property="og:image" content="http://yoursite.com/2018/12/24/java/java%20IO流(一)/images/render.png">
-<meta property="og:image" content="http://yoursite.com/2018/12/24/java/java%20IO流(一)/images/OutputStream_1.png">
-<meta property="og:image" content="http://yoursite.com/2018/12/24/java/java%20IO流(一)/images/Write.png">
-<meta property="og:updated_time" content="2018-12-23T19:30:50.000Z">
+<meta property="og:image" content="http://yoursite.com/img/java/InputStream.png">
+<meta property="og:image" content="http://yoursite.com/img/java/render.png">
+<meta property="og:image" content="http://yoursite.com/img/java/OutputStream_1.png">
+<meta property="og:image" content="http://yoursite.com/img/java/Write.png">
+<meta property="og:updated_time" content="2018-12-24T03:34:11.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java IO流(一)">
 <meta name="twitter:description" content="I/O流 Java语言定义的许多类专门负责各种方式的输入/输出,这些类都被放在java.io包中.其中,所有的输入流都是抽象类InputStream(字节输入流)或抽象类Render(字符输入流)的子类;而所有输出流都是抽象类OutputStream(字节输出流)或抽象类Writer(字符输出流)的子类.">
-<meta name="twitter:image" content="http://yoursite.com/2018/12/24/java/java%20IO流(一)/images/InputStream.png">
+<meta name="twitter:image" content="http://yoursite.com/img/java/InputStream.png">
 
 
 
@@ -379,7 +379,7 @@
 <li>Java语言定义的许多类专门负责各种方式的输入/输出,这些类都被放在java.io包中.其中,所有的输入流都是抽象类InputStream(字节输入流)或抽象类Render(字符输入流)的子类;而所有输出流都是抽象类OutputStream(字节输出流)或抽象类Writer(字符输出流)的子类.</li>
 </ul>
 <a id="more"></a>
-<h4 id="输入流-InputStream"><a href="#输入流-InputStream" class="headerlink" title="输入流 InputStream"></a>输入流 InputStream</h4><p>InputStream类是字节输入流的抽象类,是所有字符输入流的父类.InputStream类的具体层次结构如下:<br><img src="./images/InputStream.png" alt="enter description here"></p>
+<h4 id="输入流-InputStream"><a href="#输入流-InputStream" class="headerlink" title="输入流 InputStream"></a>输入流 InputStream</h4><p>InputStream类是字节输入流的抽象类,是所有字符输入流的父类.InputStream类的具体层次结构如下:<br><img src="/img/java/InputStream.png" alt="enter description here"></p>
 <p>该类中所有方法遇见错误都会引发IOException异常.<br>常用方法</p>
 <ul>
 <li>read() :  从输入流中读取数据到下一个字节.返回0~255范围类的 int 字节值.如果因为已经到达流末尾而没有可用的字节,则返回值为-1.</li>
@@ -390,8 +390,8 @@
 <li>markSupported()方法: 如果当前流支持mark()/reset()操作就返回true</li>
 <li>close()方法: 关闭此输入流并释放与该流关联的所有系统资源</li>
 </ul>
-<h5 id="Reader类"><a href="#Reader类" class="headerlink" title="Reader类"></a>Reader类</h5><p>java中的字符Unicode编码,是双字符.InputStream是用来处理字节的,并不适合处理字符文本. Java为字符文本专门提供了一套单独的类Reader,但是Reader并不是InputStream类的替换者,只是在处理字符串简化了编程.Reader类是字符输入流的抽象类,所有字符输入流的实现都是他的子类.<br><img src="./images/render.png" alt="enter description here"></p>
-<h4 id="输出流-OutputStream"><a href="#输出流-OutputStream" class="headerlink" title="输出流 OutputStream"></a>输出流 OutputStream</h4><h6 id="OutputStream-类"><a href="#OutputStream-类" class="headerlink" title="OutputStream 类"></a>OutputStream 类</h6><p>OutputStream 类是字节输出流的抽象类,此抽象类是表示输出字节流的所有类的超类.<br>OutputStream类的具体层次结构如下:<br><img src="./images/OutputStream_1.png" alt="enter description here"></p>
+<h5 id="Reader类"><a href="#Reader类" class="headerlink" title="Reader类"></a>Reader类</h5><p>java中的字符Unicode编码,是双字符.InputStream是用来处理字节的,并不适合处理字符文本. Java为字符文本专门提供了一套单独的类Reader,但是Reader并不是InputStream类的替换者,只是在处理字符串简化了编程.Reader类是字符输入流的抽象类,所有字符输入流的实现都是他的子类.<br><img src="/img/java/render.png" alt="enter description here"></p>
+<h4 id="输出流-OutputStream"><a href="#输出流-OutputStream" class="headerlink" title="输出流 OutputStream"></a>输出流 OutputStream</h4><h6 id="OutputStream-类"><a href="#OutputStream-类" class="headerlink" title="OutputStream 类"></a>OutputStream 类</h6><p>OutputStream 类是字节输出流的抽象类,此抽象类是表示输出字节流的所有类的超类.<br>OutputStream类的具体层次结构如下:<br><img src="/img/java/OutputStream_1.png" alt="enter description here"></p>
 <p>OutputStream 类中的所有方法均返回void, 在遇到错误会引发IOException 异常<br>常用方法</p>
 <ul>
 <li>write(int b)方法: 将指定的字节写入此输出流.</li>
@@ -400,7 +400,7 @@
 <li>flush()方法: 彻底完成输出并清空缓存区</li>
 <li>close()方法区: 关闭输出流</li>
 </ul>
-<h6 id="Write-类"><a href="#Write-类" class="headerlink" title="Write 类"></a>Write 类</h6><p>Write类是字符输出流的抽象类,所有的字符输出类的实现都是它的子类.Write类的层次结构如下:<br><img src="./images/Write.png" alt="enter description here"></p>
+<h6 id="Write-类"><a href="#Write-类" class="headerlink" title="Write 类"></a>Write 类</h6><p>Write类是字符输出流的抽象类,所有的字符输出类的实现都是它的子类.Write类的层次结构如下:<br><img src="/img/java/Write.png" alt="enter description here"></p>
 
       
     </div>
