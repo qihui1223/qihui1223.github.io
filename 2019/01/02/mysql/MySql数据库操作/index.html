@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="数据库,mysql,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="qihui" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="MySQLMySQL 是最流行的关系型数据库管理系统，在WEB应用方面 MySQL 是最好的RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一。">
+<meta name="keywords" content="数据库,mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySql数据库操作">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/mysql/MySql数据库操作/index.html">
+<meta property="og:site_name" content="qihui">
+<meta property="og:description" content="MySQLMySQL 是最流行的关系型数据库管理系统，在WEB应用方面 MySQL 是最好的RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/img/mysql/1.png">
+<meta property="og:image" content="http://yoursite.com/img/mysql/2.png">
+<meta property="og:image" content="http://yoursite.com/img/mysql/3.png">
+<meta property="og:image" content="http://yoursite.com/img/mysql/4.png">
+<meta property="og:updated_time" content="2019-01-02T08:04:58.517Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySql数据库操作">
+<meta name="twitter:description" content="MySQLMySQL 是最流行的关系型数据库管理系统，在WEB应用方面 MySQL 是最好的RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一。">
+<meta name="twitter:image" content="http://yoursite.com/img/mysql/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/02/mysql/MySql数据库操作/">
+
+
+
+
+
+  <title>MySql数据库操作 | qihui</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qihui</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">倘只看书，便变成书橱</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/mysql/MySql数据库操作/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="齐辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qihui">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySql数据库操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T16:03:02+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><p>MySQL 是最流行的关系型数据库管理系统，在WEB应用方面 MySQL 是最好的RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一。<br><a id="more"></a></p>
+<h5 id="MYSQL文件夹"><a href="#MYSQL文件夹" class="headerlink" title="MYSQL文件夹:"></a>MYSQL文件夹:</h5><p>1.bin目录，存储可执行文件<br>2.data:存储数据文件<br>3.include:存储包含的头文件<br>4.lib目录，存储库文件<br>5.docs目录，文件<br>share目录，错误消息和字符集文件<br>my.ini文件，MYSQL的配置文件，设置字符集<br>客户端字符集[mysql]:default-character-set=utf8<br>服务器端字符集[mysql]:character-set-server=utf8</p>
+<h5 id="mysql开启与关闭"><a href="#mysql开启与关闭" class="headerlink" title="mysql开启与关闭"></a>mysql开启与关闭</h5><p>开启mysql -uroot -p或net start mysql56<br>关闭net stop mysql57 ,   退出exit或quit或\q<br>设置命令提示符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Ctrl-C强制退出</span><br><span class="line">设置字符集：</span><br><span class="line">\s </span><br><span class="line">查看：status</span><br><span class="line">-u用户名</span><br><span class="line">-p密码</span><br><span class="line">-h服务器名称</span><br><span class="line">-p端口号</span><br><span class="line">-D打开指定数据库</span><br><span class="line">--prompt=name,设置命令提示符（只对当前连接符）</span><br><span class="line">--delimiter=name,指定分隔符</span><br><span class="line">-V,--version,输出版本信息并退出</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>1.命令提示符用的参数：<br>连接上客户端后，用prompt命令修改提示符参数:<br>\D:完整日期<br>\d:当前数据库<br>\h:服务器名称<br>\u:当前用户名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如 prompt \h~\u~\D~\d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.MYSQL常用命令<br> SELECT VERSION();显示当前版本<br> SELECT NOW();当前日期时间<br> SELECT USER();显示当前用户</p>
+</li>
+<li>3.MYSQL语句的规范：<br>  关键字与函数名称全部大写<br>  数据库名称，表名称，字段名称全部小写<br>sql语句必须以分隔符结尾<br>sql语句支持折行操作，1.只要不把单词,标记或者引号字符串分割成两部分，<pre><code>可以在下一行继续写
+</code></pre>数据库名称、表名称、字段名称尽量不用MYSQL保留字，<br>如果需要使用的时候使用反引号<code></code>将括号括起来。</li>
+<li><p>4.修改默认分隔符<br>DELIMITER 分割符</p>
+</li>
+<li><p>5.上下键调出之前的命令</p>
+</li>
+<li><p>6.开启mysql的输出日志<br> \T</p>
+</li>
+<li><p>7.结束mysql的输出日志<br> \t</p>
+<h4 id="mysql-数据库操作"><a href="#mysql-数据库操作" class="headerlink" title="mysql 数据库操作"></a>mysql 数据库操作</h4><h5 id="表基本操作"><a href="#表基本操作" class="headerlink" title="表基本操作"></a>表基本操作</h5></li>
+<li><p>查看表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLES [FROM db_name] [LIKE &apos;pattern&apos;|WHEAR expr];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看列（表的组织结构）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SHOW COLUMNS FROM tb_name;</span><br><span class="line">DESC tb_name;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上两条语句都可以。 </p>
+<ul>
+<li><p>查看表的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM tb_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>插入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT [INTO] tb_name [(col_name,...)] VALUES(val,...);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果不指明任何字段名，那么插入的数据必须要包含所有的字段</p>
+<h5 id="插入记录"><a href="#插入记录" class="headerlink" title="插入记录"></a>插入记录</h5><p><strong>共有三种Insert语句</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT [INTO] tb_name [(col_name,.....)] &#123;VALUE|VALUES&#125; (&#123;expr|DEFAULT&#125;,...) (...),...</span><br></pre></td></tr></table></figure></p>
+<p>values是标准SQL关键字，value是MySQL自己的。<br>插入语句可以一次使用: value<br>插入多条记录使用: values<br>值可以是：函数,数学表达式,等</p>
+<p>默认值 在创建数据表的时候可以设置DEFAUTL。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE users(</span><br><span class="line">	id SAMLLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">	username SAMLLINT VARCHAR(20) NOT NULL,</span><br><span class="line">	password SAMLLINT VARCHAR(20) NOT NULL,</span><br><span class="line">	age TINYINT UNSIGNED NOT NULL DEFAULT 10,</span><br><span class="line">	sex BOOLEAN</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-- 修改第一个用户的信息 id=1</span><br><span class="line">UPDATE user SET age=29 WHERE id=1;</span><br><span class="line"></span><br><span class="line">-- 修改id=3的用户，username age email</span><br><span class="line">UPDATE user SET age=47,email=&apos;lilys@qq.com&apos;,username=&apos;lilys&apos; WHERE id=3;</span><br><span class="line"></span><br><span class="line">-- 所有用户年龄+10</span><br><span class="line">UPDATE user SET age=age+10;</span><br><span class="line"></span><br><span class="line">-- 将id&lt;=5的用户年龄改为-20，将邮箱改为默认值</span><br><span class="line">UPDATE user SET age=age-20,email=DEFAULT WHERE id&lt;=5;</span><br></pre></td></tr></table></figure></p>
+<p>例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">-- 不指定字段名称</span><br><span class="line">INSERT user VALUE(1,&apos;king&apos;,24,&apos;382771946@qq.com&apos;);</span><br><span class="line">INSERT user VALUES(NULL,&apos;queen&apos;,25,&apos;queen@qq.com&apos;);</span><br><span class="line">INSERT user VALUES(DEFAULT,&apos;lily&apos;,26,&apos;lily@qq.com&apos;);</span><br><span class="line"></span><br><span class="line">-- 列出指定字段的形式</span><br><span class="line">INSERT user(username,email) VALUES(&apos;rose&apos;,&apos;rose@qq.com&apos;);</span><br><span class="line">INSERT user(age,email,id,username) VALUES(34,&apos;imooc@qq.com&apos;,5,&apos;imooc&apos;);</span><br><span class="line"></span><br><span class="line">-- 一次插入3条记录</span><br><span class="line">INSERT user VALUES(NULL,&apos;a&apos;,DEFAULT,DEFAULT),</span><br><span class="line">(NULL,&apos;b&apos;,56,&apos;b@qq.com&apos;),</span><br><span class="line">(NULL,&apos;c&apos;,14,&apos;c@qq.com&apos;);</span><br><span class="line"></span><br><span class="line">-- INSERT ...SET 的形式</span><br><span class="line">INSERT user SET username=&apos;d&apos;,age=45,email=&apos;d@qq.com&apos;;</span><br><span class="line"></span><br><span class="line">-- INSERT SELECT</span><br><span class="line">INSERT user(username) SELECT a FROM test;</span><br></pre></td></tr></table></figure></p>
+<h5 id="单表删除"><a href="#单表删除" class="headerlink" title="单表删除"></a>单表删除</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM tb_name [WHERE where_condition];</span><br><span class="line">没有where部分则会删除全部记录。</span><br></pre></td></tr></table></figure>
+<h5 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h5><ul>
+<li><p>单表更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UPDATE [LOW_PRIORITY] [IGNORE] tb_reference </span><br><span class="line">SET col_name1=&#123;expr|DEFAULT&#125; [,col_name2=&#123;expr|DEFAULT&#125;]...</span><br><span class="line">[WHERE where_condition]</span><br><span class="line">不写where会更新全部的记录。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多表更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_references </span><br><span class="line">SET col_name1=&#123;expr1|DEFAULT&#125;</span><br><span class="line">[,col_name2=&#123;expr2|DEFAULT&#125;]...</span><br><span class="line">[WHERE where_condition]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>CREATE…SELECT 创建数据表同时将查询结果写入到数据表</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE [IF NOT EXISTS]tb_name</span><br><span class="line">[(create_definetion,...)]</span><br><span class="line">select_statement</span><br></pre></td></tr></table></figure></p>
+<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tall (</span><br><span class="line">    tall_id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">    num INT</span><br><span class="line">) SELECT 身高 AS num FROM</span><br><span class="line">    av</span><br><span class="line">GROUP BY 身高;</span><br></pre></td></tr></table></figure></p>
+<p>创建新表tall，并从av表中选取身高字段插入到tall表的num字段。 ##连接 ###语法结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table_reference</span><br><span class="line">&#123;[INNER|CROSS] JOIN|&#123;LELT|RIGHT&#125;[OUTER] JOIN&#125;</span><br><span class="line">table_reference</span><br><span class="line">ON conditional_expr</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>ON为条件。<br>三种连接，即：内连接,  左外连接,   右外连接<ul>
+<li>内连接 显示左表及右表符合连接条件的记录（交集）</li>
+<li>左外连接 显示左表的全部记录及右表符合连接条件的记录 </li>
+<li>右外连接 类别左外连接 ###UPDATE..JOIN..SET 比如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UPDATE actor AS a</span><br><span class="line">        INNER JOIN</span><br><span class="line">    tall AS b ON a.tall = b.num </span><br><span class="line">SET </span><br><span class="line">    a.tall = b.tall_id;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>依据实际情况，选择是否使用别名。（如果两个表中进行比较的字段名相同，则需要别名）<br>该语句完成了一个替换，将actor表中具体的身高数值，替换为tall表中身高的对应id。</p>
+<h5 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h5><p>查询就是SELECT语句</p>
+<h5 id="查询记录"><a href="#查询记录" class="headerlink" title="查询记录"></a>查询记录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT select_expr [,select_expr ...]</span><br><span class="line">[</span><br><span class="line">	FROM table_references</span><br><span class="line">    [WHERE where_condition]</span><br><span class="line">    [GROUP BY &#123;col_name|position&#125; [ASC|DESC],...]</span><br><span class="line">    [HAVING where_condition]</span><br><span class="line">    [ORDER BY &#123;col_name|expr|position&#125; [ASC|DESC],...]</span><br><span class="line">    [LIMIT &#123;[offset,] row_count|row_count OFFSET offset&#125;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h5 id="使用别名查询"><a href="#使用别名查询" class="headerlink" title="使用别名查询"></a>使用别名查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT id AS userId，username AS uname FROM users;</span><br></pre></td></tr></table></figure>
+<p>查询出来的列名，就变成了别名。AS其实可以省略，但可能会出现问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT id username  FROM users;</span><br></pre></td></tr></table></figure></p>
+<p>这样会将username视作id的别名。 </p>
+<h5 id="分组GROUP-BY"><a href="#分组GROUP-BY" class="headerlink" title="分组GROUP BY"></a>分组GROUP BY</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[GROUP BY &#123;col_name|position&#125; [ASC|DESC],...]</span><br></pre></td></tr></table></figure>
+<p><strong>ASC和DESC分别是升序（缺省）和降序</strong><br>看一个脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users;</span><br><span class="line">SELECT sex FROM users GROUP BY sex;</span><br></pre></td></tr></table></figure></p>
+<p>两条语句的执行结果分别为：<br><img src="/img/mysql/1.png" alt="enter description here"><br><img src="/img/mysql/2.png" alt="enter description here"></p>
+<p>也可以使用编号代替字段名，但是这样不鼓励。比如上面的分组语句可以写成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT sex FROM users GROUP BY 1;</span><br></pre></td></tr></table></figure></p>
+<p>后面的数字1，值得是在SELECT选取的字段中的顺序。这里只选了一个字段，当然为1。<br>HAVING 与GROUP BY分组联用。<br>只对部分记录做分组操作。有两种用法，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT sex,age FROM users GROUP BY sex HAVING age &gt; 35;</span><br><span class="line">SELECT sex FROM users GROUP BY sex HAVING count(id) &gt;=2;</span><br></pre></td></tr></table></figure></p>
+<p>第一种，注意后面的HAVING的字段必须在前面SELECT部分出现才行。<br>第二种，在HAVING后面使用聚合函数，前面无需出现相应字段。<br>!!!Having放在group by后面 ###排序ORDER BY<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ORDER BY &#123;col_name|expr|position&#125; [ASC|DESC],...]</span><br></pre></td></tr></table></figure></p>
+<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users ORDER BY id DESC;</span><br></pre></td></tr></table></figure></p>
+<p>可以排序多个字段，如果第一个字段能排出结果，就不会用到第2个字段。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users ORDER BY id ,id DESC;</span><br></pre></td></tr></table></figure></p>
+<p>因为年龄age有相同的，继续排序就要用到id的降序。 </p>
+<h5 id="LIMIT-限制返回记录的数量"><a href="#LIMIT-限制返回记录的数量" class="headerlink" title="LIMIT 限制返回记录的数量"></a>LIMIT 限制返回记录的数量</h5><p><strong> LIMIT有两种语法结构，第一种比较常见.</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[LIMIT &#123;[offset,] row_count|row_count OFFSET offset&#125;]</span><br></pre></td></tr></table></figure></p>
+<p>起始位置，偏移量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users ;</span><br><span class="line">SELECT * FROM users LIMIT 3,2;</span><br><span class="line">SELECT * FROM users LIMIT 2;</span><br></pre></td></tr></table></figure></p>
+<p>3，2：表示从第3条开始返回，返回两条记录。注意记录从0开始编号，即结果集中的从第0条开始。<br>如果LIMIT后面只有一个参数，认作是偏移量，起始位置缺省为0。<br><img src="/img/mysql/3.png" alt="enter description here"><br><img src="/img/mysql/4.png" alt="enter description here"></p>
+<h5 id="合并查询结果UNION"><a href="#合并查询结果UNION" class="headerlink" title="合并查询结果UNION"></a>合并查询结果UNION</h5><p>在多条查询语句之间，使用UNION关键字会何必所有查询结果。<br>默认会去掉重复行，如果不想去掉重复行，请使用UNION ALL<br>需要注意的是，要联合的查询结果必须有相同的列数（列名可以不同）<br>去重效率比不去重效率低</p>
+<h5 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h5><p>子查询（Subquery）是指嵌套在查询内部，且必须始终出现在圆括号内。</p>
+<p>外面的查询并非只是指的查找。</p>
+<ul>
+<li>可以包含的关键字或条件 DISTINCT、GROUP BY、ORDER BY、LIMIT、函数等 <ul>
+<li>外层的查询可以是<br>SELECT<br>INSERT<br>UPDATE<br>SET<br>DO</li>
+</ul>
+</li>
+<li><strong>使用比较运算符的子查询</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=,&gt;,&lt;,&gt;=,&lt;=,&lt;&gt;,!=,&lt;=&gt;</span><br></pre></td></tr></table></figure>
+<p>语法结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">operand comparison_operator &#123;ANY|SOME|ALL&#125; (subquery)</span><br></pre></td></tr></table></figure></p>
+<p>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM av WHERE 身高&gt;=(SELECT AVG(身高) FROM av);</span><br></pre></td></tr></table></figure>
+<p>字段名不加引号 </p>
+<ul>
+<li><strong>修饰比较运算符</strong></li>
+</ul>
+<p>使用ANY、SOME、ALL，ANY和SOME是等价的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ANY	ALL</span><br><span class="line">&gt;,&gt;=	最小值	最大值</span><br><span class="line">&lt;,&lt;=	最大值	最小值</span><br><span class="line">=,&lt;=&gt;	任意值	</span><br><span class="line">&lt;&gt;,!=		任意值</span><br></pre></td></tr></table></figure></p>
+<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM av WHERE 胸围&gt;=ALL(SELECT 胸围 FROM av WHERE  身高&lt;160);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>使用[NOT]IN的子查询</strong><br>语法结构 operand comparison_operator [NOT] IN (subquery) =ANY和IN等效<br>!=ALL和NOT IN等效<ul>
+<li><strong>使用[NOT]EXISTS的子查询</strong><br>如果子查询返回任何行，EXISTS将返回TRUE，否则返回FALSE。<br>该类子查询使用较少</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="齐辉 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库-mysql/" rel="tag"># 数据库,mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/02/mysql/mysql增删改查实例/" rel="next" title="mysql增删改查实例">
+                <i class="fa fa-chevron-left"></i> mysql增删改查实例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="齐辉">
+          
+            <p class="site-author-name" itemprop="name">齐辉</p>
+            <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qihui1223" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://qihui1223.github.io/web/" target="_blank" title="学习">
+                  
+                    <i class="fa fa-fw fa-globe"></i>学习</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/jsfront" title="前端开发交流" target="_blank">前端开发交流</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL"><span class="nav-number">1.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MYSQL文件夹"><span class="nav-number">1.1.</span> <span class="nav-text">MYSQL文件夹:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql开启与关闭"><span class="nav-number">1.2.</span> <span class="nav-text">mysql开启与关闭</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql-数据库操作"><span class="nav-number">2.</span> <span class="nav-text">mysql 数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#表基本操作"><span class="nav-number">2.1.</span> <span class="nav-text">表基本操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#插入记录"><span class="nav-number">2.2.</span> <span class="nav-text">插入记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单表删除"><span class="nav-number">2.3.</span> <span class="nav-text">单表删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#更新记录"><span class="nav-number">2.4.</span> <span class="nav-text">更新记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查询语句"><span class="nav-number">2.5.</span> <span class="nav-text">查询语句</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查询记录"><span class="nav-number">2.6.</span> <span class="nav-text">查询记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用别名查询"><span class="nav-number">2.7.</span> <span class="nav-text">使用别名查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分组GROUP-BY"><span class="nav-number">2.8.</span> <span class="nav-text">分组GROUP BY</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LIMIT-限制返回记录的数量"><span class="nav-number">2.9.</span> <span class="nav-text">LIMIT 限制返回记录的数量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合并查询结果UNION"><span class="nav-number">2.10.</span> <span class="nav-text">合并查询结果UNION</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#子查询"><span class="nav-number">2.11.</span> <span class="nav-text">子查询</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">齐辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

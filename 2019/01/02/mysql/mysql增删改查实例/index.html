@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="数据库,mysql,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="qihui" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="添加记录123456789-- 测试添加记录CREATE DATABASE IF NOT EXISTS king DEFAULT CHARACTER SET &apos;UTF8&apos;;USE king;CREATE TABLE IF NOT EXISTS user(    id INT UNSIGNED AUTO_INCREMENT KEY COMMENT &apos;编号&apos;,    username VARCHAR(">
+<meta name="keywords" content="数据库,mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql增删改查实例">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/mysql/mysql增删改查实例/index.html">
+<meta property="og:site_name" content="qihui">
+<meta property="og:description" content="添加记录123456789-- 测试添加记录CREATE DATABASE IF NOT EXISTS king DEFAULT CHARACTER SET &apos;UTF8&apos;;USE king;CREATE TABLE IF NOT EXISTS user(    id INT UNSIGNED AUTO_INCREMENT KEY COMMENT &apos;编号&apos;,    username VARCHAR(">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-02T00:01:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql增删改查实例">
+<meta name="twitter:description" content="添加记录123456789-- 测试添加记录CREATE DATABASE IF NOT EXISTS king DEFAULT CHARACTER SET &apos;UTF8&apos;;USE king;CREATE TABLE IF NOT EXISTS user(    id INT UNSIGNED AUTO_INCREMENT KEY COMMENT &apos;编号&apos;,    username VARCHAR(">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/02/mysql/mysql增删改查实例/">
+
+
+
+
+
+  <title>mysql增删改查实例 | qihui</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qihui</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">倘只看书，便变成书橱</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/mysql/mysql增删改查实例/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="齐辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qihui">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql增删改查实例</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T16:03:02+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="添加记录"><a href="#添加记录" class="headerlink" title="添加记录"></a>添加记录</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 测试添加记录</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> king <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> <span class="string">'UTF8'</span>;</span><br><span class="line"><span class="keyword">USE</span> king;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> <span class="keyword">user</span>(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">UNSIGNED</span> AUTO_INCREMENT <span class="keyword">KEY</span> <span class="keyword">COMMENT</span> <span class="string">'编号'</span>,</span><br><span class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">UNIQUE</span> <span class="keyword">COMMENT</span> <span class="string">'用户名'</span>,</span><br><span class="line">    age TINYINT <span class="keyword">UNSIGNED</span> <span class="keyword">DEFAULT</span> <span class="number">18</span> <span class="keyword">COMMENT</span> <span class="string">'年龄'</span>,</span><br><span class="line">    email <span class="built_in">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'imooc@qq.com'</span> <span class="keyword">COMMENT</span> <span class="string">'邮箱'</span></span><br><span class="line">)<span class="keyword">ENGINE</span>=<span class="keyword">INNODB</span> <span class="keyword">CHARSET</span>=UTF8;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>添加数据三种方式<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 不指定字段名称</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">user</span> <span class="keyword">VALUE</span>(<span class="number">1</span>,<span class="string">'king'</span>,<span class="number">24</span>,<span class="string">'382771946@qq.com'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">user</span> <span class="keyword">VALUES</span>(<span class="literal">NULL</span>,<span class="string">'queen'</span>,<span class="number">25</span>,<span class="string">'queen@qq.com'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">user</span> <span class="keyword">VALUES</span>(<span class="keyword">DEFAULT</span>,<span class="string">'lily'</span>,<span class="number">26</span>,<span class="string">'lily@qq.com'</span>);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 列出指定字段的形式</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">user</span>(username,email) <span class="keyword">VALUES</span>(<span class="string">'rose'</span>,<span class="string">'rose@qq.com'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">user</span>(age,email,<span class="keyword">id</span>,username) <span class="keyword">VALUES</span>(<span class="number">34</span>,<span class="string">'imooc@qq.com'</span>,<span class="number">5</span>,<span class="string">'imooc'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 一次插入3条记录</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">user</span> <span class="keyword">VALUES</span>(<span class="literal">NULL</span>,<span class="string">'a'</span>,<span class="keyword">DEFAULT</span>,<span class="keyword">DEFAULT</span>),</span><br><span class="line">(<span class="literal">NULL</span>,<span class="string">'b'</span>,<span class="number">56</span>,<span class="string">'b@qq.com'</span>),</span><br><span class="line">(<span class="literal">NULL</span>,<span class="string">'c'</span>,<span class="number">14</span>,<span class="string">'c@qq.com'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- INSERT ...SET 的形式</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">user</span> <span class="keyword">SET</span> username=<span class="string">'d'</span>,age=<span class="number">45</span>,email=<span class="string">'d@qq.com'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- INSERT SELECT</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">user</span>(username) <span class="keyword">SELECT</span> a <span class="keyword">FROM</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 测试删除语句</span></span><br><span class="line"><span class="comment">-- 删除用户名为king</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> username=<span class="string">'king'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除年龄为24的用户</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> age=<span class="number">24</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除表中所有记录</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 测试更新语句</span></span><br><span class="line"><span class="comment">-- 修改第一个用户的信息 id=1</span></span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">user</span> <span class="keyword">SET</span> age=<span class="number">29</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 修改id=3的用户，username age email</span></span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">user</span> <span class="keyword">SET</span> age=<span class="number">47</span>,email=<span class="string">'lilys@qq.com'</span>,username=<span class="string">'lilys'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 所有用户年龄+10</span></span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">user</span> <span class="keyword">SET</span> age=age+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 将id&lt;=5的用户年龄改为-20，将邮箱改为默认值</span></span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">user</span> <span class="keyword">SET</span> age=age<span class="number">-20</span>,email=<span class="keyword">DEFAULT</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>&lt;=<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="查询记录"><a href="#查询记录" class="headerlink" title="查询记录"></a>查询记录</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 测试查询操作</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> user1(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">UNSIGNED</span> AUTO_INCREMENT <span class="keyword">KEY</span>,</span><br><span class="line">username <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">UNIQUE</span> <span class="keyword">COMMENT</span> <span class="string">'编号'</span>,</span><br><span class="line">age TINYINT <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">18</span>  <span class="keyword">COMMENT</span> <span class="string">'年龄'</span>,</span><br><span class="line">sex ENUM(<span class="string">'男'</span>,<span class="string">'女'</span>,<span class="string">'保密'</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'保密'</span> <span class="keyword">COMMENT</span> <span class="string">'性别'</span>,</span><br><span class="line">addr <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'北京'</span>,</span><br><span class="line">married TINYINT(<span class="number">1</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">'0代表未结婚，1代表已婚'</span>,</span><br><span class="line">salary <span class="built_in">FLOAT</span>(<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">'薪水'</span></span><br><span class="line">)<span class="keyword">ENGINE</span>=<span class="keyword">INNODB</span> <span class="keyword">CHARSET</span>=UTF8;</span><br><span class="line"><span class="keyword">INSERT</span> user1 <span class="keyword">VALUES</span>(<span class="number">1</span>,<span class="string">'king'</span>,<span class="number">23</span>,<span class="string">'男'</span>,<span class="string">'北京'</span>,<span class="number">1</span>,<span class="number">50000</span>);</span><br><span class="line"><span class="keyword">INSERT</span> user1(username,age,sex,addr,married,salary) <span class="keyword">VALUES</span>(<span class="string">'queen'</span>,<span class="number">27</span>,<span class="string">'女'</span>,<span class="string">'上海'</span>,<span class="number">0</span>,<span class="number">25000</span>);</span><br><span class="line"><span class="keyword">INSERT</span> user1 <span class="keyword">SET</span> username=<span class="string">'imooc'</span>,age=<span class="number">31</span>,sex=<span class="string">'女'</span>,addr=<span class="string">'北京'</span>,salary=<span class="number">40000</span>;</span><br><span class="line"><span class="keyword">INSERT</span> user1 <span class="keyword">VALUES</span>(<span class="literal">NULL</span>,<span class="string">'张三'</span>,<span class="number">38</span>,<span class="string">'男'</span>,<span class="string">'上海'</span>,<span class="number">0</span>,<span class="number">15000</span>),</span><br><span class="line">(<span class="literal">NULL</span>,<span class="string">'张三风'</span>,<span class="number">38</span>,<span class="string">'男'</span>,<span class="string">'上海'</span>,<span class="number">0</span>,<span class="number">15000</span>),</span><br><span class="line">(<span class="literal">NULL</span>,<span class="string">'张子怡'</span>,<span class="number">39</span>,<span class="string">'女'</span>,<span class="string">'北京'</span>,<span class="number">1</span>,<span class="number">85000</span>),</span><br><span class="line">(<span class="literal">NULL</span>,<span class="string">'汪峰'</span>,<span class="number">42</span>,<span class="string">'男'</span>,<span class="string">'深圳'</span>,<span class="number">1</span>,<span class="number">95000</span>),</span><br><span class="line">(<span class="literal">NULL</span>,<span class="string">'刘德华'</span>,<span class="number">58</span>,<span class="string">'男'</span>,<span class="string">'广州'</span>,<span class="number">0</span>,<span class="number">115000</span>),</span><br><span class="line">(<span class="literal">NULL</span>,<span class="string">'吴亦凡'</span>,<span class="number">28</span>,<span class="string">'男'</span>,<span class="string">'北京'</span>,<span class="number">0</span>,<span class="number">75000</span>),</span><br><span class="line">(<span class="literal">NULL</span>,<span class="string">'奶茶妹'</span>,<span class="number">18</span>,<span class="string">'女'</span>,<span class="string">'北京'</span>,<span class="number">1</span>,<span class="number">65000</span>),</span><br><span class="line">(<span class="literal">NULL</span>,<span class="string">'刘嘉玲'</span>,<span class="number">36</span>,<span class="string">'女'</span>,<span class="string">'广州'</span>,<span class="number">0</span>,<span class="number">15000</span>);</span><br></pre></td></tr></table></figure>
+<p>查询操作<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询表中所有记录</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> user1;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- username,addr,age</span></span><br><span class="line"><span class="keyword">SELECT</span> username,addr,age <span class="keyword">FROM</span> user1;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询king数据库下user1表中的所有记录</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> king.user1;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询user1表中的id 编号 username 用户名 sex 性别</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span> <span class="keyword">AS</span> <span class="string">'编号'</span>,username <span class="keyword">AS</span> <span class="string">'用户名'</span>, sex <span class="keyword">AS</span> <span class="string">'性别'</span></span><br><span class="line"><span class="keyword">FROM</span> user1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span> age,age <span class="keyword">id</span>,username <span class="keyword">FROM</span> user1;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 给表起别名</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username <span class="keyword">FROM</span> user1 <span class="keyword">AS</span> u;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试表名.字段名</span></span><br><span class="line"><span class="keyword">SELECT</span> user1.id,user1.username,user1.age <span class="keyword">FROM</span> user1 ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> u.id,u.username,u.addr,u.sex <span class="keyword">FROM</span> user1 <span class="keyword">AS</span> u;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试WHERE 条件的比较运算符</span></span><br><span class="line"><span class="comment">-- 查询id,username,age id=5的用户</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">50</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 添加desc字段 VARCHAR(100)</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> user1</span><br><span class="line"><span class="keyword">ADD</span> userDesc <span class="built_in">VARCHAR</span>(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 更新id&lt;=9的用户 userDesc='this is a test'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">UPDATE</span> user1 <span class="keyword">SET</span> userDesc=<span class="string">'this is a test'</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>&lt;=<span class="number">9</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询用户userDesc 为NULL的用户</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,userDesc <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> userDesc=<span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 检测NULL值</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,userDesc <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> userDesc&lt;=&gt;<span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- IS [NOT] NULL检测NULL值</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,userDesc <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> userDesc <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试范围BETWEEN AND</span></span><br><span class="line"><span class="comment">-- 查询年龄在18~30之间的用户</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> age <span class="keyword">BETWEEN</span> <span class="number">18</span> <span class="keyword">AND</span> <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询薪水在10000~50000之间的用户</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,salary <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="keyword">BETWEEN</span> <span class="number">10000</span> <span class="keyword">AND</span> <span class="number">50000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,salary <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="keyword">NOT</span> <span class="keyword">BETWEEN</span> <span class="number">10000</span> <span class="keyword">AND</span> <span class="number">50000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试指定集合 IN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询编号为1,3,5,7,9</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span>(<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">29</span>,<span class="number">45</span>,<span class="number">78</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> username <span class="keyword">IN</span>(<span class="string">'king'</span>,<span class="string">'queen'</span>,<span class="string">'lily'</span>,<span class="string">'rose'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试逻辑运算符</span></span><br><span class="line"><span class="comment">-- 查询性别为男并且年龄&gt;=20的用户</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> sex=<span class="string">'男'</span> <span class="keyword">AND</span> age&gt;=<span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- id&gt;=5 &amp;&amp; age&lt;=30</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>&gt;=<span class="number">5</span> <span class="keyword">AND</span> age&lt;=<span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>&gt;=<span class="number">5</span> <span class="keyword">AND</span> age&lt;=<span class="number">30</span> <span class="keyword">AND</span> sex=<span class="string">'男'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 要求sex='女' 并且 addr='北京'</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex,addr <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> sex=<span class="string">'女'</span> <span class="keyword">AND</span> addr=<span class="string">'北京'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询薪水范围在60000~10000并且性别为男 addr='北京'</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex,salary,addr <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="keyword">BETWEEN</span> <span class="number">60000</span> <span class="keyword">AND</span> <span class="number">100000</span> <span class="keyword">AND</span> sex=<span class="string">'男'</span> <span class="keyword">AND</span> addr=<span class="string">'北京'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询id=1 或者 用户名为queen</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span> <span class="keyword">OR</span> username=<span class="string">'queen'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试模糊查询</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> username=<span class="string">'king'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> username <span class="keyword">LIKE</span> <span class="string">'king'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 要求用户名中包含三</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> username <span class="keyword">LIKE</span> <span class="string">'%三%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 用户名中包含n</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> username <span class="keyword">LIKE</span> <span class="string">'%in%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 要求查询出姓张的用户</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> username <span class="keyword">LIKE</span> <span class="string">'张%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询以风结尾的用户</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> username <span class="keyword">LIKE</span> <span class="string">'%风'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 用户名长度为三位的用户</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> username <span class="keyword">LIKE</span> <span class="string">'___'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> username <span class="keyword">LIKE</span> <span class="string">'张_'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> username <span class="keyword">LIKE</span> <span class="string">'张_%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试分组</span></span><br><span class="line"><span class="comment">-- 按照性别分组sex</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> sex;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按照addr分组</span></span><br><span class="line"><span class="keyword">SELECT</span> username,age,sex,addr <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按照性别分组，查询组中的用户名有哪些</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">GROUP_CONCAT</span>(username),age,sex,addr <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> sex;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">GROUP_CONCAT</span>(username),age,sex,<span class="keyword">GROUP_CONCAT</span>(addr) <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> sex;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试COUNT()</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> user1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> user1;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按照sex分组，得到用户名详情，并且分别组中的总人数</span></span><br><span class="line"><span class="keyword">SELECT</span> sex,<span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> sex;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 按照addr分组，得到用户名的详情，总人数，得到组中年龄的总和，年龄的最大值、最小值、平均值和</span></span><br><span class="line"><span class="keyword">SELECT</span> addr,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers,</span><br><span class="line"><span class="keyword">SUM</span>(age) <span class="keyword">AS</span> sum_age,</span><br><span class="line"><span class="keyword">MAX</span>(age) <span class="keyword">AS</span> max_age,</span><br><span class="line"><span class="keyword">MIN</span>(age) <span class="keyword">AS</span> min_age,</span><br><span class="line"><span class="keyword">AVG</span>(age) <span class="keyword">AS</span> avg_age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按照sex分组，统计组中总人数、用户名详情，得到薪水总和，薪水最大值、最小值、平均值</span></span><br><span class="line"><span class="keyword">SELECT</span> sex,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers,</span><br><span class="line"><span class="keyword">SUM</span>(salary) <span class="keyword">AS</span> sum_salary,</span><br><span class="line"><span class="keyword">MAX</span>(salary) <span class="keyword">AS</span> max_salary,</span><br><span class="line"><span class="keyword">MIN</span>(salary) <span class="keyword">AS</span> min_salary,</span><br><span class="line"><span class="keyword">AVG</span>(salary) <span class="keyword">AS</span> avg_salary</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> sex;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> sex</span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">ROLLUP</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按照字段的位置来分组</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,sex,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers,</span><br><span class="line"><span class="keyword">SUM</span>(salary) <span class="keyword">AS</span> sum_salary,</span><br><span class="line"><span class="keyword">MAX</span>(salary) <span class="keyword">AS</span> max_salary,</span><br><span class="line"><span class="keyword">MIN</span>(salary) <span class="keyword">AS</span> min_salary,</span><br><span class="line"><span class="keyword">AVG</span>(salary) <span class="keyword">AS</span> avg_salary</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询age&gt;=30的用户并且按照sex分组</span></span><br><span class="line"><span class="keyword">SELECT</span> sex,<span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> age&gt;=<span class="number">30</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> sex;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按照addr分组，统计总人数</span></span><br><span class="line"><span class="keyword">SELECT</span> addr,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 对于分组结果进行二次筛选，条件是组中总人数&gt;=3</span></span><br><span class="line"><span class="keyword">SELECT</span> addr,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*)&gt;=<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> addr,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr</span><br><span class="line"><span class="keyword">HAVING</span> totalUsers&gt;=<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按照addr分组，</span></span><br><span class="line"><span class="keyword">SELECT</span> addr,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers,</span><br><span class="line"><span class="keyword">SUM</span>(salary) <span class="keyword">AS</span> sum_salary,</span><br><span class="line"><span class="keyword">MAX</span>(salary) <span class="keyword">AS</span> max_salary,</span><br><span class="line"><span class="keyword">MIN</span>(salary) <span class="keyword">AS</span> min_salary,</span><br><span class="line"><span class="keyword">AVG</span>(salary) <span class="keyword">AS</span> avg_salary</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 要求平均薪水&gt;=40000</span></span><br><span class="line"><span class="keyword">SELECT</span> addr,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers,</span><br><span class="line"><span class="keyword">SUM</span>(salary) <span class="keyword">AS</span> sum_salary,</span><br><span class="line"><span class="keyword">MAX</span>(salary) <span class="keyword">AS</span> max_salary,</span><br><span class="line"><span class="keyword">MIN</span>(salary) <span class="keyword">AS</span> min_salary,</span><br><span class="line"><span class="keyword">AVG</span>(salary) <span class="keyword">AS</span> avg_salary</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr</span><br><span class="line"><span class="keyword">HAVING</span> avg_salary&gt;=<span class="number">40000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试排序</span></span><br><span class="line"><span class="comment">-- 按照id降序排列</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span> <span class="keyword">DESC</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按照age升序</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> age ;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按照多个字段排序</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> age <span class="keyword">ASC</span>,<span class="keyword">id</span> <span class="keyword">ASC</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试条件+排序</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> age&gt;=<span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> age&gt;=<span class="number">30</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> age <span class="keyword">DESC</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 实现随机记录</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">RAND</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试LIMIT语句</span></span><br><span class="line"><span class="comment">-- 显示结果集的前5条记录</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">0</span>,<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显示前3条记录</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">0</span>,<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,username,age,sex</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">3</span>,<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 更新前3条记录，将age+5</span></span><br><span class="line"><span class="keyword">UPDATE</span> user1 <span class="keyword">SET</span> age=age+<span class="number">5</span> <span class="keyword">LIMIT</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按照id降序排列，更新前三条记录，将age-10</span></span><br><span class="line"><span class="keyword">UPDATE</span> user1 <span class="keyword">SET</span> age=age<span class="number">-10</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span> <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除前三条记录</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span> <span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 测试完整SELECT 语句的形式</span></span><br><span class="line"><span class="keyword">SELECT</span> addr,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers,</span><br><span class="line"><span class="keyword">SUM</span>(age) <span class="keyword">AS</span> sum_age,</span><br><span class="line"><span class="keyword">MAX</span>(age) <span class="keyword">AS</span> max_age,</span><br><span class="line"><span class="keyword">MIN</span>(age) <span class="keyword">AS</span> min_age,</span><br><span class="line"><span class="keyword">AVG</span>(age) <span class="keyword">AS</span> avg_age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>&gt;=<span class="number">2</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> addr,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers,</span><br><span class="line"><span class="keyword">SUM</span>(age) <span class="keyword">AS</span> sum_age,</span><br><span class="line"><span class="keyword">MAX</span>(age) <span class="keyword">AS</span> max_age,</span><br><span class="line"><span class="keyword">MIN</span>(age) <span class="keyword">AS</span> min_age,</span><br><span class="line"><span class="keyword">AVG</span>(age) <span class="keyword">AS</span> avg_age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>&gt;=<span class="number">2</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr</span><br><span class="line"><span class="keyword">HAVING</span> totalUsers&gt;=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> addr,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers,</span><br><span class="line"><span class="keyword">SUM</span>(age) <span class="keyword">AS</span> sum_age,</span><br><span class="line"><span class="keyword">MAX</span>(age) <span class="keyword">AS</span> max_age,</span><br><span class="line"><span class="keyword">MIN</span>(age) <span class="keyword">AS</span> min_age,</span><br><span class="line"><span class="keyword">AVG</span>(age) <span class="keyword">AS</span> avg_age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>&gt;=<span class="number">2</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr</span><br><span class="line"><span class="keyword">HAVING</span> totalUsers&gt;=<span class="number">2</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> totalUsers <span class="keyword">ASC</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> addr,</span><br><span class="line"><span class="keyword">GROUP_CONCAT</span>(username) <span class="keyword">AS</span> usersDetail,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> totalUsers,</span><br><span class="line"><span class="keyword">SUM</span>(age) <span class="keyword">AS</span> sum_age,</span><br><span class="line"><span class="keyword">MAX</span>(age) <span class="keyword">AS</span> max_age,</span><br><span class="line"><span class="keyword">MIN</span>(age) <span class="keyword">AS</span> min_age,</span><br><span class="line"><span class="keyword">AVG</span>(age) <span class="keyword">AS</span> avg_age</span><br><span class="line"><span class="keyword">FROM</span> user1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>&gt;=<span class="number">2</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> addr</span><br><span class="line"><span class="keyword">HAVING</span> totalUsers&gt;=<span class="number">2</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> totalUsers <span class="keyword">ASC</span></span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">0</span>,<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="齐辉 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库-mysql/" rel="tag"># 数据库,mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/02/mysql/初识数据库/" rel="next" title="初识数据库">
+                <i class="fa fa-chevron-left"></i> 初识数据库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/02/mysql/MySql数据库操作/" rel="prev" title="MySql数据库操作">
+                MySql数据库操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="齐辉">
+          
+            <p class="site-author-name" itemprop="name">齐辉</p>
+            <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qihui1223" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://qihui1223.github.io/web/" target="_blank" title="学习">
+                  
+                    <i class="fa fa-fw fa-globe"></i>学习</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/jsfront" title="前端开发交流" target="_blank">前端开发交流</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加记录"><span class="nav-number">1.</span> <span class="nav-text">添加记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除记录"><span class="nav-number">2.</span> <span class="nav-text">删除记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改记录"><span class="nav-number">3.</span> <span class="nav-text">修改记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询记录"><span class="nav-number">4.</span> <span class="nav-text">查询记录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">齐辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
