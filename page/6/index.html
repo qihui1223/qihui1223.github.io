@@ -277,6 +277,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（六）数值的扩展/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="齐辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qihui">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（六）数值的扩展/" itemprop="url">ES6系列（六）数值的扩展</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-15T15:31:24+08:00">
+                2018-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h1><h2 id="1-Number-isFinite-和-Number-isNaN"><a href="#1-Number-isFinite-和-Number-isNaN" class="headerlink" title="(1) Number.isFinite() 和 Number.isNaN()"></a>(1) Number.isFinite() 和 Number.isNaN()</h2><pre><code>用来检查Infinite和NaN这两个特殊值
+这两个方法仅对数值有效，对于飞数值一律返回false。
+</code></pre><pre><code class="javascript"><span class="built_in">Number</span>.isFinite(<span class="string">"25"</span>);<span class="comment">//false</span>
+<span class="built_in">isFinite</span>(<span class="string">"25"</span>);<span class="comment">//true</span>
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/15/es6/ES6系列（六）数值的扩展/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（十一）Generator/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -423,7 +573,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（十二）Promise/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（四） for-of 循环/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -442,7 +592,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（十二）Promise/" itemprop="url">ES6系列（十二）Promise</a></h1>
+                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（四） for-of 循环/" itemprop="url">ES6系列（四） for-of 循环</a></h1>
         
 
         <div class="post-meta">
@@ -515,164 +665,19 @@
 
       
         
-          <h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>ES6原生提供Promise对象。所谓Promise对象，就是代表了未来某个将要发生的事件（通常是一个异步操作）。它的好处在于，有了promise对象，就可以将异步操作的流程表达出来，避免了层层嵌套的回调函数。<br>
+          <h1 id="for-of-循环"><a href="#for-of-循环" class="headerlink" title="for-of 循环"></a>for-of 循环</h1><pre><code>任何部署了Iterator接口的对象，都可以使用for-of循环遍历。
+我们如何遍历数组中的元素：
+</code></pre><h2 id="（1）-for循环"><a href="#（1）-for循环" class="headerlink" title="（1） for循环"></a>（1） for循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">0</span>; index &lt; myArray.length; index++) &#123;</span><br><span class="line"> 		<span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（十二）Promise/#more" rel="contents">
+            <a class="btn" href="/2018/12/15/es6/ES6系列（四） for-of 循环/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（十）Iterator遍历器/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="齐辉">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qihui">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（十）Iterator遍历器/" itemprop="url">ES6系列（十）Iterator遍历器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-15T15:31:24+08:00">
-                2018-12-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/es6/" itemprop="url" rel="index">
-                    <span itemprop="name">es6</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Iterator遍历器"><a href="#Iterator遍历器" class="headerlink" title="Iterator遍历器"></a>Iterator遍历器</h1><p>遍历器是一种协议，任何对象只要部署了这个协议，就可以完成遍历操作。它的主要作用有两个<br>&nbsp;&nbsp;1.一个是为遍历对象的属性提供统一的接口，<br>&nbsp;&nbsp;2.二是时对象的属性能够按次序排列。</p>
-<p>ES6的遍历器协议规定，部署了next方法的对象，就具备了遍历器功能。<br>&nbsp;&nbsp;next方法必须返回一个包含value和done两个属性的对象。<br>&nbsp;&nbsp;value属性是当前遍历位置的值，<br>&nbsp;&nbsp;done属性是一个布尔值，表似乎遍历是否结束。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/15/es6/ES6系列（十）Iterator遍历器/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
+    </div>
     
     
     
@@ -862,7 +867,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/es6/ES6系列（一） let命令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/15/node事件驱动和异步IO/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="齐辉">
@@ -881,7 +886,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/15/es6/ES6系列（一） let命令/" itemprop="url">ES6系列（一） let命令</a></h1>
+                <a class="post-title-link" href="/2018/12/15/node事件驱动和异步IO/" itemprop="url">nodejs的事件驱动和异步I/O</a></h1>
         
 
         <div class="post-meta">
@@ -916,8 +921,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/es6/" itemprop="url" rel="index">
-                    <span itemprop="name">es6</span>
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
                   </a>
                 </span>
 
@@ -954,23 +959,19 @@
 
       
         
-          
-            <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><pre><code>ES6新增了let命令，用于声明变量，用let声明的变量，只在let命令所在的代码块内有效。
-let其实是为JavaScript新增了块级作用域。
-</code></pre><pre><code class="JavaScript">{
-  <span class="keyword">let</span> a,b,rest;
-  [a,b]=[<span class="number">1</span>,<span class="number">2</span>];
-  <span class="built_in">console</span>.log(a,b); <span class="comment">//1, 2</span>
-}
-
-</code></pre>
-<p><strong>let命令图解</strong></p>
-<p><img src="/img/es6/let.jpg" alt="let命令图解"></p>
-
-          
+          <h2 id="nodejs中的异步非阻塞I-O"><a href="#nodejs中的异步非阻塞I-O" class="headerlink" title="nodejs中的异步非阻塞I/O"></a>nodejs中的异步非阻塞I/O</h2><p>首先你要知道<strong>非阻塞I/O不是异步I/O!</strong></p>
+<h2 id="阻塞I-O"><a href="#阻塞I-O" class="headerlink" title="阻塞I/O"></a>阻塞I/O</h2><p>程序执行过程中必然要进行很多I/O操作，读写文件、输入输出、请求响应等等。I/O操作时最费时的.</p>
+<p>阻塞I/O就是当用户发出一个读取文件的描述操作时,进程就会阻塞,指导读取的数据全部准备好,返回给用户,这时候进程才会解除block(锁)状态<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/15/node事件驱动和异步IO/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     

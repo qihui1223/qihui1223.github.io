@@ -106,16 +106,16 @@
 <meta property="og:description" content="环境搭建首先得买个阿里云的服务器 本地连接阿里云服务器工具:SecureCRT或xshell">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/spring/a2.png">
-<meta property="og:image" content="http://yoursite.com/img/spring/a1_1.png">
+<meta property="og:image" content="http://yoursite.com/img/spring/a1.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/a3.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/a4.png">
-<meta property="og:image" content="http://yoursite.com/img/spring/a5_1.png">
+<meta property="og:image" content="http://yoursite.com/img/spring/a5.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/a6.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/a7.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/a8.png">
-<meta property="og:image" content="http://yoursite.com/img/spring/a9_1.png">
+<meta property="og:image" content="http://yoursite.com/img/spring/a9.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/a10.png">
-<meta property="og:updated_time" content="2019-08-05T13:24:32.540Z">
+<meta property="og:updated_time" content="2019-08-05T13:49:18.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring boot 部署阿里云">
 <meta name="twitter:description" content="环境搭建首先得买个阿里云的服务器 本地连接阿里云服务器工具:SecureCRT或xshell">
@@ -364,12 +364,12 @@
 </code></pre><a id="more"></a>
 <p><img src="/img/spring/a2.png" alt="enter description here"></p>
 <pre><code>文件上传阿里云: xftp
-</code></pre><p><img src="/img/spring/a1_1.png" alt="enter description here"></p>
+</code></pre><p><img src="/img/spring/a1.png" alt="enter description here"></p>
 <h5 id="安装jdk"><a href="#安装jdk" class="headerlink" title="安装jdk"></a>安装jdk</h5><p>1.去官网下载JDK,这里下载的版本为1.8<br><img src="/img/spring/a3.png" alt="enter description here"><br>    一般常见的做法是下载下来然后用工具传到Linux服务器上，这里推荐使用xftp上传<br>2.创建java文件目录<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 切换目录</span><br><span class="line">cd /usr/local</span><br><span class="line"># 创建一个文件夹 Java </span><br><span class="line">mkdir java</span><br><span class="line">#查看文件是否创建</span><br><span class="line">ls</span><br><span class="line">aegis  bin  etc  games  include  java  lib  lib64  libexec  sbin  share  src</span><br><span class="line">#进入java目录</span><br><span class="line">cd java</span><br></pre></td></tr></table></figure></p>
 <p><img src="/img/spring/a4.png" alt="enter description here"></p>
 <p>使用xftp将java文件上传到java目录中<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#解压java文件 ,tar -zxvf + 文件名</span><br><span class="line">tar -zxvf jdk-<span class="number">8</span>u201-linux-x64.tar.gz</span><br></pre></td></tr></table></figure></p>
 <p>将解压好的文件重命名便于配置环境变量,我这里命名为jdk8<br>4.设置环境变量：<br>a . 打开/etc/profile：vim /etc/profile,按i进入编辑模式<br>b . 将以下信息复制进去，注意自己的版本号<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> JAVA_HOME=<span class="regexp">/usr/</span>java/jdk8</span><br><span class="line"><span class="keyword">export</span> CLASSPATH=$JAVA_HOME/lib/</span><br><span class="line"><span class="keyword">export</span> PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"><span class="keyword">export</span> PATH JAVA_HOME CLASSPATH</span><br></pre></td></tr></table></figure></p>
-<p><img src="/img/spring/a5_1.png" alt="enter description here"></p>
+<p><img src="/img/spring/a5.png" alt="enter description here"></p>
 <pre><code>按esc 退出, 
 :wq 保存
 然后让profile立即生效
@@ -395,7 +395,7 @@ rpm -e --nodeps mysql　　
 <p><img src="/img/spring/a8.png" alt="enter description here"></p>
 <pre><code>使用xftp工具将本地数据库sql上传服务器中,我这里上传的位置为home,创建sql文件夹存放sql文件
 即文件路径为/home/sql/dbname.sql
-</code></pre><p>​<br><img src="/img/spring/a9_1.png" alt="enter description here"></p>
+</code></pre><p>​<br><img src="/img/spring/a9.png" alt="enter description here"></p>
 <p>查看数据库表结构<br>show tabes;<br><img src="/img/spring/a10.png" alt="enter description here"></p>
 <p>终于把数据库安装导入成功！</p>
 <p>至此，SpringBoot所需要的环境都已安装完成，即需要运行的环境Java和数据库的运行环境MySQL。</p>

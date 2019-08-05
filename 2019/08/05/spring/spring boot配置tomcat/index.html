@@ -105,18 +105,18 @@
 <meta property="og:site_name" content="qihui">
 <meta property="og:description" content="SpringBoot是内置一个tomcat容器的,用起来叶很方便,但考虑到实际的情形中，我们的Tomcat服务器一般是另外部署好了的，有专门的维护方式。此时我们需要剥离掉SBT应用内置的Tomcat服务器，进而将应用发布并部署到外置的Tomcat容器之中，所以有时需要在云服务器上部署tomcat 下载tomcattomcat下载的地址，下载到本地，https://mirrors.tuna.tsin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/img/spring/t1_1.png">
+<meta property="og:image" content="http://yoursite.com/img/spring/t1.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/t2.png">
-<meta property="og:image" content="http://yoursite.com/img/spring/t3_1.png">
-<meta property="og:image" content="http://yoursite.com/img/spring/t4_1.png">
+<meta property="og:image" content="http://yoursite.com/img/spring/t3.png">
+<meta property="og:image" content="http://yoursite.com/img/spring/t4.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/t6.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/t7.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/t8.png">
-<meta property="og:updated_time" content="2019-08-05T13:27:06.090Z">
+<meta property="og:updated_time" content="2019-08-05T13:48:40.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring boot配置tomcat">
 <meta name="twitter:description" content="SpringBoot是内置一个tomcat容器的,用起来叶很方便,但考虑到实际的情形中，我们的Tomcat服务器一般是另外部署好了的，有专门的维护方式。此时我们需要剥离掉SBT应用内置的Tomcat服务器，进而将应用发布并部署到外置的Tomcat容器之中，所以有时需要在云服务器上部署tomcat 下载tomcattomcat下载的地址，下载到本地，https://mirrors.tuna.tsin">
-<meta name="twitter:image" content="http://yoursite.com/img/spring/t1_1.png">
+<meta name="twitter:image" content="http://yoursite.com/img/spring/t1.png">
 
 
 
@@ -359,14 +359,14 @@
         <p>SpringBoot是内置一个tomcat容器的,用起来叶很方便,但考虑到实际的情形中，我们的Tomcat服务器一般是另外部署好了的，有专门的维护方式。此时我们需要剥离掉SBT应用内置的Tomcat服务器，进而将应用发布并部署到外置的Tomcat容器之中，所以有时需要在云服务器上部署tomcat</p>
 <h3 id="下载tomcat"><a href="#下载tomcat" class="headerlink" title="下载tomcat"></a>下载tomcat</h3><p>tomcat下载的地址，下载到本地，<br><a href="https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/</a></p>
 <a id="more"></a>
-<p><img src="/img/spring/t1_1.png" alt="enter description here"><br><img src="/img/spring/t2.png" alt="enter description here"></p>
-<p>上述是把本地下载的apache-tomcat-9.0.20tar传输到服务器的/usr/local目录下，<br>在xshell中解压apache-tomcat-9.0.20.tar<br><img src="/img/spring/t3_1.png" alt="enter description here"></p>
+<p><img src="/img/spring/t1.png" alt="enter description here"><br><img src="/img/spring/t2.png" alt="enter description here"></p>
+<p>上述是把本地下载的apache-tomcat-9.0.20tar传输到服务器的/usr/local目录下，<br>在xshell中解压apache-tomcat-9.0.20.tar<br><img src="/img/spring/t3.png" alt="enter description here"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br><span class="line">解压apache-tomcat-9.0.20.tar</span><br><span class="line"></span><br><span class="line">tar -zxvf apache-tomcat-9.0.20.tar.gz</span><br></pre></td></tr></table></figure>
 <p>这目录中将apache-tomcat-9.0.20.tar文件夹修改为tomcat</p>
 <h4 id="设置JVM参数"><a href="#设置JVM参数" class="headerlink" title="设置JVM参数"></a>设置JVM参数</h4><p>运行命令vim /usr/local/tomcat/bin/setenv.sh，<br>创建/usr/local/tomcat/bin/setenv.sh。<br>按下i键进入编辑模式，添加以下内容,保存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JAVA_OPTS=&apos;-Djava.security.egd=file:/dev/./urandom -server -Xms256m -Xmx496m -Dfile.encoding=UTF-8&apos;</span><br></pre></td></tr></table></figure></p>
 <h4 id="设置Tomcat-自启动脚本"><a href="#设置Tomcat-自启动脚本" class="headerlink" title="设置Tomcat 自启动脚本"></a>设置Tomcat 自启动脚本</h4><p>下载脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/lj2007331/oneinstack/raw/master/init.d/Tomcat-init</span><br></pre></td></tr></table></figure></p>
 <p>重命名Tomcat-init<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv Tomcat-init /etc/init.d/tomcat</span><br></pre></td></tr></table></figure></p>
-<p>修改/etc/init.d/tomcat中的jdk,tomcat地址<br><img src="/img/spring/t4_1.png" alt="enter description here"></p>
+<p>修改/etc/init.d/tomcat中的jdk,tomcat地址<br><img src="/img/spring/t4.png" alt="enter description here"></p>
 <p>设置权限:<br>chmod 755 tomcat<br>添加到系统服务<br>chkconfig –add tomcat<br>查看系统服务:<br>chkconfig –list<br><img src="/img/spring/t6.png" alt="enter description here"></p>
 <p>启动,停止tomcat:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service tomcat start</span><br><span class="line">service tomcat stop</span><br></pre></td></tr></table></figure></p>
 <p>在轻量级服务器中 设置防火墙<br><img src="/img/spring/t7.png" alt="enter description here"></p>
