@@ -115,7 +115,7 @@
 <meta property="og:image" content="http://yoursite.com/img/spring/a8.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/a9.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/a10.png">
-<meta property="og:updated_time" content="2020-09-22T01:40:06.923Z">
+<meta property="og:updated_time" content="2020-09-22T06:28:51.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring boot 部署阿里云">
 <meta name="twitter:description" content="环境搭建首先得买个阿里云的服务器 本地连接阿里云服务器工具:SecureCRT或xshell">
@@ -423,7 +423,23 @@ rpm -e --nodeps mysql　　
 <p>至此，SpringBoot所需要的环境都已安装完成，即需要运行的环境Java和数据库的运行环境MySQL。</p>
 <p>ps: 修改mysql远程连接权限</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">开放mysql远程权限</span><br><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'123456'</span> WITH GRANT OPTION;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<h3 id="spring-boot自启动脚本问题"><a href="#spring-boot自启动脚本问题" class="headerlink" title="spring boot自启动脚本问题"></a>spring boot自启动脚本问题</h3><p>1.关于LINUX权限-bash: ./startup.sh: Permission denied</p>
+<p>在执行./startup.sh,或者./shutdown.sh的时候，爆出了Permission denied，<br>其实很简单，就是今天在执行tomcat的时候，用户没有权限，而导致无法执行，<br>用命令chmod 修改一下bin目录下的.sh权限就可以了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 使用chmod命令</span><br><span class="line">chmod u+x *.sh</span><br></pre></td></tr></table></figure></p>
+<p>再次执行，OK了。</p>
+<p>2.shell脚本报错：-bash: xxx: /bin/bash^M: bad interpreter: No such file or directory</p>
+<p>bash: ./test.sh: /bin/bash^M: bad interpreter: No such file or directory<br>主要原因是test.sh是我在windows下编辑然后上传到linux系统里执行的。.sh文件的格式为dos格式。而linux只能执行格式为unix格式的脚本。<br>我们可以通过vi编辑器来查看文件的format格式。步骤如下：</p>
+<pre><code>1.首先用vi命令打开文件
+Shell代码 
+[root@localhost test]# vi test.sh
 
+2.在vi命令模式中使用 :set ff 命令 
+可以看到改文件的格式为dos
+3.修改文件format为unix
+使用vi修改文件format
+命令：set ff=unix
+4.保存退出
+:wq 
+</code></pre>
       
     </div>
     
@@ -567,7 +583,7 @@ rpm -e --nodeps mysql　　
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -589,7 +605,7 @@ rpm -e --nodeps mysql　　
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -659,7 +675,7 @@ rpm -e --nodeps mysql　　
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装jdk"><span class="nav-number">2.</span> <span class="nav-text">安装jdk</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装mysql"><span class="nav-number">3.</span> <span class="nav-text">安装mysql</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#导入本地数据库"><span class="nav-number">4.</span> <span class="nav-text">导入本地数据库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装jdk"><span class="nav-number">2.</span> <span class="nav-text">安装jdk</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装mysql"><span class="nav-number">3.</span> <span class="nav-text">安装mysql</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#导入本地数据库"><span class="nav-number">4.</span> <span class="nav-text">导入本地数据库</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-boot自启动脚本问题"><span class="nav-number"></span> <span class="nav-text">spring boot自启动脚本问题</span></a></li></div>
             
 
           </div>
