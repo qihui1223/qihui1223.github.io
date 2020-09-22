@@ -115,7 +115,7 @@
 <meta property="og:image" content="http://yoursite.com/img/spring/a8.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/a9.png">
 <meta property="og:image" content="http://yoursite.com/img/spring/a10.png">
-<meta property="og:updated_time" content="2020-07-21T02:54:39.226Z">
+<meta property="og:updated_time" content="2020-09-22T01:40:06.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring boot 部署阿里云">
 <meta name="twitter:description" content="环境搭建首先得买个阿里云的服务器 本地连接阿里云服务器工具:SecureCRT或xshell">
@@ -421,6 +421,8 @@ rpm -e --nodeps mysql　　
 <p>查看数据库表结构<br>show tabes;<br><img src="/img/spring/a10.png" alt="enter description here"></p>
 <p>终于把数据库安装导入成功！</p>
 <p>至此，SpringBoot所需要的环境都已安装完成，即需要运行的环境Java和数据库的运行环境MySQL。</p>
+<p>ps: 修改mysql远程连接权限</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">开放mysql远程权限</span><br><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'123456'</span> WITH GRANT OPTION;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -565,7 +567,7 @@ rpm -e --nodeps mysql　　
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -587,7 +589,7 @@ rpm -e --nodeps mysql　　
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
